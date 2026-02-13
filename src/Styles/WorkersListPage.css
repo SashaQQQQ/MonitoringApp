@@ -1,0 +1,74 @@
+.WorkersListPage {
+  display: flex;
+  gap: 5%;
+  width: 100%;
+  padding: 15px;
+  height: 100%;
+  box-sizing: border-box;
+}
+.actualList {
+  display: flex;
+  padding: 15px;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(221, 221, 221);
+  width: 50%;
+  height: 95%;
+  border-bottom-left-radius: 5vw;
+  border-top-left-radius: 5vw;
+  border-bottom-right-radius: 2vw;
+  border-top-right-radius: 2vw;
+}
+.actualList ul {
+  width: 100%;
+  height: 80%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 20px;
+}
+.actualList li {
+  cursor: pointer;
+  font-weight: 700;
+  list-style: none;
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 2vw;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2px;
+}
+.actualList li div {
+  display: flex;
+  gap: 10px;
+}
+.actualList li div button {
+  padding: 5px;
+  width: 80px;
+  border: none;
+  border-radius: 1vw;
+  background-color: rgb(100, 100, 255);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.actualList li div button:hover {
+  background-color: rgb(50, 50, 200);
+}
+.selectedProfilePart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  background-color: rgb(221, 221, 221);
+  width: 60%;
+  height: 95%;
+  border-bottom-right-radius: 5vw;
+  border-top-right-radius: 5vw;
+  border-bottom-left-radius: 2vw;
+  border-top-left-radius: 2vw;
+}

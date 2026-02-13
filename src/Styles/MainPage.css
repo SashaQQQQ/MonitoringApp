@@ -1,0 +1,113 @@
+.navigationMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 8vw;
+  position: absolute;
+  left: 0;
+  height: 100vh;
+  justify-content: center;
+  gap: 6%;
+  background-color: white;
+  padding: 10px;
+}
+.navigationMenu div {
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  transition: all 0.3s ease-in-out;
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(221, 221, 221);
+  width: 80%;
+  min-width: 50px;
+  text-align: center;
+  border-radius: 2vw;
+  gap: 5%;
+  padding: 5px;
+  height: 70px;
+  cursor: pointer;
+  filter: drop-shadow(-3px 7px rgb(156, 160, 183));
+}
+.navigationMenu div:hover {
+  background-color: rgb(73, 73, 203);
+  color: white;
+  filter: drop-shadow(-3px 3px rgb(9, 44, 244));
+}
+.mainContent {
+  position: absolute;
+  top: 12vh;
+  left: 15vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 70vw;
+  min-width: 600px;
+  height: 70vh;
+  background-color: white;
+  border-radius: 3vw;
+}
+.welcomeText h1 {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  margin: 0;
+}
+.welcomeText p {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  position: relative;
+  left: 60%;
+}
+.userProfilePreview {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 12vw;
+  top: 0vh;
+  right: 0vw;
+  background-color: white;
+  padding: 10px;
+  border-bottom-left-radius: 2vw;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+}
+@media (max-width: 990px) {
+  .userProfilePreview {
+    right: 0;
+    width: 22vw;
+  }
+  .mainContent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30vw;
+  }
+
+  .welcomeText {
+    position: absolute;
+    top: 20%;
+    text-align: center;
+  }
+  .welcomeText p {
+    left: 0;
+  }
+  .navigationMenu {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 97.8vw;
+    height: 10vh;
+    bottom: 0;
+    gap: 0%;
+  }
+  .navigationMenu div {
+    height: 50px;
+    width: 100px;
+    font-size: clamp(0.8rem, 3vw, 1rem);
+    padding: 15px;
+  }
+}

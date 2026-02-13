@@ -1,0 +1,81 @@
+.AddWorker {
+  width: 100%;
+  height: 100%;
+  border-radius: 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5f7fa, #e4e8ee);
+}
+
+.formCard {
+  background: #fff;
+  padding: 32px;
+  min-width: 420px;
+  width: 80%;
+  height: 80%;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  overflow: auto;
+}
+
+.formCard h1 {
+  margin: 0;
+  font-size: 26px;
+  text-align: center;
+}
+
+.subtitle {
+  text-align: center;
+  color: #777;
+  margin: 8px 0 24px;
+}
+
+.workerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inputGroup label {
+  font-size: 14px;
+  color: #555;
+}
+
+.inputGroup input {
+  padding: 12px 14px;
+  border-radius: 1vw;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.inputGroup input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.submitBtn {
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #4f46e5;
+  color: white;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.submitBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+}
