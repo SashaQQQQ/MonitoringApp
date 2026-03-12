@@ -6,6 +6,8 @@ import OrdersPageOwner from "./OrdersPageOwner.jsx";
 import NavigationBar from "../CommonJsx/NavigationBar.jsx";
 import ProfilePreview from "../CommonJsx/ProfilePreview.jsx";
 import ChatMain from "../CommonJsx/ChatMain.jsx";
+import BestWorkers from "./BestWorkers.jsx";
+import EndingOrders from "./EndingOrders.jsx";
 import "../Styles/MainPage.css";
 
 function OwnerMainPage({ userProfile }) {
@@ -20,20 +22,26 @@ function OwnerMainPage({ userProfile }) {
           setActivePage={setActivePage}
         />
       </div>
-
+      <h1 className="greetings">Welcome on board!</h1>
       <div className="mainContent">
-        {activePage === "addWorker" && <AddWorker />}
-        {activePage === "workers" && (
-          <WorkersListPage userProfile={userProfile} />
-        )}
-        {activePage === "orders" && <OrdersPageOwner />}
-        {activePage === "chats" && <ChatMain userProfile={userProfile} />}
-        {activePage === null && (
-          <div className="welcomeText">
-            <h1>Welcome, {userProfile[0]?.name || "Owner"}!</h1>
-            <p>What will be your decision?</p>
+        <div className="horizontalPanel">
+          <div className="bestWorkersPanel">
+            <h3 className="panelTitle">Best workers..</h3>
+            <BestWorkers />
           </div>
-        )}
+          <div className="lastChatsPanel">
+            <h3 className="panelTitle">Last chats</h3>
+          </div>
+        </div>
+        <div className="horizontalPanel">
+          <div className="ordersToEndFastPanel">
+            <h3 className="panelTitle">Orders to end fast</h3>
+            <EndingOrders />
+          </div>
+          <div className="lastWorkersPanel">
+            <h3 className="panelTitle">Last workers</h3>
+          </div>
+        </div>
       </div>
 
       <ProfilePreview userProfile={userProfile[0]} />

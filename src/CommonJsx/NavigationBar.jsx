@@ -5,6 +5,9 @@ import "../Styles/MainPage.css";
 function NavigationBar({ role, setActivePage }) {
   return (
     <div className="navigationMenu">
+      <div onClick={() => setActivePage("main")}>
+        <p>Main Page</p>
+      </div>
       <div onClick={() => setActivePage("workers")}>
         <p>Workers</p>
       </div>

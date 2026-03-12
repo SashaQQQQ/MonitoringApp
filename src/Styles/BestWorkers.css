@@ -1,0 +1,24 @@
+.BestWorkers {
+  width: 100%;
+  height: 90%;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.workerCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  height: 30%;
+  width: 94%;
+  box-shadow: 1px 1px 5px rgb(156, 160, 183);
+  border-radius: 1vw;
+}
+.workerInfo {
+  display: flex;
+  font-weight: 700;
+}

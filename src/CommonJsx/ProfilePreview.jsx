@@ -5,11 +5,12 @@ import "../Styles/MainPage.css";
 function ProfilePreview({ userProfile }) {
   return (
     <div className="userProfilePreview">
-      <div>
-        <p>{userProfile?.name || "N/A"}</p>
-        <p>{userProfile?.secondName || "N/A"}</p>
-      </div>
       <img src="dsfsf" alt="picture" />
+      <div>
+        <p>
+          {userProfile?.name || "N/A"} {userProfile?.secondName}{" "}
+        </p>
+      </div>
     </div>
   );
 }
