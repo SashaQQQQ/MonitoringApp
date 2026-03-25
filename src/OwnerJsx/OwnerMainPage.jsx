@@ -1,5 +1,5 @@
-import { useState } from "react";
-
+import { useContext, useState } from "react";
+import { DataContext } from "../CommonJsx/DataContext.js";
 import WorkersListPage from "../WorkerJsx/WorkersListPage.jsx";
 import AddWorker from "../CommonJsx/AddWorker.jsx";
 import OrdersPageOwner from "./OrdersPageOwner.jsx";
@@ -12,8 +12,7 @@ import "../Styles/MainPage.css";
 
 function OwnerMainPage({ userProfile }) {
   const [contactPerson, setContactPerson] = useState(null);
-  const [activePage, setActivePage] = useState(null);
-
+  const { activePage, setActivePage } = useContext(DataContext);
   return (
     <div>
       <div className="userWindow">
@@ -24,24 +23,37 @@ function OwnerMainPage({ userProfile }) {
       </div>
       <h1 className="greetings">Welcome on board!</h1>
       <div className="mainContent">
-        <div className="horizontalPanel">
-          <div className="bestWorkersPanel">
-            <h3 className="panelTitle">Best workers..</h3>
-            <BestWorkers />
+        {activePage === "main" ? (
+          <div className="main">
+            <div className="horizontalPanel">
+              <div className="bestWorkersPanel">
+                <h3 className="panelTitle">Best workers..</h3>
+                <BestWorkers />
+              </div>
+              <div className="lastChatsPanel">
+                <h3 className="panelTitle">Last chats</h3>
+              </div>
+            </div>
+            <div className="horizontalPanel">
+              <div className="ordersToEndFastPanel">
+                <h3 className="panelTitle">Ending orders</h3>
+                <EndingOrders />
+              </div>
+              <div className="lastWorkersPanel">
+                <h3 className="panelTitle">Last workers</h3>
+              </div>
+            </div>
           </div>
-          <div className="lastChatsPanel">
-            <h3 className="panelTitle">Last chats</h3>
-          </div>
-        </div>
-        <div className="horizontalPanel">
-          <div className="ordersToEndFastPanel">
-            <h3 className="panelTitle">Orders to end fast</h3>
-            <EndingOrders />
-          </div>
-          <div className="lastWorkersPanel">
-            <h3 className="panelTitle">Last workers</h3>
-          </div>
-        </div>
+        ) : null}
+        {activePage === "workers" ? <WorkersListPage /> : null}
+        {activePage === "addWorker" ? <AddWorker /> : null}
+        {activePage === "orders" ? <OrdersPageOwner /> : null}
+        {activePage === "chats" ? (
+          <ChatMain
+            contactPerson={contactPerson}
+            setContactPerson={setContactPerson}
+          />
+        ) : null}
       </div>
 
       <ProfilePreview userProfile={userProfile[0]} />

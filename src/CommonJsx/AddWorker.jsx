@@ -41,6 +41,7 @@ function AddWorker() {
         SecondName: secondName,
         DateOfBirth: dateOfBirth,
         Role: role,
+        login: workerLogin,
       },
     ]);
 

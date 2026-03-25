@@ -1,111 +1,107 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { supabase } from "./SupabaseClient.js";
+import { DataContext } from "./DataContext.js";
+import "../Styles/ChatWindow.css";
 
-export default function ChatWindow({ chat, user }) {
+export default function ChatWindow({ loadChatList, otherUser }) {
+  const { userProfile } = useContext(DataContext);
   const [messages, setMessages] = useState([]);
   const [text, setText] = useState("");
 
-  useEffect(() => {
-    if (!chat || !user) return;
+  async function loadMessages(partner) {
+    if (!partner) return;
 
-    const load = async () => {
-      const { data, error } = await supabase
-        .from("messages")
-        .select("*")
-        .or(
-          `and(sender.eq.${user.login},receiver.eq.${chat.login}),
-           and(sender.eq.${chat.login},receiver.eq.${user.login})`,
-        )
-        .order("created_at", { ascending: true });
+    const me = String(userProfile[0].login);
+    const other = String(partner);
 
-      if (error) {
-        console.error(error);
-        return;
-      }
-
-      setMessages(data || []);
-    };
-
-    load();
-  }, [chat, user]);
-
-  async function sendMessage(e) {
-    e.preventDefault();
-    if (!text.trim()) return;
-
-    const { error } = await supabase.from("messages").insert({
-      sender: user.login,
-      receiver: chat.login,
-      message: text,
-    });
+    const { data, error } = await supabase
+      .from("messages")
+      .select("*")
+      .or(
+        `and(sender.eq.${me},receiver.eq.${other}),and(sender.eq.${other},receiver.eq.${me})`,
+      )
+      .order("created_at", { ascending: true });
 
     if (error) {
       console.error(error);
       return;
     }
 
-    setText("");
+    setMessages(data || []);
   }
 
-  if (!chat) {
-    return <div style={styles.empty}>Выберите чат</div>;
-  }
+  async function sendMessage() {
+    if (!text.trim() || !otherUser) return;
 
+    const { error } = await supabase.from("messages").insert({
+      sender: userProfile[0].login,
+      receiver: otherUser,
+      message: text,
+    });
+
+    if (!error) setText("");
+    loadMessages(otherUser);
+  }
+  useEffect(() => {
+    const channel = supabase
+      .channel("messages-realtime")
+      .on(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "messages" },
+        (payload) => {
+          const msg = payload.new;
+
+          loadChatList();
+
+          if (
+            otherUser &&
+            ((msg.sender === userProfile[0].login &&
+              msg.receiver === otherUser) ||
+              (msg.sender === otherUser &&
+                msg.receiver === userProfile[0].login))
+          ) {
+            setMessages((prev) => [...prev, msg]);
+          }
+        },
+      )
+      .subscribe();
+
+    loadMessages(otherUser);
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [otherUser]);
   return (
-    <div style={styles.window}>
-      <div style={styles.header}>{chat.login}</div>
+    <div className="chatWindow">
+      <div className="chatWindow">
+        <div className="chatHeader">
+          <p>{otherUser || "Select chat"}</p>
+        </div>
 
-      <div style={styles.messages}>
-        {messages.map((m) => (
-          <div
-            key={m.id}
-            style={{
-              ...styles.msg,
-              alignSelf: m.sender === user.login ? "flex-end" : "flex-start",
-              background: m.sender === user.login ? "#2563eb" : "#1e293b",
-            }}
-          >
-            {m.message}
-          </div>
-        ))}
+        <div className="chatMessages">
+          {messages.map((msg) => {
+            const isMe = msg.sender === userProfile[0].login;
+
+            return (
+              <div
+                key={msg.id}
+                className={isMe ? "message myMessage" : "message"}
+              >
+                {msg.message}
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="chatInput">
+          <input
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            placeholder="Write a message..."
+          />
+          <button onClick={sendMessage}>Send</button>
+        </div>
       </div>
-
-      <form onSubmit={sendMessage} style={styles.inputBox}>
-        <input
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          placeholder="Сообщение..."
-          style={styles.input}
-        />
-      </form>
     </div>
   );
 }
-const styles = {
-  window: { flex: 1, display: "flex", flexDirection: "column" },
-  header: { padding: 16, borderBottom: "1px solid #1e293b" },
-  messages: {
-    flex: 1,
-    padding: 16,
-    display: "flex",
-    flexDirection: "column",
-    gap: 8,
-    overflowY: "auto",
-  },
-  msg: { padding: "8px 12px", borderRadius: 12, maxWidth: "65%" },
-  inputBox: { padding: 12, borderTop: "1px solid #1e293b" },
-  input: {
-    width: "100%",
-    padding: 10,
-    borderRadius: 8,
-    border: "none",
-    outline: "none",
-  },
-  empty: {
-    flex: 1,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    opacity: 0.6,
-  },
-};

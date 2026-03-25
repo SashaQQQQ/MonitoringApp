@@ -1,13 +1,31 @@
 import { useState } from "react";
-
+import workerIcon from "../Icons/worker.png";
 import "../Styles/BestWorkers.css";
 import { supabase } from "../CommonJsx/SupabaseClient.js";
 
 function BestWorkers() {
   const [bestWorkers, setBestWorkers] = useState([
-    { id: 1, name: "John", secondName: "Doe", performance: 95 },
-    { id: 2, name: "Jane", secondName: "Smith", performance: 90 },
-    { id: 3, name: "Bob", secondName: "Johnson", performance: 85 },
+    {
+      id: 1,
+      name: "John",
+      secondName: "Doe",
+      performance: 95,
+      amountOfOrders: 10,
+    },
+    {
+      id: 2,
+      name: "Jane",
+      secondName: "Smith",
+      performance: 90,
+      amountOfOrders: 8,
+    },
+    {
+      id: 3,
+      name: "Bob",
+      secondName: "Johnson",
+      performance: 85,
+      amountOfOrders: 6,
+    },
   ]);
 
   async function fetchBestWorkers() {
@@ -28,12 +46,17 @@ function BestWorkers() {
         bestWorkers.map((worker) => (
           <div key={worker.id} className="workerCard">
             <div className="workerInfo">
+              <img src={workerIcon} alt={worker.name} />
               <p>
                 {worker.name} {worker.secondName}
               </p>
             </div>
-
-            <p className="performance">Performance: {worker.performance}</p>
+            <div className="workerStats">
+              <p className="amountOfOrders">
+                Active {worker.amountOfOrders + " "}
+              </p>
+              <p className="performance">Perf: {worker.performance}</p>
+            </div>
           </div>
         ))
       ) : (

@@ -1,74 +1,116 @@
 .WorkersListPage {
   display: flex;
-  gap: 5%;
   width: 100%;
-  padding: 15px;
   height: 100%;
   box-sizing: border-box;
-}
-.actualList {
-  display: flex;
-  padding: 15px;
+  justify-content: space-around;
+
   flex-direction: column;
-  align-items: center;
-  background-color: rgb(221, 221, 221);
-  width: 50%;
-  height: 95%;
-  border-bottom-left-radius: 5vw;
-  border-top-left-radius: 5vw;
-  border-bottom-right-radius: 2vw;
-  border-top-right-radius: 2vw;
 }
-.actualList ul {
+
+.WorkersListPage ul {
+  position: absolute;
+  left: 0%;
+  top: 25%;
+  align-items: center;
   width: 100%;
-  height: 80%;
+  padding: 5px;
+  padding-right: 10px;
+  height: 70%;
   overflow-y: auto;
   overflow-x: hidden;
-  padding-right: 20px;
-}
-.actualList li {
-  cursor: pointer;
-  font-weight: 700;
-  list-style: none;
-  margin: 10px;
-  padding: 10px;
-  border: 2px solid black;
-  border-radius: 2vw;
-  width: 90%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2px;
-}
-.actualList li div {
-  display: flex;
   gap: 10px;
 }
-.actualList li div button {
+.WorkersListPage ul li {
   padding: 5px;
-  width: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20%;
+  height: 8%;
+  width: 94%;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 1px 1px 5px rgb(156, 160, 183);
+  border-radius: 1vw;
+}
+.WorkersListPage ul li:hover {
+  background-color: rgb(220, 224, 250);
+}
+.WorkersListPage li p {
+  font-size: 18px;
+  font-weight: 400;
+}
+.WorkersListPage ul li button {
+  cursor: pointer;
+  padding: 5px;
+  width: 100px;
   border: none;
   border-radius: 1vw;
-  background-color: rgb(100, 100, 255);
+  margin-left: 5px;
   color: white;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
-.actualList li div button:hover {
-  background-color: rgb(50, 50, 200);
+.deleteWorker {
+  background-color: rgb(255, 99, 99);
 }
-.selectedProfilePart {
+.deleteWorker:hover {
+  background-color: rgb(255, 70, 70);
+  transform: translate(-3%, 0%);
+}
+.workerImg {
+  width: 40px;
+  height: auto;
+}
+.contactWorker {
+  background-color: rgb(100, 100, 255);
+}
+.contactWorker:hover {
+  background-color: rgb(32, 32, 255);
+  transform: translate(-3%, 0%);
+}
+
+.workerInfoGroup {
   display: flex;
-  flex-direction: column;
+  width: 25%;
+  gap: 15px;
+
+  justify-content: space-between;
   align-items: center;
-  padding: 15px;
-  background-color: rgb(221, 221, 221);
-  width: 60%;
-  height: 95%;
-  border-bottom-right-radius: 5vw;
-  border-top-right-radius: 5vw;
-  border-bottom-left-radius: 2vw;
-  border-top-left-radius: 2vw;
+}
+.workerInfoGroup a {
+  color: black;
+  margin-top: 30px;
+}
+.addWorkerBtn {
+  padding: 10px;
+  width: 150px;
+  border: none;
+  border-radius: 1vw;
+  position: absolute;
+  top: 15%;
+  right: 5%;
+  background-color: rgb(129, 129, 251);
+}
+.WorkerSearch {
+  outline: none;
+  position: absolute;
+  top: 20%;
+  right: 5%;
+  width: 90%;
+  height: auto;
+  border-radius: 2vw;
+  border: 1px solid gray;
+  padding: 10px;
+}
+.WorkerSearch::placeholder {
+  text-align: left;
+  font-size: 20px;
+}
+.WorkersGreatingText {
+  font-size: clamp(16px, 5vw, 35px);
+  position: absolute;
+  top: 5%;
+  left: 5%;
 }

@@ -1,5 +1,5 @@
 import { PieChart, Pie, Cell } from "recharts";
-
+import "../Styles/Donut.css";
 export default function DonutChart({ progress }) {
   const data = [
     { name: "Ready", value: progress },
@@ -8,14 +8,14 @@ export default function DonutChart({ progress }) {
 
   const COLORS = ["#0088FE", "#FF8042"];
   return (
-    <div>
-      <PieChart width={300} height={300}>
+    <div className="donutContainer">
+      <PieChart width={152} height={152}>
         <Pie
           data={data}
           cx="50%"
           cy="50%"
-          innerRadius={70}
-          outerRadius={100}
+          innerRadius={20}
+          outerRadius={70}
           dataKey="value"
         >
           {data.map((_, index) => (
@@ -23,20 +23,16 @@ export default function DonutChart({ progress }) {
           ))}
         </Pie>
       </PieChart>
-      <div
-        style={{
-          display: "flex",
-          gap: "30%",
-          justifyContent: "space-around",
-          textAlign: "center",
-        }}
-      >
-        <p>
-          Ready <br /> {data[0].value}%
-        </p>
-        <p>
-          Not <br /> ready {data[1].value}%
-        </p>
+
+      <div className="infoContainer">
+        <div>
+          <div className="readyDonut"></div>
+          <p>Ready {data[0].value}%</p>
+        </div>
+        <div>
+          <div className="notReadyDonut"></div>
+          <p>Not ready {data[1].value}%</p>
+        </div>
       </div>
     </div>
   );

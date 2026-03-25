@@ -1,268 +1,220 @@
 .ordersPage {
   width: 95%;
   height: 95%;
-  padding: 20px;
-
-  background-color: rgb(221, 221, 221);
-  border-radius: 5vw;
 }
-.ordersList {
-  width: 40%;
-  height: 90%;
-  background-color: white;
-  border-radius: 5vw;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.ordersList button {
-  position: relative;
-  right: 20%;
-  width: 40%;
-  height: 8%;
-  border-radius: 2vw;
-  border: none;
-  background-color: rgb(100, 149, 237);
-  color: white;
-  font-size: 1.5vw;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-}
-.ordersList button:hover {
-  background-color: rgb(65, 105, 225);
-}
-.ordersList ul {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: left;
-  width: 90%;
-  height: 85%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding-right: 20px;
-
-  list-style-type: none;
-}
-.ordersList ul li {
-  border-radius: 2vw;
-  box-shadow: 5px 5px 10px rgb(156, 160, 183);
-  padding: 15px;
-  width: 90%;
+.ordersPage .extBtn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 50px;
   height: auto;
+  border-radius: 50%;
+  padding: 1px;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease;
 }
-.ordersList ul li:hover {
-  background-color: rgb(219, 217, 217);
+.ordersPage .extBtn:hover {
+  background-color: rgb(242, 242, 242);
 }
-.ordersDescription {
-  width: 50%;
-  height: 90%;
-  background-color: white;
-  border-radius: 5vw;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.backBtn {
-  position: relative;
-  left: 38%;
-  padding: 10px;
-  width: auto;
-  height: auto;
-  border-radius: 2vw;
-  border: none;
-  background-color: rgb(100, 149, 237);
-  color: white;
-  font-size: 1.5vw;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-}
-.backBtn:hover {
-  background-color: rgb(65, 105, 225);
-}
-.addOrderForm {
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+.ordersContainer {
   height: 100%;
-  gap: 15px;
-  opacity: 0;
-  animation: apereance 0.5s forwards;
-  transition: all 0.3s ease-in-out;
-}
-@keyframes apereance {
-  to {
-    opacity: 1;
-  }
-}
-.addOrderForm input {
+  width: 100%;
   display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  width: 80%;
-  height: 10%;
-  border-radius: 2vw;
-  border: 1px solid gray;
-  padding-left: 20px;
-  font-size: 1.2vw;
+  gap: 15px;
 }
-.addOrderForm input::placeholder {
-  font-size: 1;
-}
-.addOrderForm textarea {
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 5px;
-  width: 80%;
-  height: 30%;
-  border-radius: 2vw;
-  border: 1px solid gray;
-  text-align: center;
-  font-size: 1.2vw;
-  resize: none;
-  overflow-y: auto;
-}
-.AddWorkersToOrder {
+.orderDescription {
+  transition: all 0.2s ease;
+  width: 50%;
+  background-color: rgb(245, 244, 244);
+  height: 100%;
+  border-radius: 3vw;
+  margin-top: 0.5%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
-  height: auto;
-  border: 1px solid gray;
-  border-radius: 2vw;
-  padding: 20px 10px 10px 10px;
-  overflow-y: auto;
 }
-.AddWorkersToOrder input {
-  margin-bottom: 10px;
+.orderOverallInfo {
   width: 90%;
-  height: auto;
-  border-radius: 2vw;
-  border: 1px solid gray;
-  padding: 10px;
-  font-size: 1.2vw;
-}
-.AddWorkersToOrder div {
+  height: 30%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 100%;
-  height: 50vh;
-
-  border-radius: 2vw;
-  box-shadow: 1px 1px 5px rgb(156, 160, 183);
-  gap: 5px;
 }
-.AddWorkersToOrder div ul {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.orderDescription .selectedOrderInfo {
   width: 40%;
-
-  gap: 10px;
-  padding: 5px;
-}
-.AddWorkersToOrder div ul li {
   height: auto;
   display: flex;
-  justify-content: space-between;
-  list-style: none;
-  width: 90%;
-  padding: 10px;
-  border: 1px solid gray;
-  border-radius: 2vw;
-  cursor: pointer;
-}
-.AddWorkersToOrder div ul li button {
+  flex-direction: column;
   padding: 5px;
-  width: 80px;
-  border: none;
-  border-radius: 1vw;
-  background-color: rgb(100, 100, 255);
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  border-radius: 2vw;
 }
-.AddWorkersToOrder div ul li button:hover {
-  background-color: rgb(50, 50, 200);
-}
-.SaveOrder {
+.orderDescription .selectedOrderInfo p {
+  word-break: break-all;
+  text-align: left;
+
+  font-size: 20px;
   width: auto;
-  height: auto;
-  padding: 5px 20px;
-  border-radius: 2vw;
-  border: none;
-  background-color: rgb(100, 100, 255);
-  color: white;
-  font-size: 1.5vw;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
+  max-width: 300px;
 }
-.SaveOrder:hover {
-  background-color: rgb(50, 50, 200);
-}
-.WorkerOrdersPageContent {
-  width: 30%;
-  height: 90%;
-  display: flex;
-  overflow-y: auto;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  background-color: white;
-  border-radius: 2vw;
-}
-.WorkerOrdersPageContent ul {
-  width: 100%;
-  height: 80%;
-
-  padding-right: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.WorkerOrdersPageContent ul li {
-  gap: 1px;
-  height: auto;
-  cursor: pointer;
-  width: 90%;
-  border-top-right-radius: 4vw;
-  border-bottom-right-radius: 4vw;
-  border-bottom-left-radius: 1vw;
-  border-top-left-radius: 1vw;
-  box-shadow: 3px 3px 8px rgb(156, 160, 183);
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  padding-left: 15px;
-  transition: all 0.3s ease-in-out;
-}
-.WorkerOrdersPageContent ul li:hover {
-  background-color: rgb(219, 217, 217);
-}
-.back {
+.orderDescription .selectedOrderInfo :last-child {
   position: relative;
-  top: -48%;
-  width: auto;
-  height: auto;
+  bottom: 25px;
+  font-size: 18px;
+  color: grey;
+}
+.selectedOrderDescription {
+  top: 15px;
+  position: relative;
+  width: 90%;
+  background-color: white;
   padding: 15px;
   border-radius: 2vw;
-  border: none;
-  background-color: rgb(100, 149, 237);
-  cursor: pointer;
-  font-weight: 700;
-  transition: all 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: auto;
+  max-height: 300px;
 }
-.back:hover {
-  background-color: rgb(65, 105, 225);
+.selectedOrderDescription h2 {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  margin: 0;
+}
+.selectedOrderWorkers {
+  position: relative;
+  top: 30px;
+  border: 1px solid black;
+  border-radius: 2vw;
+  width: 90%;
+
+  background-color: white;
+  height: auto;
+  max-height: 40%;
+}
+.workersAmount {
+  position: relative;
+  left: 45px;
+}
+.selectedOrderWorkers ul {
+  padding: 0;
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+  overflow-y: scroll;
+}
+.selectedOrderWorkers li {
+  position: relative;
+  list-style: none;
+  width: 94%;
+  padding: 5px;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  background-color: rgb(245, 244, 244);
+  border-radius: 1vw;
+}
+.selectedOrderWorkers li:hover {
+  background-color: rgb(241, 241, 252);
+}
+.selectedOrderWorkers li .orderWorkersDetails {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 40%;
+  text-transform: capitalize;
+  gap: 5px;
+}
+.selectedOrderWorkers li .orderWorkersDetails p {
+  box-shadow: 2px 2px rgb(183, 183, 183);
+  border-radius: 2vw;
+  padding: 3px;
+}
+.selectedOrderWorkers li .orderWorkersDetails h5 {
+  background-color: rgb(32, 32, 255);
+  color: white;
+  padding: 3px;
+  border-radius: 2vw;
+  text-align: center;
+}
+.selectedOrderWorkers li button {
+  position: absolute;
+  right: 15px;
+  color: white;
+  background-color: rgb(253, 56, 56);
+  border: none;
+  padding: 5px;
+  border-radius: 2vw;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.selectedOrderWorkers li button:hover {
+  background-color: red;
+  transform: translate(-5%, 0%);
+}
+.ordersContent {
+  width: 50%;
+  height: 100%;
+}
+.ordersList {
+  padding: 0;
+  width: 100%;
+  height: 50%;
+  background-color: rgb(224, 224, 224);
+  border-radius: 2vw;
+}
+.ordersList ul {
+  padding: 0;
+  width: 100%;
+  position: relative;
+  top: 5%;
+  height: 90%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-direction: column;
+
+  gap: 5px;
+}
+.ordersList ul li {
+  padding: 0;
+  cursor: pointer;
+  width: 98%;
+  height: 15%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 1vw;
+  transition: all 0.2s ease;
+}
+.ordersList ul li:hover {
+  background-color: rgb(233, 254, 255);
+}
+.ordersList ul li button {
+  border: none;
+  padding: 7px;
+  border-radius: 1vw;
+  transition: all 0.2s ease;
+  color: white;
+  margin-right: 15px;
+  background-color: rgb(100, 100, 255);
+}
+.ordersList ul li button:hover {
+  transform: translate(-3%, 0%);
+  background-color: rgb(32, 32, 255);
+}
+.ordersList ul li p {
+  margin-left: 15px;
+}
+.orderInfo {
+  display: flex;
+  justify-content: space-between;
 }

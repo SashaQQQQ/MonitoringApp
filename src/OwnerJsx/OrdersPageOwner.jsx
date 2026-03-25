@@ -2,12 +2,14 @@ import { useState } from "react";
 import OverallOrdersList from "../CommonJsx/OverallOrderList.jsx";
 import OverallOrdersDescription from "../CommonJsx/OverallOrderDescription.jsx";
 import AddOrderForm from "../CommonJsx/AddOrderForm.jsx";
-
+import MyCalendar from "../CommonJsx/Calendar.jsx";
+import backIcon from "../Icons/backArrow.png";
 import "../Styles/OrdersPage.css";
 
 function OrdersPageOwner() {
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [addOrderFormStatus, setAddOrderFormStatus] = useState(false);
+  const [orders, setOrders] = useState([]);
 
   function handleOrderClick(order) {
     setSelectedOrder(order);
@@ -16,22 +18,20 @@ function OrdersPageOwner() {
   return (
     <div className="ordersPage">
       {!addOrderFormStatus ? (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-around",
-            width: "100%",
-            height: "100%",
-            gap: "25px",
-          }}
-        >
-          <button
-            style={{ width: "10%", height: "10%" }}
+        <div className="ordersContainer">
+          <img
+            className="extBtn"
             onClick={() => setAddOrderFormStatus(true)}
-          >
-            Add Order
-          </button>
-          <OverallOrdersList handleOrderClick={handleOrderClick} />
+            src={backIcon}
+          />
+
+          <div className="ordersContent">
+            <MyCalendar orders={orders} />
+            <OverallOrdersList
+              setCalendarOrders={setOrders}
+              handleOrderClick={handleOrderClick}
+            />
+          </div>
           <OverallOrdersDescription selectedOrder={selectedOrder} />
         </div>
       ) : (

@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 8vw;
+  width: 12vw;
   position: absolute;
 
   height: 84vh;
@@ -27,9 +27,9 @@
   font-weight: 700;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
-  flex-direction: column;
+
   background-color: white;
   width: 96%;
   min-width: 50px;
@@ -43,6 +43,12 @@
 .navigationMenu div:hover {
   background-color: rgb(164, 164, 225);
   color: rgb(0, 51, 160);
+  gap: 8%;
+}
+.navigationMenu div img {
+  width: auto;
+  height: 35px;
+  margin-left: 10px;
 }
 .mainContent {
   position: absolute;
@@ -59,6 +65,16 @@
   height: 80vh;
   background-color: white;
   border-radius: 1vw;
+}
+.main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  gap: 2.5%;
 }
 .bestWorkersPanel,
 .ordersToEndFastPanel {
@@ -99,7 +115,8 @@
   display: flex;
   gap: 20px;
   width: 100%;
-  height: 45%;
+  height: auto;
+  min-height: 45%;
 }
 .welcomeText h1 {
   font-size: clamp(1.5rem, 4vw, 3rem);
@@ -124,41 +141,4 @@
   border-radius: 1vw;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 600;
-}
-@media (max-width: 990px) {
-  .userProfilePreview {
-    right: 0;
-    width: 22vw;
-  }
-  .mainContent {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 30vw;
-  }
-
-  .welcomeText {
-    position: absolute;
-    top: 20%;
-    text-align: center;
-  }
-  .welcomeText p {
-    left: 0;
-  }
-  .navigationMenu {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-    width: 97.8vw;
-    height: 10vh;
-    bottom: 0;
-    gap: 0%;
-  }
-  .navigationMenu div {
-    height: 50px;
-    width: 100px;
-    font-size: clamp(0.8rem, 3vw, 1rem);
-    padding: 15px;
-  }
 }

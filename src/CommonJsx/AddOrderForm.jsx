@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { supabase } from "./SupabaseClient.js";
-import "../Styles/OrdersPage.css";
+import "../Styles/AddOrdersForm.css";
 
 function AddOrderForm({ setAddOrderFormStatus }) {
   const [newOrderName, setNewOrderName] = useState("");
@@ -21,7 +21,8 @@ function AddOrderForm({ setAddOrderFormStatus }) {
         {
           NameOfTheOrder: newOrderName,
           Description: newOrderDescription,
-          AmountOfWorkers: newOrderWorkers.length + 1,
+          AmountOfWorkers: chosenWorkers.length,
+          FinalDate: finalDate,
         },
       ])
       .select("id")
@@ -114,7 +115,7 @@ function AddOrderForm({ setAddOrderFormStatus }) {
         placeholder="Order Description"
       ></textarea>
       <input
-        onClick={(e) => {
+        onChange={(e) => {
           handleFinalDateChange(e);
         }}
         type="date"

@@ -2,7 +2,7 @@ import { useState, useEffect, use } from "react";
 import { supabase } from "./SupabaseClient.js";
 import "../Styles/OrdersPage.css";
 
-function OverallOrdersPage({ handleOrderClick }) {
+function OverallOrdersPage({ setCalendarOrders, handleOrderClick }) {
   const [orders, setOrders] = useState(null);
 
   async function fetchOrders() {
@@ -16,6 +16,7 @@ function OverallOrdersPage({ handleOrderClick }) {
     }
     if (data) {
       setOrders(data);
+      setCalendarOrders(data);
     }
   }
   async function deleteOrder(orderId) {
@@ -46,9 +47,14 @@ function OverallOrdersPage({ handleOrderClick }) {
               handleOrderClick(order);
             }}
           >
-            <div>
-              <p>{order.NameOfTheOrder} |</p>
-              <p>Progress:{order.status}</p>
+            <div className="orderInfo">
+              <p>
+                {order.Title.length > 25
+                  ? order.Title.slice(0, 25) + ".."
+                  : order.Title}{" "}
+              </p>
+              <p> | </p>
+              <p>Progress:{order.ReadyProcent}</p>
             </div>
             <button
               onClick={() => {
