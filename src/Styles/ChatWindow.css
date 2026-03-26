@@ -1,20 +1,29 @@
 .chatWindow {
+  width: 70%;
   display: flex;
   flex-direction: column;
   height: 100%;
+  border-radius: 2vw;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-radius: 2vw;
+  min-width: 600px;
 }
 
 .chatHeader {
   padding: 10px;
-  background: #2a2f32;
-  color: white;
+  background: rgb(232, 232, 232);
+  color: black;
+  text-transform: capitalize;
+  border-top-right-radius: 2vw;
+  border-top-left-radius: 1vw;
 }
 
 .chatMessages {
   flex: 1;
   padding: 10px;
   overflow-y: auto;
-  background: #0e1621;
+  background: #eef3f8;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -24,26 +33,44 @@
   max-width: 60%;
   padding: 8px 12px;
   border-radius: 10px;
-  background: #1e2a38;
-  color: white;
+  background: white;
+  color: black;
+  word-break: break-all;
 }
-
+.messageTime {
+  color: gray;
+  font-size: 11px;
+}
 .myMessage {
   align-self: flex-end;
-  background: #2b5278;
+  background: #abcff2;
+  color: rgb(18, 17, 17);
 }
 
 .chatInput {
+  border-bottom-left-radius: 1vw;
   display: flex;
+  gap: 5px;
   padding: 10px;
-  background: #17212b;
+  background: rgb(232, 232, 232);
+  border-bottom-right-radius: 2vw;
 }
 
 .chatInput input {
-  flex: 1;
   padding: 8px;
+  outline: none;
+  border: none;
+  width: 90%;
+  border-radius: 1vw;
 }
 
 .chatInput button {
-  margin-left: 10px;
+  border-radius: 1vw;
+  border: none;
+  width: 8%;
+  color: white;
+  font-weight: 800;
+  padding: 5px;
+  min-width: 50px;
+  background-color: rgb(69, 69, 240);
 }

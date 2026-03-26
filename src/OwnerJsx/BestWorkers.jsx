@@ -1,45 +1,48 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import workerIcon from "../Icons/worker.png";
 import "../Styles/BestWorkers.css";
 import { supabase } from "../CommonJsx/SupabaseClient.js";
 
 function BestWorkers() {
-  const [bestWorkers, setBestWorkers] = useState([
-    {
-      id: 1,
-      name: "John",
-      secondName: "Doe",
-      performance: 95,
-      amountOfOrders: 10,
-    },
-    {
-      id: 2,
-      name: "Jane",
-      secondName: "Smith",
-      performance: 90,
-      amountOfOrders: 8,
-    },
-    {
-      id: 3,
-      name: "Bob",
-      secondName: "Johnson",
-      performance: 85,
-      amountOfOrders: 6,
-    },
-  ]);
+  const [bestWorkers, setBestWorkers] = useState([]);
 
   async function fetchBestWorkers() {
     const { data, error } = await supabase
-      .from("workers")
+      .from("users")
       .select("*")
-      .order("performance", { ascending: false })
+      .order("finishedOrders", { ascending: false })
       .limit(5);
+
     if (error) {
       console.error("Error fetching best workers:", error);
     } else {
-      setBestWorkers(data);
+      const ids = data.map((worker) => worker.id);
+
+      const { data: finalData, error: finalError } = await supabase
+        .from("order.Workers")
+        .select("order_id, worker_id")
+        .in("worker_id", ids);
+
+      const orderCount = {};
+
+      finalData.forEach((o) => {
+        orderCount[o.worker_id] = orderCount[o.worker_id] + 1 || 0;
+      });
+
+      const combined = data.map((worker) => {
+        return {
+          ...worker,
+          orderCount: orderCount[worker.id] || 0,
+        };
+      });
+
+      setBestWorkers(combined);
     }
   }
+
+  useEffect(() => {
+    fetchBestWorkers();
+  }, []);
   return (
     <div className="BestWorkers">
       {bestWorkers.length > 0 ? (
@@ -52,10 +55,8 @@ function BestWorkers() {
               </p>
             </div>
             <div className="workerStats">
-              <p className="amountOfOrders">
-                Active {worker.amountOfOrders + " "}
-              </p>
-              <p className="performance">Perf: {worker.performance}</p>
+              <p className="amountOfOrders">Active {worker.orderCount + " "}</p>
+              <p className="performance">Perf: {worker.finishedOrders}</p>
             </div>
           </div>
         ))

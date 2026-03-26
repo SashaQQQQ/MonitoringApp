@@ -1,31 +1,100 @@
-import { useContext, useEffect, useState } from "react";
+import { use, useContext, useEffect, useState } from "react";
 import { DataContext } from "./DataContext";
+import "../Styles/ChatList.css";
+import personIcon from "../Icons/worker.png";
+import { supabase } from "./SupabaseClient";
+export default function ChatList({ chatList, getOtherUser, loadChatList }) {
+  const [currentSearch, setCurrentSearch] = useState("");
+  const [searchedUsers, setSearchedUsers] = useState([]);
 
-export default function ChatList({ getOtherUser, loadChatList }) {
-  const { userProfile } = useContext(DataContext);
-  const [chatList, setChatList] = useState([]);
+  function renderItems(item, isSearch = false) {
+    const date = new Date(item?.time);
+    const now = new Date();
+
+    const isToday = date.toDateString() === now.toDateString();
+
+    return (
+      <li onClick={() => getOtherUser(item)} key={item.id}>
+        <img src={personIcon} alt="" />
+        <p className="nameOfChat">
+          {item?.name + " "}
+          {item?.secondName}
+        </p>
+        <p className="lastMessage">
+          {isSearch
+            ? "Start chat"
+            : item?.lastMessage > 13
+              ? item?.lastMessage.slice(0, 13) + ".."
+              : item?.lastMessage}
+        </p>
+
+        <p className="chatDate">
+          {isSearch
+            ? "New"
+            : isToday
+              ? date.toLocaleDateString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: false,
+                })
+              : date.toLocaleDateString([], {
+                  day: "2-digit",
+                  month: "2-digit",
+                })}
+        </p>
+      </li>
+    );
+  }
+
+  function handleSearch(e) {
+    setCurrentSearch(e);
+  }
+
+  async function fetchSearchedUsers() {
+    const { data, error } = await supabase
+      .from("users")
+      .select("*")
+      .ilike("name", `%${currentSearch}%`);
+
+    if (error) {
+      console.log("error while fetching searched users");
+      return;
+    }
+
+    setSearchedUsers(data);
+  }
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (currentSearch.trim()) {
+        fetchSearchedUsers();
+      } else {
+        setSearchedUsers([]);
+      }
+    }, 300);
+
+    return () => clearTimeout(timeout);
+  }, [currentSearch]);
 
   useEffect(() => {
     loadChatList();
   }, []);
-
   return (
     <div className="ChatList">
+      <div className="chatListSearch">
+        <input
+          type="text"
+          placeholder="Input worker name"
+          onInput={(e) => {
+            handleSearch(e.target.value);
+          }}
+        />
+      </div>
       <ul>
-        {chatList.length > 0 ? (
-          chatList.map((chat, index) => (
-            <li
-              onClick={() => {
-                getOtherUser(chat.login);
-              }}
-              key={chat}
-            >
-              <p>{chat?.login}</p>
-
-              <p>{chat?.lastMessage}</p>
-              <p>{chat?.time}</p>
-            </li>
-          ))
+        {searchedUsers.length > 0 ? (
+          searchedUsers.map((user) => renderItems(user, true))
+        ) : chatList.length > 0 ? (
+          chatList.map((chat) => renderItems(chat))
         ) : (
           <p>No chats yet</p>
         )}

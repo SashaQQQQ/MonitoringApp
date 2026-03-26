@@ -11,7 +11,7 @@ export default function ChatWindow({ loadChatList, otherUser }) {
   async function loadMessages(partner) {
     if (!partner) return;
 
-    const me = String(userProfile[0].login);
+    const me = String(userProfile[0].email);
     const other = String(partner);
 
     const { data, error } = await supabase
@@ -32,16 +32,22 @@ export default function ChatWindow({ loadChatList, otherUser }) {
 
   async function sendMessage() {
     if (!text.trim() || !otherUser) return;
-
+    console.log({
+      sender: userProfile[0].email,
+      receiver: otherUser?.email,
+      message: text,
+    });
     const { error } = await supabase.from("messages").insert({
-      sender: userProfile[0].login,
-      receiver: otherUser,
+      sender: userProfile[0].email,
+      receiver: otherUser?.email,
       message: text,
     });
 
     if (!error) setText("");
-    loadMessages(otherUser);
+    loadMessages(otherUser?.email);
+    loadChatList();
   }
+
   useEffect(() => {
     const channel = supabase
       .channel("messages-realtime")
@@ -55,10 +61,10 @@ export default function ChatWindow({ loadChatList, otherUser }) {
 
           if (
             otherUser &&
-            ((msg.sender === userProfile[0].login &&
-              msg.receiver === otherUser) ||
-              (msg.sender === otherUser &&
-                msg.receiver === userProfile[0].login))
+            ((msg.sender === userProfile[0].email &&
+              msg.receiver === otherUser?.email) ||
+              (msg.sender === otherUser?.email &&
+                msg.receiver === userProfile[0].email))
           ) {
             setMessages((prev) => [...prev, msg]);
           }
@@ -66,33 +72,40 @@ export default function ChatWindow({ loadChatList, otherUser }) {
       )
       .subscribe();
 
-    loadMessages(otherUser);
+    loadMessages(otherUser?.email);
     return () => {
       supabase.removeChannel(channel);
     };
   }, [otherUser]);
   return (
     <div className="chatWindow">
-      <div className="chatWindow">
-        <div className="chatHeader">
-          <p>{otherUser || "Select chat"}</p>
-        </div>
+      <div className="chatHeader">
+        <p>{otherUser?.name + " " + otherUser?.secondName}</p>
+      </div>
 
-        <div className="chatMessages">
-          {messages.map((msg) => {
-            const isMe = msg.sender === userProfile[0].login;
+      <div className="chatMessages">
+        {messages.map((msg) => {
+          const isMe = msg.sender === userProfile[0].email;
+          const date = new Date(msg.created_at);
+          return (
+            <div
+              key={msg.id}
+              className={isMe ? "message myMessage" : "message"}
+            >
+              {msg.message}
+              <p className="messageTime">
+                {date.toLocaleTimeString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: false,
+                })}
+              </p>
+            </div>
+          );
+        })}
+      </div>
 
-            return (
-              <div
-                key={msg.id}
-                className={isMe ? "message myMessage" : "message"}
-              >
-                {msg.message}
-              </div>
-            );
-          })}
-        </div>
-
+      {otherUser?.email !== "" ? (
         <div className="chatInput">
           <input
             value={text}
@@ -101,7 +114,7 @@ export default function ChatWindow({ loadChatList, otherUser }) {
           />
           <button onClick={sendMessage}>Send</button>
         </div>
-      </div>
+      ) : null}
     </div>
   );
 }

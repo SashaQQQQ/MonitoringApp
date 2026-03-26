@@ -8,6 +8,7 @@ function App() {
   const [whichRole, setWhichRole] = useState(null);
   const [activePage, setActivePage] = useState("main");
   const [userProfile, setUserProfile] = useState(null);
+  const [otherUser, setOtherUser] = useState([]);
   useEffect(() => {
     if (userProfile) {
       setWhichRole(userProfile[0].Role);
@@ -16,6 +17,8 @@ function App() {
   return (
     <DataContext.Provider
       value={{
+        otherUser,
+        setOtherUser,
         userProfile,
         setUserProfile,
         whichRole,

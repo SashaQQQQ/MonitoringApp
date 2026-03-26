@@ -1,17 +1,15 @@
 .navigationMenu {
-  border-radius: 1vw;
+  position: absolute;
   top: 12vh;
-  left: 1.5vw;
+  left: 3vw;
+  width: 12vw;
+  height: 84vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 12vw;
-  position: absolute;
-
-  height: 84vh;
-
   gap: 1%;
   background-color: white;
+  border-radius: 1vw;
 }
 .greetings {
   margin: 0;
@@ -53,7 +51,7 @@
 .mainContent {
   position: absolute;
   top: 12vh;
-  left: 15vw;
+  right: 3vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,9 +60,10 @@
   gap: 2.5%;
   width: 80vw;
   min-width: 600px;
-  height: 80vh;
+  height: 84vh;
   background-color: white;
   border-radius: 1vw;
+  min-width: 800px;
 }
 .main {
   width: 100%;
@@ -82,7 +81,7 @@
   flex-direction: column;
   width: 60%;
   height: 100%;
-  background-color: rgb(221, 221, 221);
+  background-color: rgb(242, 242, 242);
   border-radius: 2vw;
   transition: all 0.3s ease-in-out;
 }
@@ -97,7 +96,7 @@
   transition: all 0.3s ease-in-out;
   width: 35%;
   height: 100%;
-  background-color: rgb(221, 221, 221);
+  background-color: rgb(242, 242, 242);
   border-radius: 2vw;
 }
 .lastChatsPanel:hover,

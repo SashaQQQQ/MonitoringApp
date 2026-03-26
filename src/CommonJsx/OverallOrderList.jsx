@@ -11,16 +11,13 @@ function OverallOrdersPage({ setCalendarOrders, handleOrderClick }) {
     if (error) {
       console.error("Error fetching orders:", error);
     }
-    if (!error) {
-      console.log("Orders fetched successfully:", data);
-    }
+
     if (data) {
       setOrders(data);
       setCalendarOrders(data);
     }
   }
   async function deleteOrder(orderId) {
-    console.log("Deleting order with ID:", orderId);
     const { data, error } = await supabase
       .from("orders")
       .delete()
@@ -29,7 +26,6 @@ function OverallOrdersPage({ setCalendarOrders, handleOrderClick }) {
     if (error) {
       console.error("Error deleting order:", error);
     } else {
-      alert("Order deleted successfully");
       fetchOrders();
     }
   }

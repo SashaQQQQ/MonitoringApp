@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { DataContext } from "../CommonJsx/DataContext.js";
 import "../Styles/WorkersListPage.css";
 import { supabase } from "../CommonJsx/SupabaseClient.js";
@@ -7,7 +6,39 @@ import workerIcon from "../Icons/worker.png";
 
 function WorkersList({ foundedWorkers }) {
   const [workers, setWorkers] = useState([]);
-  const { whichRole, setActivePage } = useContext(DataContext);
+  const { whichRole, setActivePage, setOtherUser } = useContext(DataContext);
+  const { userProfile } = useContext(DataContext);
+
+  function renderWorker(worker) {
+    if (userProfile?.[0]?.id === worker.id) return null;
+    return (
+      <li key={worker.id}>
+        <div className="workerInfoGroup">
+          <img className="workerImg" src={workerIcon} alt="" />
+          <p>
+            {worker.name} {worker.secondName}
+          </p>
+          <a href={`mailto:${worker.email}`}>{worker.email}</a>
+        </div>
+
+        <div>
+          {whichRole == "Owner" || whichRole == "Admin" ? (
+            <button
+              className="deleteWorker"
+              onClick={() => DeleteWorker(worker.id)}
+            >
+              Delete
+            </button>
+          ) : null}
+
+          <button className="contactWorker" onClick={() => contact(worker)}>
+            Contact
+          </button>
+        </div>
+      </li>
+    );
+  }
+
   async function fetchWorkers() {
     const { data, error } = await supabase.from("users").select("*");
 
@@ -18,6 +49,11 @@ function WorkersList({ foundedWorkers }) {
     if (data) {
       setWorkers(data);
     }
+  }
+
+  function contact(user) {
+    setOtherUser(user);
+    setActivePage("chats");
   }
 
   async function DeleteWorker(workerId) {
@@ -39,64 +75,13 @@ function WorkersList({ foundedWorkers }) {
   return (
     <div className="WorkersList">
       <ul>
-        {foundedWorkers.length != 0
-          ? foundedWorkers.map((worker, index) => (
-              <li key={index}>
-                <div className="workerInfoGroup">
-                  <img className="workerImg" src={workerIcon} alt="" />
-                  <p>
-                    {worker.name} {worker.secondName}
-                  </p>
-                  <a href={`mailto:${worker.email}`}>{worker.email}</a>
-                </div>
-
-                <div>
-                  {whichRole == "Owner" || whichRole == "Admin" ? (
-                    <button
-                      className="deleteWorker"
-                      onClick={() => DeleteWorker(worker.id)}
-                    >
-                      Delete
-                    </button>
-                  ) : null}
-
-                  <button
-                    className="contactWorker"
-                    onClick={() => addContact(worker.login)}
-                  >
-                    Contact
-                  </button>
-                </div>
-              </li>
-            ))
-          : workers.map((worker, index) => (
-              <li key={index}>
-                <div className="workerInfoGroup">
-                  <img className="workerImg" src={workerIcon} alt="" />
-                  <p>
-                    {worker.name} {worker.secondName}
-                  </p>
-                  <a href={`mailto:${worker.email}`}>{worker.email}</a>
-                </div>
-
-                <div>
-                  {whichRole == "Owner" || whichRole == "Admin" ? (
-                    <button
-                      className="deleteWorker"
-                      onClick={() => DeleteWorker(worker.id)}
-                    >
-                      Delete
-                    </button>
-                  ) : null}
-                  <button
-                    className="contactWorker"
-                    onClick={() => addContact(worker.login)}
-                  >
-                    Contact
-                  </button>
-                </div>
-              </li>
-            ))}
+        {foundedWorkers.length > 0 ? (
+          foundedWorkers.map((worker) => renderWorker(worker))
+        ) : workers.length > 0 ? (
+          workers.map((worker) => renderWorker(worker))
+        ) : (
+          <p>No workers found</p>
+        )}
       </ul>
     </div>
   );

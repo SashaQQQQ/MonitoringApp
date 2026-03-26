@@ -25,13 +25,16 @@
 .orderDescription {
   transition: all 0.2s ease;
   width: 50%;
-  background-color: rgb(245, 244, 244);
+  background-color: rgb(249, 247, 247);
   height: 100%;
   border-radius: 3vw;
   margin-top: 0.5%;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.orderDescription:hover {
+  transform: translate(0%, 0.5%);
 }
 .orderOverallInfo {
   width: 90%;
@@ -58,7 +61,7 @@
 }
 .orderDescription .selectedOrderInfo :last-child {
   position: relative;
-  bottom: 25px;
+  top: 5px;
   font-size: 18px;
   color: grey;
 }
@@ -70,37 +73,49 @@
   padding: 15px;
   border-radius: 2vw;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   flex-direction: column;
   height: auto;
   max-height: 300px;
 }
 .selectedOrderDescription h2 {
-  position: absolute;
-  top: 0;
-  left: 20px;
   margin: 0;
+  background-color: black;
+  color: white;
+  padding: 5px;
+  font-size: 20px;
+  border-radius: 1vw;
+}
+.selectedOrderDescription p {
+  position: relative;
+  top: 15px;
 }
 .selectedOrderWorkers {
+  gap: 15px;
   position: relative;
   top: 30px;
   border: 1px solid black;
   border-radius: 2vw;
   width: 90%;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: white;
-  height: auto;
+  height: 100%;
   max-height: 40%;
 }
 .workersAmount {
   position: relative;
-  left: 45px;
+  top: 5px;
+
+  font-size: 20px;
+  text-align: center;
 }
 .selectedOrderWorkers ul {
   padding: 0;
   width: 100%;
-  height: 80%;
+  height: 70%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -126,19 +141,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 40%;
+  width: auto;
+  max-width: 70%;
   text-transform: capitalize;
   gap: 5px;
 }
+.selectedOrderWorkers li .orderWorkersDetails img {
+  height: 45px;
+  width: auto;
+}
 .selectedOrderWorkers li .orderWorkersDetails p {
-  box-shadow: 2px 2px rgb(183, 183, 183);
   border-radius: 2vw;
-  padding: 3px;
+  padding: 8px;
 }
 .selectedOrderWorkers li .orderWorkersDetails h5 {
   background-color: rgb(32, 32, 255);
   color: white;
-  padding: 3px;
+  padding: 5px;
   border-radius: 2vw;
   text-align: center;
 }
@@ -160,13 +179,20 @@
 .ordersContent {
   width: 50%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 .ordersList {
   padding: 0;
   width: 100%;
   height: 50%;
-  background-color: rgb(224, 224, 224);
+  background-color: rgb(237, 237, 237);
   border-radius: 2vw;
+  transition: all 0.2s ease;
+}
+.ordersList:hover {
+  transform: translate(0%, 0.5%);
 }
 .ordersList ul {
   padding: 0;

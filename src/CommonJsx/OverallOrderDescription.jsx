@@ -3,6 +3,7 @@ import { supabase } from "./SupabaseClient";
 import "../Styles/OrdersPage.css";
 import { DataContext } from "./DataContext";
 import DonutChart from "./DonutChart";
+import workerIcon from "../Icons/worker.png";
 
 function OverallOrdersDescription({ selectedOrder }) {
   const [workers, setWorkers] = useState([]);
@@ -78,6 +79,7 @@ function OverallOrdersDescription({ selectedOrder }) {
               {workers?.map((worker, index) => (
                 <li key={worker?.id}>
                   <div className="orderWorkersDetails">
+                    <img src={workerIcon} alt="" />
                     <p>
                       {worker?.name} {worker?.secondName}
                     </p>
