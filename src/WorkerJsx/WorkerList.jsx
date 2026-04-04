@@ -1,16 +1,16 @@
 import { useState, useEffect, useContext } from "react";
-import { DataContext } from "../CommonJsx/DataContext.js";
+import { DataContext } from "../CommonJsx/DataContext.jsx";
 import "../Styles/WorkersListPage.css";
 import { supabase } from "../CommonJsx/SupabaseClient.js";
 import workerIcon from "../Icons/worker.png";
 
 function WorkersList({ foundedWorkers }) {
   const [workers, setWorkers] = useState([]);
-  const { whichRole, setActivePage, setOtherUser } = useContext(DataContext);
-  const { userProfile } = useContext(DataContext);
+  const { userProfile, whichRole, setActivePage, setOtherUser } =
+    useContext(DataContext);
 
   function renderWorker(worker) {
-    if (userProfile?.[0]?.id === worker.id) return null;
+    if (userProfile?.id === worker.id) return null;
     return (
       <li key={worker.id}>
         <div className="workerInfoGroup">

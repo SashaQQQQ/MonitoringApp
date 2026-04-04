@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
-import { supabase } from "./SupabaseClient.js";
-import { DataContext } from "./DataContext.js";
-import "../Styles/ChatWindow.css";
+import { supabase } from "../SupabaseClient.js";
+import { DataContext } from "../DataContext.jsx";
+import "../../Styles/ChatWindow.css";
 
 export default function ChatWindow({ loadChatList, otherUser }) {
   const { userProfile } = useContext(DataContext);
@@ -11,7 +11,7 @@ export default function ChatWindow({ loadChatList, otherUser }) {
   async function loadMessages(partner) {
     if (!partner) return;
 
-    const me = String(userProfile[0].email);
+    const me = String(userProfile.email);
     const other = String(partner);
 
     const { data, error } = await supabase
@@ -33,12 +33,12 @@ export default function ChatWindow({ loadChatList, otherUser }) {
   async function sendMessage() {
     if (!text.trim() || !otherUser) return;
     console.log({
-      sender: userProfile[0].email,
+      sender: userProfile.email,
       receiver: otherUser?.email,
       message: text,
     });
     const { error } = await supabase.from("messages").insert({
-      sender: userProfile[0].email,
+      sender: userProfile.email,
       receiver: otherUser?.email,
       message: text,
     });
@@ -61,10 +61,10 @@ export default function ChatWindow({ loadChatList, otherUser }) {
 
           if (
             otherUser &&
-            ((msg.sender === userProfile[0].email &&
+            ((msg.sender === userProfile.email &&
               msg.receiver === otherUser?.email) ||
               (msg.sender === otherUser?.email &&
-                msg.receiver === userProfile[0].email))
+                msg.receiver === userProfile.email))
           ) {
             setMessages((prev) => [...prev, msg]);
           }
@@ -85,7 +85,7 @@ export default function ChatWindow({ loadChatList, otherUser }) {
 
       <div className="chatMessages">
         {messages.map((msg) => {
-          const isMe = msg.sender === userProfile[0].email;
+          const isMe = msg.sender === userProfile.email;
           const date = new Date(msg.created_at);
           return (
             <div

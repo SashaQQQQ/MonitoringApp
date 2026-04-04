@@ -1,0 +1,250 @@
+.addOrderForm {
+  display: flex;
+  overflow-y: auto;
+  gap: 1vw;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 1vw;
+  width: 98%;
+  height: 98%;
+}
+.addOrderForm .inputColumn {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 10px;
+}
+.addOrderForm .inputOrderGroup {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 1vw;
+  padding: 5px;
+  padding-top: 10px;
+  gap: 10px;
+}
+.addOrderForm .inputOrderGroup h3 {
+  color: rgb(58, 58, 58);
+}
+.addOrderForm .inputOrderGroup input {
+  padding: 12px 14px;
+  border-radius: 1vw;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  outline: 2px solid blue;
+  word-wrap: break-word;
+}
+.addOrderForm .inputOrderGroup textarea {
+  padding: 12px 14px;
+  border-radius: 1vw;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  resize: none;
+  word-wrap: break-word;
+  outline: 2px solid blue;
+}
+.workersGroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  height: 40%;
+}
+.workersGroup h3 {
+  color: rgb(58, 58, 58);
+}
+.workersGroup input {
+  padding: 12px 14px;
+  border-radius: 1vw;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  outline: 2px solid blue;
+  width: 100%;
+}
+.workersGroup ul {
+  padding-top: 5px;
+  height: 70%;
+  width: 98%;
+  border: 1px solid #ddd;
+  border-radius: 1vw;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  gap: 3px;
+  overflow-y: auto;
+}
+.workersGroup ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  width: 98%;
+  height: 20%;
+  border: 1px solid #eee;
+  border-radius: 0.5vw;
+  gap: 2px;
+}
+.workersGroup ul li div {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+}
+.workersGroup ul li img {
+  width: 30px;
+  height: auto;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.workersGroup ul li p {
+  color: rgb(58, 58, 58);
+}
+.workersGroup ul li button {
+  padding: 5px 10px;
+  border-radius: 0.5vw;
+  border: none;
+  background-color: rgb(0, 123, 255);
+  color: white;
+  cursor: pointer;
+  transition: all ease 0.2s;
+}
+.workersGroup ul li button:hover {
+  background-color: rgb(0, 100, 210);
+}
+.tutorial {
+  border-radius: 0.5vw;
+  background-color: rgb(220, 240, 244);
+  width: 100%;
+  height: auto;
+  display: flex;
+  padding: 15px 20px;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.tutorial h2 {
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+}
+.tutorial .adviseImg {
+  width: 60px;
+  height: auto;
+  display: flex;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+}
+.tutorial .adviseImg img {
+  width: auto;
+  height: 50%;
+}
+.tutorial .tutorialText {
+  width: 80%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+.tutorial .tutorialText {
+  color: rgb(58, 58, 58);
+}
+.workerRoleGroup {
+  width: 100%;
+  height: 45%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.workerRoleGroup h3 {
+  color: rgb(58, 58, 58);
+}
+.workerRoleGroup ul {
+  padding-top: 5px;
+  width: 98%;
+  height: 80%;
+  border: 1px solid #ddd;
+  border-radius: 1vw;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  gap: 3px;
+  overflow-y: auto;
+}
+.workerRoleGroup ul li {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  width: 98%;
+  height: 15%;
+  border: 1px solid #eee;
+  border-radius: 0.5vw;
+}
+.workerRoleGroup ul li p {
+  flex: 1;
+}
+.workerRoleGroup ul li input {
+  width: 120px;
+  height: auto;
+  padding: 2px 5px;
+  border-radius: 0.5vw;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  outline: 2px solid blue;
+}
+.workerRoleGroup button {
+  padding: 4px 10px;
+  border: none;
+  border-radius: 0.5vw;
+  font-size: clamp(12px, 1.2vw, 14px);
+  background-color: rgb(0, 123, 255);
+  color: white;
+  cursor: pointer;
+  transition: all ease 0.2s;
+}
+.workerRoleGroup button:hover {
+  background-color: rgb(0, 100, 210);
+}
+.finalDateGroup {
+  height: 30%;
+  position: relative;
+  top: 30px;
+  width: 100%;
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.saveBtn {
+  padding: 10px 10px;
+  border-radius: 0.5vw;
+  border: none;
+  background-color: rgb(40, 199, 77);
+  color: white;
+  font-size: clamp(14px, 1.5vw, 16px);
+  cursor: pointer;
+  transition: all ease 0.2s;
+}
+.saveBtn:hover {
+  background-color: rgb(24, 234, 73);
+}
+.addOrderForm .backBtn {
+  width: 50px;
+  height: auto;
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border-radius: 2vw;
+}
+.addOrderForm .backBtn:hover {
+  opacity: 0.8;
+  background-color: rgb(248, 248, 248);
+}

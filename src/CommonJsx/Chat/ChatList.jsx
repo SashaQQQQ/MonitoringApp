@@ -1,20 +1,20 @@
-import { use, useContext, useEffect, useState } from "react";
-import { DataContext } from "./DataContext";
-import "../Styles/ChatList.css";
-import personIcon from "../Icons/worker.png";
-import { supabase } from "./SupabaseClient";
+import { useContext, useEffect, useState } from "react";
+import { DataContext } from "../DataContext.jsx";
+import "../../Styles/ChatList.css";
+import personIcon from "../../Icons/worker.png";
+import { supabase } from "../SupabaseClient.js";
 export default function ChatList({ chatList, getOtherUser, loadChatList }) {
   const [currentSearch, setCurrentSearch] = useState("");
   const [searchedUsers, setSearchedUsers] = useState([]);
 
   function renderItems(item, isSearch = false) {
-    const date = new Date(item?.time);
+    const date = item?.time ? new Date(item.time) : null;
     const now = new Date();
 
     const isToday = date.toDateString() === now.toDateString();
 
     return (
-      <li onClick={() => getOtherUser(item)} key={item.id}>
+      <li key={item.id} onClick={() => getOtherUser(item)}>
         <img src={personIcon} alt="" />
         <p className="nameOfChat">
           {item?.name + " "}
@@ -23,7 +23,7 @@ export default function ChatList({ chatList, getOtherUser, loadChatList }) {
         <p className="lastMessage">
           {isSearch
             ? "Start chat"
-            : item?.lastMessage > 13
+            : item?.lastMessage.length > 13
               ? item?.lastMessage.slice(0, 13) + ".."
               : item?.lastMessage}
         </p>

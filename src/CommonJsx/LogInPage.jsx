@@ -1,15 +1,18 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import { supabase } from "./SupabaseClient.js";
 import "../Styles/LogInPage.css";
-
-function LogInPage({ setUserProfile }) {
+import { useNavigate } from "react-router-dom";
+import { DataContext } from "./DataContext.jsx";
+function LogInPage() {
+  const { setUserProfile } = useContext(DataContext);
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
   const [loginWarning, setLoginWarning] = useState("");
   const [passwordWarning, setPasswordWarning] = useState("");
 
   const passwordInputRef = useRef(null);
+
   async function handleLogIn() {
     if (!checkInputedData()) {
       return;
@@ -33,19 +36,23 @@ function LogInPage({ setUserProfile }) {
       const { data: profileData, error: profileError } = await supabase
         .from("users")
         .select("*")
-        .eq("id", userId);
+        .eq("id", userId)
+        .single();
 
       if (profileError) {
         alert(profileError.message);
         return;
       }
-      if (profileData.length === 0) {
-        alert("No profile data found for this user.");
-        return;
-      }
-      if (profileData.length > 0) {
-        alert("User logged in successfully:", profileData);
+
+      if (profileData) {
         setUserProfile(profileData);
+        navigate(
+          profileData.Role === "Owner"
+            ? "/adminHome"
+            : profileData.Role === "Admin"
+              ? "/adminHome"
+              : "/workerHome",
+        );
       }
     }
   }
@@ -59,7 +66,7 @@ function LogInPage({ setUserProfile }) {
   }
   function handleLoginChange(e) {
     setLogin(e);
-    isValidLogin(login);
+    isValidLogin(e);
   }
   function handlePasswordChange(e) {
     const newPassword = e;

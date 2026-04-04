@@ -1,0 +1,49 @@
+.navigationMenu {
+  position: absolute;
+  top: 12vh;
+  left: 3vw;
+  width: 12vw;
+  height: 84vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1%;
+  background-color: white;
+  border-radius: 1vw;
+}
+.navigationMenu div {
+  margin-top: 3px;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  transition: all 0.3s ease-in-out;
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  background-color: white;
+  width: 96%;
+  min-width: 50px;
+  text-align: center;
+  border-radius: 1vw;
+  gap: 5%;
+  color: gray;
+  height: 70px;
+  cursor: pointer;
+}
+.navigationMenu div:hover {
+  background-color: rgb(164, 164, 225);
+  color: rgb(0, 51, 160);
+  gap: 8%;
+}
+.navigationMenu div img {
+  width: auto;
+  height: 35px;
+  margin-left: 10px;
+}
+.logOutBtn {
+  position: absolute;
+  bottom: 2%;
+
+  width: 100%;
+  text-decoration: none;
+}

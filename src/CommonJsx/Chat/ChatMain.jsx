@@ -1,21 +1,20 @@
 import { useState, useEffect, useContext } from "react";
-import { supabase } from "./SupabaseClient";
-import { DataContext } from "./DataContext.js";
+import { supabase } from "../SupabaseClient.js";
+import { DataContext } from "../DataContext.jsx";
 import ChatList from "./ChatList.jsx";
 import ChatWindow from "./ChatWindow.jsx";
-import "../Styles/Chat.css";
+import "../../Styles/Chat.css";
 
 function Chat() {
-  const { userProfile, otherUser, setOtherUser } = useContext(DataContext);
+  const { userProfile, otherUser, setOtherUser, loading } =
+    useContext(DataContext);
   const [chatList, setChatList] = useState([]);
-
+  if (loading) return <div>Loading...</div>;
   async function loadChatList() {
     const { data, error } = await supabase
       .from("messages")
       .select("*")
-      .or(
-        `sender.eq."${userProfile[0].email}",receiver.eq."${userProfile[0].email}"`,
-      )
+      .or(`sender.eq."${userProfile.email}",receiver.eq."${userProfile.email}"`)
       .order("created_at", { ascending: false });
 
     if (error) {
@@ -27,7 +26,7 @@ function Chat() {
 
     for (const msg of data) {
       const partner =
-        msg.sender === userProfile[0].email ? msg.receiver : msg.sender;
+        msg.sender === userProfile.email ? msg.receiver : msg.sender;
 
       if (!dialogs.has(partner)) {
         dialogs.set(partner, {

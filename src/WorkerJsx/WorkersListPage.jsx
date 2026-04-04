@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { DataContext } from "../CommonJsx/DataContext.js";
+import { DataContext } from "../CommonJsx/DataContext.jsx";
 import "../Styles/WorkersListPage.css";
 import { supabase } from "../CommonJsx/SupabaseClient.js";
 import WorkerList from "./WorkerList.jsx";

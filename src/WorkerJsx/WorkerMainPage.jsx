@@ -1,47 +1,35 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import NavigationBar from "../CommonJsx/NavigationBar.jsx";
 import ProfilePreview from "../CommonJsx/ProfilePreview.jsx";
 import WorkerOrderPage from "./WorkerOrderPage.jsx";
 import WorkersListPage from "./WorkersListPage.jsx";
-import ChatMain from "../CommonJsx/ChatMain.jsx";
+import ChatMain from "../CommonJsx/Chat/ChatMain.jsx";
 import "../Styles/MainPage.css";
+import { DataContext } from "../CommonJsx/DataContext.jsx";
 
-function WorkerMainPage({ userProfile }) {
-  const [activePage, setActivePage] = useState(null);
+function WorkerMainPage() {
+  const { loading, userProfile, activePage, setActivePage } =
+    useContext(DataContext);
+
+  if (loading) return <div>Loading...</div>;
   useEffect(() => {
-    console.log("WorkerMainPage userProfile:", userProfile);
-  }, []);
+    console.log("Active page changed:", activePage);
+  }, [activePage]);
   return (
     <div>
+      <h1 className="greetings">Welcome on board!</h1>
       <div className="userWindow">
-        <NavigationBar
-          role={userProfile[0]?.Role}
-          setActivePage={setActivePage}
-        />
+        <NavigationBar />
       </div>
 
       <div className="mainContent">
-        {activePage === "workers" && (
-          <WorkersListPage userProfile={userProfile} />
-        )}
-        {activePage === "orders" && (
-          <WorkerOrderPage
-            SetActivePage={setActivePage}
-            userProfile={userProfile}
-          />
-        )}
-        {activePage === "chats" && <ChatMain userProfile={userProfile} />}
-        {activePage === "settings" && <SettingsPage />}
-        {activePage === null && (
-          <div className="welcomeText">
-            <h1>Welcome, {userProfile[0]?.name || "Owner"}!</h1>
-            <p>What will be your decision?</p>
-          </div>
-        )}
+        {activePage === "main" && <div className="main">fsdfsf</div>}
+        {activePage === "workers" && <WorkersListPage />}
+        {activePage === "orders" && <WorkerOrderPage />}
+        {activePage === "chats" && <ChatMain />}
       </div>
-
-      <ProfilePreview userProfile={userProfile[0]} />
+      {userProfile ? <ProfilePreview userProfile={userProfile} /> : null}
     </div>
   );
 }

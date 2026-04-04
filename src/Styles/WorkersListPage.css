@@ -30,19 +30,20 @@
   align-items: center;
   gap: 20%;
   height: 8%;
-  width: 94%;
+  width: 60%;
   transition: all 0.2s ease-in-out;
   box-shadow: 1px 1px 5px rgb(156, 160, 183);
   border-radius: 1vw;
 }
 .WorkersListPage ul li:hover {
   background-color: rgb(220, 224, 250);
+  width: 70%;
 }
-.WorkersListPage li p {
-  font-size: 18px;
-  font-weight: 400;
+.WorkersListPage ul li:hover button {
+  display: block;
 }
 .WorkersListPage ul li button {
+  display: none;
   cursor: pointer;
   padding: 5px;
   width: 100px;
@@ -79,7 +80,13 @@
   justify-content: space-between;
   align-items: center;
 }
+.workerInfoGroup p {
+  font-size: 18px;
+  font-weight: 400;
+  flex: 1;
+}
 .workerInfoGroup a {
+  flex: 1;
   color: black;
   margin-top: 30px;
 }

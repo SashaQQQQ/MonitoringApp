@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from "react";
-import { supabase } from "./SupabaseClient";
-import "../Styles/OrdersPage.css";
-import { DataContext } from "./DataContext";
-import DonutChart from "./DonutChart";
-import workerIcon from "../Icons/worker.png";
+import { supabase } from "../SupabaseClient.js";
+import "../../Styles/OrdersPage.css";
+import { DataContext } from "../DataContext.jsx";
+import DonutChart from "../DonutChart.jsx";
+import workerIcon from "../../Icons/worker.png";
 
 function OverallOrdersDescription({ selectedOrder }) {
   const [workers, setWorkers] = useState([]);

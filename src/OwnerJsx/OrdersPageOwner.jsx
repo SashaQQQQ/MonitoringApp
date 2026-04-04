@@ -1,6 +1,6 @@
 import { useState } from "react";
-import OverallOrdersList from "../CommonJsx/OverallOrderList.jsx";
-import OverallOrdersDescription from "../CommonJsx/OverallOrderDescription.jsx";
+import OverallOrdersList from "../CommonJsx/OrderPreview/OverallOrderList.jsx";
+import OverallOrdersDescription from "../CommonJsx/OrderPreview/OverallOrderDescription.jsx";
 import AddOrderForm from "../CommonJsx/AddOrderForm.jsx";
 import MyCalendar from "../CommonJsx/Calendar.jsx";
 import backIcon from "../Icons/backArrow.png";

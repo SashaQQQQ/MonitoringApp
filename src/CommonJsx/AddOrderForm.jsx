@@ -1,25 +1,30 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { DataContext } from "./DataContext.jsx";
 import { supabase } from "./SupabaseClient.js";
 import "../Styles/AddOrdersForm.css";
+import hintIcon from "../Icons/question.png";
+import userIcon from "../Icons/worker.png";
+import OrderCalendar from "./AddingOrderComponents/OrderCalendar.jsx";
+import OverallNewOrderInfo from "./AddingOrderComponents/OverallNewOrderInfo.jsx";
+import WorkersSearch from "./AddingOrderComponents/WorkersSearch.jsx";
+import RolesManager from "./AddingOrderComponents/RolesManager.jsx";
+import backIcon from "../Icons/backArrow.png";
 
 function AddOrderForm({ setAddOrderFormStatus }) {
   const [newOrderName, setNewOrderName] = useState("");
   const [newOrderDescription, setNewOrderDescription] = useState("");
   const [newOrderWorkers, setNewOrderWorkers] = useState([]);
   const [finalDate, setFinalDate] = useState(null);
-
-  const [searchedWorkers, setSearchedWorkers] = useState(null);
   const [chosenWorkers, setChosenWorkers] = useState([]);
+  const [workerRoles, setWorkerRoles] = useState({});
+  const { setActivePage } = useContext(DataContext);
 
-  function handleOrderNameChange(e) {
-    setNewOrderName(e.target.value);
-  }
   async function SaveOrder() {
     const { data, error } = await supabase
       .from("orders")
       .insert([
         {
-          NameOfTheOrder: newOrderName,
+          Title: newOrderName,
           Description: newOrderDescription,
           AmountOfWorkers: chosenWorkers.length,
           FinalDate: finalDate,
@@ -42,6 +47,7 @@ function AddOrderForm({ setAddOrderFormStatus }) {
           {
             order_id: orderId,
             worker_id: worker.id,
+            Role: workerRoles[worker.id] || "",
           },
         ]);
       if (workerError) {
@@ -50,131 +56,64 @@ function AddOrderForm({ setAddOrderFormStatus }) {
         console.log("Worker added to order successfully:", workerData);
       }
     }
+    setAddOrderFormStatus(false);
+    console.log("Final date:", finalDate);
   }
 
-  function handleFinalDateChange(e) {
-    setFinalDate(e.target.value);
-    console.log(e.target.value);
-  }
-
-  function handleOrderDescriptionChange(e) {
-    setNewOrderDescription(e.target.value);
-  }
-  function handleAddWorkerToOrder(worker) {
-    setChosenWorkers((prevWorkers) => [...prevWorkers, worker]);
-  }
-  function handleRemoveWorkerFromOrder(worker) {
-    setChosenWorkers((prevWorkers) =>
-      prevWorkers.filter((Worker) => Worker.id !== worker.id),
-    );
-  }
-  async function searchWorkersInDatabase(workerName) {
-    if (workerName.length == 0) {
-      setSearchedWorkers(null);
-      return;
-    }
-
-    const { data, error } = await supabase
-      .from("workers")
-      .select("*")
-      .ilike("Name", `%${workerName}%`)
-      .order("Name", { ascending: true });
-
-    if (error) {
-      console.error("Error searching workers:", error);
-      return [];
-    } else {
-      setSearchedWorkers(data);
-      console.log("Workers found:", data);
-    }
-  }
   return (
     <div className="addOrderForm">
+      <div className="inputColumn">
+        <OverallNewOrderInfo
+          newOrderName={newOrderName}
+          setNewOrderName={setNewOrderName}
+          newOrderDescription={newOrderDescription}
+          setNewOrderDescription={setNewOrderDescription}
+        />
+        <WorkersSearch
+          chosenWorkers={chosenWorkers}
+          getSearchedWorkers={setChosenWorkers}
+        />
+        <div className="tutorial">
+          <div className="adviseImg">
+            <img src={hintIcon} alt="imgsss" />
+          </div>
+          <div className="tutorialText">
+            <h2>How does it work?</h2>
+            <p>
+              To add a worker to the order, just click the "Add Worker" button
+              near their name. To remove a worker from the order, click the
+              "Remove Worker" button in the chosen workers list.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="inputColumn">
+        <RolesManager
+          setChosenWorkers={setChosenWorkers}
+          chosenWorkers={chosenWorkers}
+          setWorkerRoles={setWorkerRoles}
+          workerRoles={workerRoles}
+        />
+        <div className="finalDateGroup">
+          <OrderCalendar getFinalDate={setFinalDate} />
+        </div>
+      </div>
       <button
+        className="saveBtn"
+        onClick={() => {
+          SaveOrder();
+        }}
+      >
+        Save Order
+      </button>
+      <img
         className="backBtn"
         onClick={() => {
           setAddOrderFormStatus(false);
         }}
-      >
-        Back
-      </button>
-      <h1>Order Form</h1>
-      <input
-        onChange={(e) => {
-          handleOrderNameChange(e);
-        }}
-        type="text"
-        placeholder="Order Name"
+        src={backIcon}
+        alt="Back"
       />
-      <textarea
-        onChange={(e) => {
-          handleOrderDescriptionChange(e);
-        }}
-        name=""
-        id=""
-        placeholder="Order Description"
-      ></textarea>
-      <input
-        onChange={(e) => {
-          handleFinalDateChange(e);
-        }}
-        type="date"
-        name=""
-        id=""
-        placeholder="Final Date"
-      />
-      <div className="AddWorkersToOrder">
-        <h3>Add workers to order:</h3>
-        <input
-          type="text"
-          name=""
-          id=""
-          placeholder="Enter the name of worker"
-          onChange={(e) => {
-            searchWorkersInDatabase(e.target.value);
-          }}
-        />
-        <div>
-          <ul>
-            <h3>Workers in order:</h3>
-            {chosenWorkers?.map((worker, index) => (
-              <li key={index}>
-                {worker.Name}{" "}
-                <button
-                  onClick={() => {
-                    handleRemoveWorkerFromOrder(worker);
-                  }}
-                >
-                  Remove
-                </button>
-              </li>
-            ))}
-          </ul>
-          <ul>
-            <h3>Searched workers:</h3>
-            {searchedWorkers?.map((worker, index) => (
-              <li key={index}>
-                {worker.Name}{" "}
-                <button
-                  onClick={() => {
-                    handleAddWorkerToOrder(worker);
-                  }}
-                >
-                  Add
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <button
-        onClick={() => {
-          SaveOrder();
-        }}
-        className="SaveOrder"
-      >
-        Save order
-      </button>
     </div>
   );
 }

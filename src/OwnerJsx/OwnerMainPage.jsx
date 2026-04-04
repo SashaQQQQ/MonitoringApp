@@ -1,25 +1,24 @@
 import { useContext, useState } from "react";
-import { DataContext } from "../CommonJsx/DataContext.js";
+import { DataContext } from "../CommonJsx/DataContext.jsx";
 import WorkersListPage from "../WorkerJsx/WorkersListPage.jsx";
 import AddWorker from "../CommonJsx/AddWorker.jsx";
 import OrdersPageOwner from "./OrdersPageOwner.jsx";
 import NavigationBar from "../CommonJsx/NavigationBar.jsx";
 import ProfilePreview from "../CommonJsx/ProfilePreview.jsx";
-import ChatMain from "../CommonJsx/ChatMain.jsx";
+import ChatMain from "../CommonJsx/Chat/ChatMain.jsx";
 import BestWorkers from "./BestWorkers.jsx";
 import EndingOrders from "./EndingOrders.jsx";
 import "../Styles/MainPage.css";
 
-function OwnerMainPage({ userProfile }) {
+function OwnerMainPage() {
   const [contactPerson, setContactPerson] = useState(null);
-  const { activePage, setActivePage } = useContext(DataContext);
+  const { userProfile, activePage, loading } = useContext(DataContext);
+  if (loading) return <div>Loading...</div>;
+
   return (
     <div>
       <div className="userWindow">
-        <NavigationBar
-          role={userProfile[0]?.Role}
-          setActivePage={setActivePage}
-        />
+        <NavigationBar />
       </div>
       <h1 className="greetings">Welcome on board!</h1>
       <div className="mainContent">
@@ -56,7 +55,7 @@ function OwnerMainPage({ userProfile }) {
         ) : null}
       </div>
 
-      <ProfilePreview userProfile={userProfile[0]} />
+      {userProfile ? <ProfilePreview userProfile={userProfile} /> : null}
     </div>
   );
 }

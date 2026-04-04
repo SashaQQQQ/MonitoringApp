@@ -1,6 +1,6 @@
 import { useState, useEffect, use } from "react";
-import { supabase } from "./SupabaseClient.js";
-import "../Styles/OrdersPage.css";
+import { supabase } from "../SupabaseClient.js";
+import "../../Styles/OrdersPage.css";
 
 function OverallOrdersPage({ setCalendarOrders, handleOrderClick }) {
   const [orders, setOrders] = useState(null);
@@ -26,6 +26,13 @@ function OverallOrdersPage({ setCalendarOrders, handleOrderClick }) {
     if (error) {
       console.error("Error deleting order:", error);
     } else {
+      const { data: finalStepData, error: finalStepError } = await supabase
+        .from("order.Workers")
+        .delete()
+        .eq("order_id", orderId);
+      if (finalStepError) {
+        console.error("Error deleting order workers:", finalStepError);
+      }
       fetchOrders();
     }
   }
