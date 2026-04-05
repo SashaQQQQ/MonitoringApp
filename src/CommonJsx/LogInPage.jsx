@@ -3,6 +3,10 @@ import { supabase } from "./SupabaseClient.js";
 import "../Styles/LogInPage.css";
 import { useNavigate } from "react-router-dom";
 import { DataContext } from "./DataContext.jsx";
+import emailIcon from "../Icons/message.png";
+import passwordIcon from "../Icons/padlock.png";
+import seePasswordIcon from "../Icons/visual.png";
+
 function LogInPage() {
   const { setUserProfile } = useContext(DataContext);
   const [login, setLogin] = useState("");
@@ -100,16 +104,20 @@ function LogInPage() {
 
   return (
     <div className="LogInPageContainer">
-      <h1>Please, log in the system</h1>
-      <p>Fill the fields</p>
-      <input
-        placeholder="Login"
-        onChange={(e) => {
-          handleLoginChange(e.target.value);
-        }}
-        type="text"
-      />
-      <div className="passwordInputContainer">
+      <h1>Welcome here!</h1>
+      <p>Fill the fields, to log in.</p>
+      <div className="inputLine">
+        <img src={emailIcon} alt="mail" />
+        <input
+          placeholder="Login"
+          onChange={(e) => {
+            handleLoginChange(e.target.value);
+          }}
+          type="text"
+        />
+      </div>
+      <div className="inputLine">
+        <img src={passwordIcon} alt="password" />
         <input
           ref={passwordInputRef}
           placeholder="Password"
@@ -118,18 +126,16 @@ function LogInPage() {
           }}
           type="password"
         />
-        <button className="passwordEye" onClick={seeThePassword}>
-          See
-        </button>
+        <img
+          onClick={() => {
+            seeThePassword();
+          }}
+          className="seeBtn"
+          src={seePasswordIcon}
+          alt="see"
+        />
       </div>
-      <p
-        style={{
-          color: "rgb(217, 47, 47)",
-          fontWeight: 700,
-          fontSize: "clamp(0.8rem, 2vw, 1.2rem)",
-          textAlign: "center",
-        }}
-      >
+      <p className="warningText">
         {loginWarning} <br />
         {passwordWarning}
       </p>

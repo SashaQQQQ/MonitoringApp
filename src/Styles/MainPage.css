@@ -47,7 +47,7 @@
 .ordersToEndFastPanel:hover {
   transform: scale(1.01);
 }
-.lastChatsPanel,
+.OnlineListContainer,
 .lastWorkersPanel {
   display: flex;
   flex-direction: column;

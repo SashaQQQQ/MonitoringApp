@@ -62,7 +62,7 @@ function OverallOrdersDescription({ selectedOrder }) {
 
               <p>Due to: {selectedOrder?.FinalDate}</p>
             </div>
-            <DonutChart progress={selectedOrder?.ReadyProcent} />
+            <DonutChart progress={selectedOrder?.readyProcent} />
           </div>
 
           <div className="selectedOrderDescription">

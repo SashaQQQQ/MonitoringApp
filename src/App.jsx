@@ -1,13 +1,23 @@
 import { useState, useEffect, use } from "react";
-import { DataContext, DataProvider } from "./CommonJsx/DataContext.jsx";
+import { DataProvider } from "./CommonJsx/DataContext.jsx";
 import "./Styles/App.css";
+import { supabase } from "./CommonJsx/SupabaseClient.js";
 import LogInPage from "./CommonJsx/LogInPage.jsx";
 import OwnerMainPage from "./OwnerJsx/OwnerMainPage.jsx";
 import WorkerMainPage from "./WorkerJsx/WorkerMainPage.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import AddOrderForm from "./CommonJsx/AddOrderForm.jsx";
-import AddWorker from "./CommonJsx/AddWorker.jsx";
 
+export async function refreshOnlineStatus(id) {
+  console.log("user profile id", id);
+  const date = new Date().toISOString();
+  const { data, error } = await supabase
+    .from("users")
+    .update({ lastSeen: date })
+    .eq("id", id);
+  if (!error) {
+    console.log("refreshed", data);
+  }
+}
 function App() {
   const Router = createBrowserRouter([
     {

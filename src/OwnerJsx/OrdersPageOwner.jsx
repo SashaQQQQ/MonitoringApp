@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import OverallOrdersList from "../CommonJsx/OrderPreview/OverallOrderList.jsx";
 import OverallOrdersDescription from "../CommonJsx/OrderPreview/OverallOrderDescription.jsx";
 import AddOrderForm from "../CommonJsx/AddOrderForm.jsx";
 import MyCalendar from "../CommonJsx/Calendar.jsx";
 import backIcon from "../Icons/backArrow.png";
 import "../Styles/OrdersPage.css";
-
+import { supabase } from "../CommonJsx/SupabaseClient.js";
 function OrdersPageOwner() {
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [addOrderFormStatus, setAddOrderFormStatus] = useState(false);
@@ -14,7 +14,28 @@ function OrdersPageOwner() {
   function handleOrderClick(order) {
     setSelectedOrder(order);
   }
+  async function fetchProcents() {
+    const { data, error } = await supabase
+      .from("order.Workers")
+      .select("progress_percent")
+      .eq("order_id", selectedOrder?.id);
 
+    const totalProgress = data.reduce(
+      (sum, worker) => sum + worker.progress_percent,
+      0,
+    );
+
+    const averageProcent =
+      data && data.length > 0 ? totalProgress / data.length : 0;
+
+    setSelectedOrder((prev) =>
+      prev ? { ...prev, readyProcent: averageProcent } : prev,
+    );
+  }
+  useEffect(() => {
+    if (!selectedOrder?.id) return;
+    fetchProcents();
+  }, [selectedOrder?.id]);
   return (
     <div className="ordersPage">
       {!addOrderFormStatus ? (

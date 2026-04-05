@@ -48,7 +48,6 @@
   text-align: center;
 
   font-size: 0.8rem;
-  font-weight: 600;
 }
 
 .orderStats {
@@ -62,4 +61,5 @@
   width: auto;
   height: 100%;
   gap: 5px;
+  font-weight: 600;
 }

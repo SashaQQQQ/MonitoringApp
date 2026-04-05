@@ -24,7 +24,7 @@
   gap: 10px;
 }
 .WorkersListPage ul li {
-  padding: 5px;
+  padding-left: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,7 +37,7 @@
 }
 .WorkersListPage ul li:hover {
   background-color: rgb(220, 224, 250);
-  width: 70%;
+  width: 65%;
 }
 .WorkersListPage ul li:hover button {
   display: block;
@@ -52,6 +52,9 @@
   margin-left: 5px;
   color: white;
   transition: all 0.2s ease-in-out;
+}
+.WorkersListPage ul li div {
+  display: flex;
 }
 .deleteWorker {
   background-color: rgb(255, 99, 99);
@@ -74,11 +77,11 @@
 
 .workerInfoGroup {
   display: flex;
-  width: 25%;
+  width: 50%;
   gap: 15px;
 
-  justify-content: space-between;
   align-items: center;
+  flex: 1;
 }
 .workerInfoGroup p {
   font-size: 18px;

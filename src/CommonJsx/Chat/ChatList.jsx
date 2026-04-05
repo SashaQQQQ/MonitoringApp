@@ -23,8 +23,8 @@ export default function ChatList({ chatList, getOtherUser, loadChatList }) {
         <p className="lastMessage">
           {isSearch
             ? "Start chat"
-            : item?.lastMessage.length > 13
-              ? item?.lastMessage.slice(0, 13) + ".."
+            : item?.lastMessage.length > 4
+              ? item?.lastMessage.slice(0, 4) + ".."
               : item?.lastMessage}
         </p>
 

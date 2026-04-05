@@ -1,7 +1,7 @@
 import { use, useEffect, useState } from "react";
 
-import "../Styles/EndingOrders.css";
-import { supabase } from "../CommonJsx/SupabaseClient.js";
+import "../../Styles/EndingOrders.css";
+import { supabase } from "../SupabaseClient.js";
 
 function EndingOrders() {
   const [endingOrders, setEndingOrders] = useState([]);
@@ -72,7 +72,7 @@ function EndingOrders() {
             <div className="orderStats">
               <p className="endingOrderProgress">Progress: {order.progress}%</p>
               <p className="endingTime">
-                Due: {new Date(order.FinalDate).toLocaleDateString()}
+                Due: {new Date(order.FinalDate).toISOString().split("T")[0]}
               </p>
             </div>
           </div>

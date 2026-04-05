@@ -6,8 +6,7 @@ import workerIcon from "../Icons/worker.png";
 
 function WorkersList({ foundedWorkers }) {
   const [workers, setWorkers] = useState([]);
-  const { userProfile, whichRole, setActivePage, setOtherUser } =
-    useContext(DataContext);
+  const { userProfile, setActivePage, setOtherUser } = useContext(DataContext);
 
   function renderWorker(worker) {
     if (userProfile?.id === worker.id) return null;
@@ -19,10 +18,10 @@ function WorkersList({ foundedWorkers }) {
             {worker.name} {worker.secondName}
           </p>
           <a href={`mailto:${worker.email}`}>{worker.email}</a>
+          <p>{worker?.Role}</p>
         </div>
-
         <div>
-          {whichRole == "Owner" || whichRole == "Admin" ? (
+          {userProfile.Role == "Owner" || userProfile.Role == "Admin" ? (
             <button
               className="deleteWorker"
               onClick={() => DeleteWorker(worker.id)}
