@@ -3,7 +3,8 @@ import OverallOrdersList from "../CommonJsx/OrderPreview/OverallOrderList.jsx";
 import OverallOrdersDescription from "../CommonJsx/OrderPreview/OverallOrderDescription.jsx";
 import AddOrderForm from "../CommonJsx/AddOrderForm.jsx";
 import MyCalendar from "../CommonJsx/Calendar.jsx";
-import backIcon from "../Icons/backArrow.png";
+import plusIcon from "../Icons/plus.png";
+
 import "../Styles/OrdersPage.css";
 import { supabase } from "../CommonJsx/SupabaseClient.js";
 function OrdersPageOwner() {
@@ -43,17 +44,24 @@ function OrdersPageOwner() {
           <img
             className="extBtn"
             onClick={() => setAddOrderFormStatus(true)}
-            src={backIcon}
+            src={plusIcon}
           />
 
           <div className="ordersContent">
-            <MyCalendar orders={orders} />
-            <OverallOrdersList
-              setCalendarOrders={setOrders}
-              handleOrderClick={handleOrderClick}
-            />
+            <div
+              className="ordersInfoCont"
+              style={{ width: selectedOrder ? "50%" : "100%" }}
+            >
+              <MyCalendar orders={orders} />
+              <OverallOrdersList
+                setCalendarOrders={setOrders}
+                handleOrderClick={handleOrderClick}
+              />
+            </div>
+            {selectedOrder ? (
+              <OverallOrdersDescription selectedOrder={selectedOrder} />
+            ) : null}
           </div>
-          <OverallOrdersDescription selectedOrder={selectedOrder} />
         </div>
       ) : (
         <AddOrderForm setAddOrderFormStatus={setAddOrderFormStatus} />

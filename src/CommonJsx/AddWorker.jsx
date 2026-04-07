@@ -5,20 +5,13 @@ import { supabase } from "./SupabaseClient.js";
 function AddWorker() {
   const [name, setName] = useState("");
   const [secondName, setSecondName] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
+
   const [role, setRole] = useState("");
   const [workerLogin, setWorkerLogin] = useState("");
   const [workerPassword, setWorkerPassword] = useState("");
 
   async function handleAddWorker() {
-    if (
-      !name ||
-      !secondName ||
-      !dateOfBirth ||
-      !role ||
-      !workerLogin ||
-      !workerPassword
-    ) {
+    if (!name || !secondName || !role || !workerLogin || !workerPassword) {
       return;
     }
 
@@ -34,14 +27,13 @@ function AddWorker() {
 
     const userId = authData.user.id;
 
-    const { error: workerError } = await supabase.from("workers").insert([
+    const { error: workerError } = await supabase.from("users").insert([
       {
         id: userId,
-        Name: name,
-        SecondName: secondName,
-        DateOfBirth: dateOfBirth,
+        name: name,
+        secondName: secondName,
         Role: role,
-        login: workerLogin,
+        email: workerLogin,
       },
     ]);
 
@@ -50,26 +42,9 @@ function AddWorker() {
       return;
     }
 
-    const { error: profileError } = await supabase.from("users").insert([
-      {
-        id: userId,
-        login: workerLogin,
-        name: name,
-        secondName: secondName,
-        Role: role,
-      },
-    ]);
-
-    if (profileError) {
-      alert(profileError.message);
-      return;
-    }
-
-    alert("Worker created successfully!");
-
     setName("");
     setSecondName("");
-    setDateOfBirth("");
+
     setRole("");
     setWorkerLogin("");
     setWorkerPassword("");
@@ -89,9 +64,6 @@ function AddWorker() {
   function handleSecondNameChange(e) {
     setSecondName(e.target.value);
   }
-  function handleDateOfBirthChange(e) {
-    setDateOfBirth(e.target.value);
-  }
   function handleRoleChange(e) {
     setRole(e.target.value);
   }
@@ -106,6 +78,7 @@ function AddWorker() {
           <div className="inputGroup">
             <label>Name</label>
             <input
+              value={name}
               onChange={(e) => handleNameChange(e)}
               type="text"
               placeholder="Enter name"
@@ -115,6 +88,7 @@ function AddWorker() {
           <div className="inputGroup">
             <label>Second name</label>
             <input
+              value={secondName}
               onChange={(e) => handleSecondNameChange(e)}
               type="text"
               placeholder="Enter second name"
@@ -122,34 +96,32 @@ function AddWorker() {
           </div>
 
           <div className="inputGroup">
-            <label>Date of birth</label>
-            <input onChange={(e) => handleDateOfBirthChange(e)} type="date" />
-          </div>
-
-          <div className="inputGroup">
             <label>Role</label>
             <select
-              name=""
-              id=""
               onChange={(e) => {
                 handleRoleChange(e);
               }}
             >
-              <option value="" disabled selected>
+              <option value="" disabled defaultValue={"Admin"}>
                 Select role
               </option>
-              <option value="Owner">Owner</option>
+
               <option value="Admin">Admin</option>
               <option value="Worker">Worker</option>
             </select>
           </div>
           <div className="inputGroup">
             <label>His login</label>
-            <input onChange={(e) => handleWorkerLoginChange(e)} type="text" />
+            <input
+              value={workerLogin}
+              onChange={(e) => handleWorkerLoginChange(e)}
+              type="text"
+            />
           </div>
           <div className="inputGroup">
             <label>His password</label>
             <input
+              workerPassword={workerPassword}
               onChange={(e) => handleWorkerPasswordChange(e)}
               type="text"
             />

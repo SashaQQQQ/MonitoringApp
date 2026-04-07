@@ -1,6 +1,6 @@
 import { supabase } from "../SupabaseClient";
 import { useState, useEffect, useContext } from "react";
-import "../../Styles/OnlineList.css";
+import "../../Styles/MainMenuCss/OnlineList.css";
 import { DataContext } from "../DataContext";
 const OnlineList = () => {
   const { userProfile } = useContext(DataContext);

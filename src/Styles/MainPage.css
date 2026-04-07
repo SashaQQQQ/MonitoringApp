@@ -65,7 +65,6 @@
   margin: 10px 0 0 30px;
   font-size: clamp(1rem, 2vw, 1.3rem);
   font-weight: 600;
-
   padding: 10px;
 }
 .horizontalPanel {
@@ -73,7 +72,7 @@
   gap: 20px;
   width: 100%;
   height: auto;
-  min-height: 45%;
+  min-height: 80%;
 }
 .welcomeText h1 {
   font-size: clamp(1.5rem, 4vw, 3rem);
@@ -107,4 +106,39 @@
   width: 40px;
   height: auto;
   border-radius: 50%;
+}
+@media (max-width: 768px) {
+  .mainContent {
+    position: relative;
+    top: 10vh;
+    right: 0;
+    width: auto;
+    background-color: red;
+    height: 75vh;
+    margin: 0;
+    min-width: 600px;
+    flex-direction: column;
+  }
+  .greetings {
+    display: none;
+  }
+  .userProfilePreview {
+    right: 0.5vw;
+    top: 0.5vh;
+  }
+  .horizontalPanel {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .bestWorkersPanel,
+  .ordersToEndFastPanel {
+    width: 98%;
+    height: auto;
+  }
+  .OnlineListContainer {
+    width: 98%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+  }
 }

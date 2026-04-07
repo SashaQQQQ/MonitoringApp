@@ -10,6 +10,7 @@
   gap: 1%;
   background-color: white;
   border-radius: 1vw;
+  margin-right: 20px;
 }
 .navigationMenu div {
   margin-top: 3px;
@@ -41,9 +42,39 @@
   margin-left: 10px;
 }
 .logOutBtn {
-  position: absolute;
   bottom: 2%;
 
-  width: 100%;
+  width: 96%;
   text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .navigationMenu {
+    width: 100vw;
+    position: absolute;
+    justify-content: space-evenly;
+    left: 0;
+    top: 90vh;
+    height: 10vw;
+
+    display: flex;
+    flex-direction: row;
+  }
+  .navigationMenu div {
+    background-color: transparent;
+    margin: 0;
+    width: auto;
+    min-width: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .navigationMenu div img {
+    margin: 0;
+  }
+  .logOutBtn {
+    margin: 0;
+    width: auto;
+    min-width: 30px;
+  }
 }

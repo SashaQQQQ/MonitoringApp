@@ -104,4 +104,5 @@
 }
 .LogInPageContainer .warningText {
   color: rgb(250, 71, 71);
+  text-align: center;
 }

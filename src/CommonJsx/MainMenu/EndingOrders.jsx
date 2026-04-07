@@ -1,6 +1,6 @@
 import { use, useEffect, useState } from "react";
 
-import "../../Styles/EndingOrders.css";
+import "../../Styles/MainMenuCss/EndingOrders.css";
 import { supabase } from "../SupabaseClient.js";
 
 function EndingOrders() {

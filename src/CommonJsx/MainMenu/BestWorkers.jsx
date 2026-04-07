@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import workerIcon from "../../Icons/worker.png";
-import "../../Styles/BestWorkers.css";
+import "../../Styles/MainMenuCss/BestWorkers.css";
 import { supabase } from "../SupabaseClient.js";
 
 function BestWorkers() {

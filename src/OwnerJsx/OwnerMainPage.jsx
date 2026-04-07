@@ -13,9 +13,9 @@ import { refreshOnlineStatus } from "../App.jsx";
 function OwnerMainPage() {
   const [contactPerson, setContactPerson] = useState(null);
   const { userProfile, activePage, loading } = useContext(DataContext);
-  if (loading) return <div>Loading...</div>;
 
   useEffect(() => {
+    if (!userProfile) return;
     refreshOnlineStatus(userProfile.id);
     const myInterval = setInterval(() => {
       refreshOnlineStatus(userProfile.id);
@@ -24,7 +24,9 @@ function OwnerMainPage() {
     return () => {
       clearInterval(myInterval);
     };
-  }, []);
+  }, [userProfile]);
+  if (loading) return <div>Loading...</div>;
+
   return (
     <div>
       <div className="userWindow">

@@ -8,15 +8,11 @@ import WorkerMainPage from "./WorkerJsx/WorkerMainPage.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 export async function refreshOnlineStatus(id) {
-  console.log("user profile id", id);
   const date = new Date().toISOString();
   const { data, error } = await supabase
     .from("users")
     .update({ lastSeen: date })
     .eq("id", id);
-  if (!error) {
-    console.log("refreshed", data);
-  }
 }
 function App() {
   const Router = createBrowserRouter([
