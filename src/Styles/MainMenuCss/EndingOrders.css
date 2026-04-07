@@ -9,28 +9,28 @@
   align-items: center;
 }
 .orderCard {
-  position: relative;
-  padding: 0;
+  padding-left: 15px;
+  padding-right: 15px;
   display: flex;
-  flex-wrap: wrap;
+
   justify-content: space-between;
   align-items: center;
   gap: 20%;
-  height: 15%;
-  min-height: 30px;
+  height: auto;
+  min-height: 50px;
   width: 94%;
   box-shadow: 1px 1px 5px rgb(156, 160, 183);
-  border-radius: 1vw;
+  border-radius: 0.5vw;
 }
 .orderCard .orderInfo {
-  position: absolute;
-  left: 15px;
-  display: flex;
+  max-width: 40%;
+}
+.orderCard .orderInfo p {
   font-weight: 700;
   font-size: 1.2rem;
-
-  height: 100%;
-  align-items: center;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .orderCard .endingTime {
   border-radius: 1vw;
@@ -40,6 +40,18 @@
   text-align: left;
   margin-right: 15px;
   font-size: 0.8rem;
+  font-weight: 600;
+}
+.orderStats {
+  text-align: center;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: auto;
+  height: 100%;
+  gap: 5px;
   font-weight: 600;
 }
 .endingOrderProgress {
@@ -52,19 +64,6 @@
   font-size: 0.8rem;
 }
 
-.orderStats {
-  text-align: center;
-  overflow: hidden;
-  position: absolute;
-  right: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: auto;
-  height: 100%;
-  gap: 5px;
-  font-weight: 600;
-}
 @media (min-width: 768px) {
   .orderCard {
   }

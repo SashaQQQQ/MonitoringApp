@@ -50,12 +50,14 @@
 
 @media (max-width: 768px) {
   .navigationMenu {
+    z-index: 1;
+
     width: 100vw;
-    position: absolute;
+    position: fixed;
     justify-content: space-evenly;
     left: 0;
     top: 90vh;
-    height: 10vw;
+    height: auto;
 
     display: flex;
     flex-direction: row;

@@ -34,16 +34,18 @@ function OwnerMainPage() {
       </div>
       <h1 className="greetings">Welcome on board!</h1>
       <div className="mainContent">
-        {activePage === "main" && <MainMenuBlock />}
-        {activePage === "workers" ? <WorkersListPage /> : null}
-        {activePage === "addWorker" ? <AddWorker /> : null}
-        {activePage === "orders" ? <OrdersPageOwner /> : null}
-        {activePage === "chats" ? (
-          <ChatMain
-            contactPerson={contactPerson}
-            setContactPerson={setContactPerson}
-          />
-        ) : null}
+        <div className="scrollContainer">
+          {activePage === "main" && <MainMenuBlock />}
+          {activePage === "workers" ? <WorkersListPage /> : null}
+          {activePage === "addWorker" ? <AddWorker /> : null}
+          {activePage === "orders" ? <OrdersPageOwner /> : null}
+          {activePage === "chats" ? (
+            <ChatMain
+              contactPerson={contactPerson}
+              setContactPerson={setContactPerson}
+            />
+          ) : null}
+        </div>
       </div>
 
       {userProfile ? <ProfilePreview userProfile={userProfile} /> : null}
