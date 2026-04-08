@@ -1,6 +1,7 @@
 .ordersPage {
   width: 95%;
   height: 95%;
+  overflow: hidden;
 }
 .ordersPage .extBtn {
   position: absolute;
@@ -23,167 +24,7 @@
   display: flex;
   gap: 15px;
 }
-.orderDescription {
-  transition: all 0.2s ease;
-  width: 50%;
-  background-color: rgb(249, 247, 247);
-  height: 100%;
-  border-radius: 3vw;
-  margin-top: 0.5%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  opacity: 0;
-  animation: appearance 0.5s ease forwards;
-}
-@keyframes appearance {
-  to {
-    opacity: 1;
-  }
-}
-.orderDescription:hover {
-  transform: translate(0%, 0.5%);
-}
-.orderOverallInfo {
-  width: 90%;
-  height: 30%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.orderDescription .selectedOrderInfo {
-  width: 40%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  padding: 5px;
-  border-radius: 2vw;
-}
-.orderDescription .selectedOrderInfo p {
-  word-break: break-all;
-  text-align: left;
 
-  font-size: 20px;
-  width: auto;
-  max-width: 300px;
-}
-.orderDescription .selectedOrderInfo :last-child {
-  position: relative;
-  top: 5px;
-  font-size: 18px;
-  color: grey;
-}
-.selectedOrderDescription {
-  top: 15px;
-  position: relative;
-  width: 90%;
-  background-color: white;
-  padding: 15px;
-  border-radius: 2vw;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: column;
-  height: auto;
-  max-height: 300px;
-}
-.selectedOrderDescription h2 {
-  margin: 0;
-  background-color: black;
-  color: white;
-  padding: 5px;
-  font-size: 20px;
-  border-radius: 1vw;
-}
-.selectedOrderDescription p {
-  position: relative;
-  top: 15px;
-}
-.selectedOrderWorkers {
-  gap: 15px;
-  position: relative;
-  top: 30px;
-  border: 1px solid black;
-  border-radius: 2vw;
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: white;
-  height: 100%;
-  max-height: 40%;
-}
-.workersAmount {
-  position: relative;
-  top: 5px;
-
-  font-size: 20px;
-  text-align: center;
-}
-.selectedOrderWorkers ul {
-  padding: 0;
-  width: 100%;
-  height: 70%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 5px;
-  overflow-y: scroll;
-}
-.selectedOrderWorkers li {
-  position: relative;
-  list-style: none;
-  width: 94%;
-  padding: 5px;
-  height: 30%;
-  display: flex;
-  align-items: center;
-  background-color: rgb(245, 244, 244);
-  border-radius: 1vw;
-}
-.selectedOrderWorkers li:hover {
-  background-color: rgb(241, 241, 252);
-}
-.selectedOrderWorkers li .orderWorkersDetails {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: auto;
-  max-width: 70%;
-  text-transform: capitalize;
-  gap: 5px;
-}
-.selectedOrderWorkers li .orderWorkersDetails img {
-  height: 45px;
-  width: auto;
-}
-.selectedOrderWorkers li .orderWorkersDetails p {
-  border-radius: 2vw;
-  padding: 8px;
-}
-.selectedOrderWorkers li .orderWorkersDetails h5 {
-  background-color: rgb(32, 32, 255);
-  color: white;
-  padding: 5px;
-  border-radius: 2vw;
-  text-align: center;
-}
-.selectedOrderWorkers li button {
-  position: absolute;
-  right: 15px;
-  color: white;
-  background-color: rgb(253, 56, 56);
-  border: none;
-  padding: 5px;
-  border-radius: 2vw;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-.selectedOrderWorkers li button:hover {
-  background-color: red;
-  transform: translate(-5%, 0%);
-}
 .ordersContent {
   width: 100%;
   height: 100%;
@@ -259,4 +100,34 @@
 .orderInfo {
   display: flex;
   justify-content: space-between;
+}
+@media (max-width: 768px) {
+  .ordersContent {
+    flex-direction: column;
+  }
+  .ordersContent .ordersInfoCont {
+    height: 50%;
+    width: 100%;
+  }
+  .ordersContent .ordersInfoCont > :first-child {
+    display: none;
+  }
+
+  .ordersList {
+    height: 98%;
+  }
+  .ordersList ul {
+    height: 90%;
+  }
+  .ordersList ul li {
+    height: 50%;
+    overflow: hidden;
+  }
+  .ordersList ul li button {
+    height: 100%;
+  }
+  .ordersPage .extBtn {
+    width: 30px;
+    height: auto;
+  }
 }

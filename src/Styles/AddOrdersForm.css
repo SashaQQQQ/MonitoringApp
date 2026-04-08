@@ -248,3 +248,6 @@
   opacity: 0.8;
   background-color: rgb(248, 248, 248);
 }
+
+@media (max-width: 786px) {
+}

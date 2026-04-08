@@ -123,7 +123,8 @@
     display: none;
   }
   .userProfilePreview {
-    right: 0.5vw;
+    margin: 0;
+    right: 0vw;
     top: 0.5vh;
   }
   .horizontalPanel {

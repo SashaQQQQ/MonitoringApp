@@ -4,7 +4,7 @@
   height: 100%;
   box-sizing: border-box;
   justify-content: space-around;
-
+  overflow: hidden;
   flex-direction: column;
 }
 
@@ -15,7 +15,7 @@
   align-items: center;
   width: 100%;
   padding: 5px;
-  padding-right: 10px;
+
   height: 70%;
   overflow-y: auto;
   overflow-x: hidden;
@@ -25,25 +25,28 @@
 }
 .WorkersListPage ul li {
   padding-left: 15px;
+  padding-right: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20%;
-  height: 8%;
-  width: 60%;
+  gap: 10px;
+  height: auto;
+  width: 90%;
   transition: all 0.2s ease-in-out;
   box-shadow: 1px 1px 5px rgb(156, 160, 183);
   border-radius: 1vw;
 }
 .WorkersListPage ul li:hover {
   background-color: rgb(220, 224, 250);
-  width: 65%;
 }
 .WorkersListPage ul li:hover button {
   display: block;
 }
+.WorkersListPage ul li .buttons {
+  display: flex;
+  flex-wrap: wrap;
+}
 .WorkersListPage ul li button {
-  display: none;
   cursor: pointer;
   padding: 5px;
   width: 100px;
@@ -80,13 +83,15 @@
   width: 50%;
   gap: 15px;
 
+  flex-wrap: wrap;
   align-items: center;
   flex: 1;
 }
 .workerInfoGroup p {
+  text-overflow: ellipsis;
+  overflow: hidden;
   font-size: 18px;
   font-weight: 400;
-  flex: 1;
 }
 .workerInfoGroup a {
   flex: 1;
@@ -123,4 +128,44 @@
   position: absolute;
   top: 5%;
   left: 5%;
+}
+@media (max-width: 768px) {
+  .addWorkerBtn {
+    position: absolute;
+    top: 50px;
+  }
+  .WorkerSearch {
+    top: 4px;
+    width: 90%;
+  }
+  .WorkersListPage .WorkersGreatingText {
+    display: none;
+  }
+  .WorkersListPage ul li button {
+    display: block;
+  }
+  .WorkersListPage ul {
+    top: 100px;
+    height: 80%;
+  }
+  .WorkersListPage ul li {
+    height: auto;
+    width: 100%;
+    display: flex;
+
+    align-items: center;
+  }
+
+  .workerInfoGroup {
+    min-width: 200px;
+  }
+  .buttons {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+@media (hover: none) {
+  .WorkersListPage ul li button {
+    display: block;
+  }
 }

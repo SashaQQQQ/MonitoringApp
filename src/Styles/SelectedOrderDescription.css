@@ -1,0 +1,189 @@
+.orderDescription {
+  transition: all 0.2s ease;
+  width: 50%;
+  background-color: white;
+  height: 100%;
+  border-radius: 3vw;
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+
+  animation: appearance 0.5s ease forwards;
+}
+@keyframes appearance {
+  to {
+    opacity: 1;
+  }
+}
+
+.orderOverallInfo {
+  width: 90%;
+
+  height: 30%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.orderDescription .selectedOrderInfo {
+  width: 40%;
+
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  border-radius: 2vw;
+}
+.orderDescription .selectedOrderInfo p {
+  word-break: break-all;
+  text-align: left;
+
+  font-size: 20px;
+  width: auto;
+  max-width: 300px;
+}
+.orderDescription .selectedOrderInfo > :last-child {
+  position: relative;
+  top: 5px;
+  font-size: 18px;
+  color: grey;
+}
+.selectedOrderDescription {
+  top: 15px;
+  position: relative;
+  width: 90%;
+  background-color: rgb(242, 242, 242);
+  padding: 15px;
+  border-radius: 2vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  height: auto;
+  max-height: 300px;
+  text-overflow: clip;
+}
+.selectedOrderDescription h2 {
+  margin: 0;
+  background-color: black;
+  color: white;
+  padding: 5px;
+  font-size: 20px;
+  border-radius: 1vw;
+}
+.selectedOrderDescription p {
+  position: relative;
+  top: 15px;
+}
+
+.selectedOrderWorkerss li:hover {
+  background-color: rgb(241, 241, 252);
+}
+.selectedOrderWorkerss li .orderWorkersDetails {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 70%;
+  text-transform: capitalize;
+  gap: 5px;
+}
+.selectedOrderWorkerss {
+  gap: 15px;
+  position: relative;
+  top: 30px;
+  border: 1px solid black;
+  border-radius: 2vw;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.workersAmount {
+  position: relative;
+  top: 5px;
+
+  font-size: 20px;
+  text-align: center;
+}
+
+.selectedOrderWorkerss ul {
+  overflow-x: hidden;
+  padding: 5px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+  overflow-y: scroll;
+}
+.selectedOrderWorkerss li {
+  position: relative;
+  list-style: none;
+  width: 94%;
+  padding: 5px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgb(245, 244, 244);
+  border-radius: 1vw;
+}
+.orderWorkersDetails {
+  width: 50%;
+}
+.selectedOrderWorkerss li .orderWorkersDetails p {
+  border-radius: 2vw;
+  width: 50%;
+  min-width: 60px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  justify-content: left;
+}
+.selectedOrderWorkerss li .orderWorkersDetails h5 {
+  background-color: rgb(32, 32, 255);
+  color: white;
+  padding: 5px;
+  border-radius: 2vw;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  justify-content: left;
+}
+.selectedOrderWorkerss li button {
+  color: white;
+  background-color: rgb(253, 56, 56);
+  border: none;
+  padding: 5px;
+  border-radius: 2vw;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  .orderDescription .selectedOrderInfo p {
+    word-break: break-all;
+  }
+  .orderOverallInfo {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+  }
+  .orderDescription {
+    overflow: auto;
+    display: flex;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+  }
+  .selectedOrderWorkerss {
+    height: 1000px;
+  }
+}

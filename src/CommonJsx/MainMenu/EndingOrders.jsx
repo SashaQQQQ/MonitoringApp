@@ -70,9 +70,9 @@ function EndingOrders() {
               </p>
             </div>
             <div className="orderStats">
-              <p className="endingOrderProgress">Progress: {order.progress}%</p>
+              <p className="endingOrderProgress">Done: {order.progress}%</p>
               <p className="endingTime">
-                Due: {new Date(order.FinalDate).toISOString().split("T")[0]}
+                {new Date(order.FinalDate).toISOString().split("T")[0]}
               </p>
             </div>
           </div>

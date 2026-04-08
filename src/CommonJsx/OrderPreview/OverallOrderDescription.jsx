@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { supabase } from "../SupabaseClient.js";
-import "../../Styles/OrdersPage.css";
+import "../../Styles/SelectedOrderDescription.css";
 import { DataContext } from "../DataContext.jsx";
 import DonutChart from "../DonutChart.jsx";
 import workerIcon from "../../Icons/worker.png";
@@ -69,27 +69,27 @@ function OverallOrdersDescription({ selectedOrder }) {
             <h2>Description</h2>
             <p>{selectedOrder?.Description}</p>
           </div>
-          <div className="selectedOrderWorkers">
+          <div className="selectedOrderWorkerss">
             <p className="workersAmount">
-              Amount of workers on it: {selectedOrder.AmountOfWorkers}
+              Amount of workers: {selectedOrder.AmountOfWorkers}
             </p>
 
             <ul>
-              {workers.length === 0 ? <p>No workers found</p> : null}
-              {workers?.map((worker, index) => (
-                <li key={worker?.id}>
-                  <div className="orderWorkersDetails">
-                    <img src={workerIcon} alt="" />
-                    <p>
-                      {worker?.name} {worker?.secondName}
-                    </p>
-                    <h5>{worker?.progress_percent}% done</h5>
-                  </div>
-                  {whichRole === "Owner" || whichRole === "Admin" ? (
-                    <button>Delete</button>
-                  ) : null}
-                </li>
-              ))}
+              {workers.length === 0 ? (
+                <li>No workers found</li>
+              ) : (
+                workers?.map((worker) => (
+                  <li key={worker?.id}>
+                    <div className="orderWorkersDetails">
+                      <p>{worker?.secondName}</p>
+                      <h5>{worker?.progress_percent}%</h5>
+                    </div>
+                    {whichRole === "Owner" || whichRole === "Admin" ? (
+                      <button>Delete</button>
+                    ) : null}
+                  </li>
+                ))
+              )}
             </ul>
           </div>
         </div>

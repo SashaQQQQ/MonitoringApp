@@ -21,18 +21,20 @@ function WorkersList({ foundedWorkers }) {
           <p>{worker?.Role}</p>
         </div>
         <div>
-          {userProfile.Role == "Owner" || userProfile.Role == "Admin" ? (
-            <button
-              className="deleteWorker"
-              onClick={() => DeleteWorker(worker.id)}
-            >
-              Delete
-            </button>
-          ) : null}
+          <div className="buttons">
+            {userProfile.Role == "Owner" || userProfile.Role == "Admin" ? (
+              <button
+                className="deleteWorker"
+                onClick={() => DeleteWorker(worker.id)}
+              >
+                Delete
+              </button>
+            ) : null}
 
-          <button className="contactWorker" onClick={() => contact(worker)}>
-            Contact
-          </button>
+            <button className="contactWorker" onClick={() => contact(worker)}>
+              Contact
+            </button>
+          </div>
         </div>
       </li>
     );

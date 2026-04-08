@@ -56,8 +56,6 @@ function OverallOrdersPage({ setCalendarOrders, handleOrderClick }) {
                   ? order.Title.slice(0, 25) + ".."
                   : order.Title}{" "}
               </p>
-              <p> | </p>
-              <p>Progress:{order.ReadyProcent}</p>
             </div>
             <button
               onClick={() => {

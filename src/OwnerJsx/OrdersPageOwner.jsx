@@ -48,10 +48,7 @@ function OrdersPageOwner() {
           />
 
           <div className="ordersContent">
-            <div
-              className="ordersInfoCont"
-              style={{ width: selectedOrder ? "50%" : "100%" }}
-            >
+            <div className="ordersInfoCont">
               <MyCalendar orders={orders} />
               <OverallOrdersList
                 setCalendarOrders={setOrders}

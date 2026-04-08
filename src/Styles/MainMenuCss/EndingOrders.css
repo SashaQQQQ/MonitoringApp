@@ -12,10 +12,9 @@
   padding-left: 15px;
   padding-right: 15px;
   display: flex;
-
   justify-content: space-between;
   align-items: center;
-  gap: 20%;
+  gap: 10px;
   height: auto;
   min-height: 50px;
   width: 94%;
@@ -23,7 +22,7 @@
   border-radius: 0.5vw;
 }
 .orderCard .orderInfo {
-  max-width: 40%;
+  width: 40%;
 }
 .orderCard .orderInfo p {
   font-weight: 700;
@@ -32,17 +31,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.orderCard .endingTime {
-  border-radius: 1vw;
-  padding: 5px;
-  color: rgb(135, 60, 3);
-  background-color: rgb(255, 111, 0);
-  text-align: left;
-  margin-right: 15px;
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-.orderStats {
+.orderCard .orderStats {
   text-align: center;
   overflow: hidden;
 
@@ -52,6 +41,16 @@
   width: auto;
   height: 100%;
   gap: 5px;
+  font-weight: 600;
+}
+.orderCard .endingTime {
+  border-radius: 1vw;
+  padding: 5px;
+  color: rgb(135, 60, 3);
+  background-color: rgb(255, 111, 0);
+  text-align: left;
+
+  font-size: 0.8rem;
   font-weight: 600;
 }
 .endingOrderProgress {
@@ -64,7 +63,7 @@
   font-size: 0.8rem;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .orderCard {
   }
 }

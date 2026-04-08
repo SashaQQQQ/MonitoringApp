@@ -1,6 +1,6 @@
 .donutContainer {
   display: flex;
-  justify-content: right;
+  justify-content: center;
   align-items: center;
   gap: 10px;
   width: 100%;
