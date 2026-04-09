@@ -1,47 +1,55 @@
 import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../DataContext.jsx";
-import "../../Styles/ChatList.css";
+import "../../Styles/ChatCss/ChatList.css";
 import personIcon from "../../Icons/worker.png";
 import { supabase } from "../SupabaseClient.js";
-export default function ChatList({ chatList, getOtherUser, loadChatList }) {
+export default function ChatList({
+  activeView,
+  chatList,
+  getOtherUser,
+  loadChatList,
+}) {
   const [currentSearch, setCurrentSearch] = useState("");
   const [searchedUsers, setSearchedUsers] = useState([]);
-
+  const { userProfile } = useContext(DataContext);
   function renderItems(item, isSearch = false) {
     const date = item?.time ? new Date(item.time) : null;
     const now = new Date();
 
-    const isToday = date.toDateString() === now.toDateString();
+    const isToday = date && date.toDateString() === now.toDateString();
 
+    if (item.id === userProfile.id) return;
     return (
       <li key={item.id} onClick={() => getOtherUser(item)}>
         <img src={personIcon} alt="" />
-        <p className="nameOfChat">
-          {item?.name + " "}
-          {item?.secondName}
-        </p>
-        <p className="lastMessage">
-          {isSearch
-            ? "Start chat"
-            : item?.lastMessage.length > 4
-              ? item?.lastMessage.slice(0, 4) + ".."
-              : item?.lastMessage}
-        </p>
+        <div className="chatInfo">
+          <p className="nameOfChat">
+            {item?.name + " "}
+            {item?.secondName}
+          </p>
+          <p className="lastMessage">
+            {isSearch
+              ? "Start chat"
+              : item?.lastMessage.length > 10
+                ? item?.lastMessage.slice(0, 10) + ".."
+                : item?.lastMessage}
+          </p>
 
-        <p className="chatDate">
-          {isSearch
-            ? "New"
-            : isToday
-              ? date.toLocaleDateString([], {
-                  hour: "2-digit",
-                  minute: "2-digit",
-                  hour12: false,
-                })
-              : date.toLocaleDateString([], {
-                  day: "2-digit",
-                  month: "2-digit",
-                })}
-        </p>
+          <p className="chatDate">
+            {isSearch
+              ? "New"
+              : isToday
+                ? date.toLocaleDateString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    hour12: false,
+                  })
+                : date.toLocaleDateString([], {
+                    day: "2-digit",
+                    month: "2-digit",
+                  })}
+          </p>
+        </div>
       </li>
     );
   }
@@ -80,7 +88,7 @@ export default function ChatList({ chatList, getOtherUser, loadChatList }) {
     loadChatList();
   }, []);
   return (
-    <div className="ChatList">
+    <div className={`ChatList ${activeView === "chat" ? "hidden" : ""}`}>
       <div className="chatListSearch">
         <input
           type="text"

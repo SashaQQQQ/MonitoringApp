@@ -3,9 +3,10 @@ import { supabase } from "../SupabaseClient.js";
 import { DataContext } from "../DataContext.jsx";
 import ChatList from "./ChatList.jsx";
 import ChatWindow from "./ChatWindow.jsx";
-import "../../Styles/Chat.css";
+import "../../Styles/ChatCss/Chat.css";
 
 function Chat() {
+  const [activeView, setActiveView] = useState("list");
   const { userProfile, otherUser, setOtherUser, loading } =
     useContext(DataContext);
   const [chatList, setChatList] = useState([]);
@@ -61,9 +62,18 @@ function Chat() {
       <ChatList
         chatList={chatList}
         loadChatList={loadChatList}
-        getOtherUser={setOtherUser}
+        getOtherUser={(user) => {
+          setOtherUser(user);
+          setActiveView("chat");
+        }}
+        activeView={activeView}
       />
-      <ChatWindow loadChatList={loadChatList} otherUser={otherUser} />
+      <ChatWindow
+        loadChatList={loadChatList}
+        otherUser={otherUser}
+        goBack={() => setActiveView("list")}
+        activeView={activeView}
+      />
     </div>
   );
 }

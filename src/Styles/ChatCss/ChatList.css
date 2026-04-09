@@ -1,0 +1,102 @@
+.ChatList {
+  width: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2vw;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.ChatList ul {
+  height: 98%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 2px;
+  width: 98%;
+  border-radius: 1vw;
+  background-color: rgb(249, 248, 248);
+}
+.ChatList ul li {
+  position: relative;
+
+  height: 10%;
+  display: flex;
+  justify-content: left;
+  background-color: white;
+  gap: 2px;
+  width: 98%;
+  border-radius: 1vw;
+  border: 1px solid rgb(243, 243, 243);
+  cursor: pointer;
+  align-items: center;
+  padding: 5px;
+  transition: all 0.2s ease;
+}
+.ChatList ul li:hover {
+  background-color: rgb(243, 243, 243);
+}
+.ChatList ul li img {
+  height: 50px;
+  width: auto;
+}
+.ChatList ul li .chatInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  width: 80%;
+  overflow: hidden;
+}
+.ChatList ul li .chatInfo .nameOfChat {
+  width: 98%;
+  text-transform: capitalize;
+  font-weight: 700;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.ChatList ul li .chatInfo .lastMessage {
+  color: rgb(93, 93, 93);
+  width: 80%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.ChatList ul li .chatInfo .chatDate {
+  width: 98%;
+  display: flex;
+  color: grey;
+  font-size: 12px;
+  justify-content: right;
+}
+.ChatList .chatListSearch {
+  width: 100%;
+  height: 10%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ChatList .chatListSearch input {
+  width: 95%;
+  height: 50%;
+  border-radius: 1vw;
+  border: 1px solid rgb(235, 235, 235);
+  outline: 0;
+  padding: 15px;
+  font-size: 16px;
+}
+
+@media (max-width: 786px) {
+  .ChatList ul li .chatInfo {
+    gap: 0px;
+  }
+  .ChatList ul {
+    border-radius: 20px;
+    padding: 15px;
+  }
+}

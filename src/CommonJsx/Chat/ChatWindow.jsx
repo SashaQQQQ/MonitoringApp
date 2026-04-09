@@ -1,9 +1,14 @@
 import { useEffect, useState, useContext } from "react";
 import { supabase } from "../SupabaseClient.js";
 import { DataContext } from "../DataContext.jsx";
-import "../../Styles/ChatWindow.css";
+import "../../Styles/ChatCss/ChatWindow.css";
 
-export default function ChatWindow({ loadChatList, otherUser }) {
+export default function ChatWindow({
+  activeView,
+  goBack,
+  loadChatList,
+  otherUser,
+}) {
   const { userProfile } = useContext(DataContext);
   const [messages, setMessages] = useState([]);
   const [text, setText] = useState("");
@@ -78,8 +83,9 @@ export default function ChatWindow({ loadChatList, otherUser }) {
     };
   }, [otherUser]);
   return (
-    <div className="chatWindow">
+    <div className={`chatWindow ${activeView === "list" ? "hidden" : ""}`}>
       <div className="chatHeader">
+        <button onClick={goBack}>←</button>
         <p>{otherUser?.name + " " + otherUser?.secondName}</p>
       </div>
 
