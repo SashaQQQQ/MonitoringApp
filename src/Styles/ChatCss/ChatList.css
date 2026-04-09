@@ -92,6 +92,9 @@
 }
 
 @media (max-width: 786px) {
+  .ChatList ul li {
+    height: auto;
+  }
   .ChatList ul li .chatInfo {
     gap: 0px;
   }
