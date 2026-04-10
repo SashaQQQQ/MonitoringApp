@@ -11,3 +11,8 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+@media (max-width: 786px) {
+  body {
+    overflow-y: auto;
+  }
+}
