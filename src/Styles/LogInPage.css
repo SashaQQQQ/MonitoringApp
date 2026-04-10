@@ -11,7 +11,7 @@
   min-width: 400px;
   max-width: 550px;
   min-height: 500px;
-  height: 60vh;
+  height: 60dvh;
   width: 40vw;
   overflow-y: auto;
   display: flex;
