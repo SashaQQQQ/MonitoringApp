@@ -15,7 +15,7 @@
 }
 .OnlineList ul li {
   width: 98%;
-  height: 15%;
+  height: auto;
   list-style: none;
   display: flex;
   background-color: white;
@@ -26,6 +26,7 @@
   border-radius: 2vw;
   padding-left: 15px;
   padding-right: 15px;
+  padding: 5px;
   box-shadow: 1px 1px 5px rgb(156, 160, 183);
 }
 .OnlineList ul li p {

@@ -1,16 +1,15 @@
 .navigationMenu {
-  position: absolute;
-  top: 12vh;
-  left: 3vw;
+  position: fixed;
+  left: 15px;
+  top: 100px;
   width: 12vw;
   height: 84vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1%;
+  gap: 10px;
   background-color: white;
   border-radius: 1vw;
-  margin-right: 20px;
 }
 .navigationMenu div {
   font-size: clamp(0.8rem, 2.5vw, 1rem);
@@ -50,17 +49,17 @@
 
 @media (max-width: 768px) {
   .navigationMenu {
-    z-index: 1;
-    padding-bottom: 5px;
-    width: 100vw;
+    z-index: 100;
+    top: unset;
+    width: 100%;
     max-height: 80px;
     position: fixed;
     justify-content: space-evenly;
     left: 0;
     bottom: 0;
-    padding-bottom: calc(5px + env(safe-area-inset-bottom));
+    padding-bottom: calc(15px + env(safe-area-inset-bottom));
     height: auto !important;
-    background-color: red;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: row;
   }
