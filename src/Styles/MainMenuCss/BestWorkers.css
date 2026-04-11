@@ -70,6 +70,8 @@
 
 @media (max-width: 768px) {
   .workerCard {
+    padding-left: 15px;
+    padding-right: 15px;
     border-radius: 3vw;
   }
 }

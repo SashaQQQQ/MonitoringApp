@@ -1,6 +1,7 @@
 import { useState, useEffect, use } from "react";
 import { supabase } from "../SupabaseClient.js";
 import "../../Styles/OrdersPage.css";
+import plusIcon from "../../Icons/plus.png";
 
 function OverallOrdersPage({ setCalendarOrders, handleOrderClick }) {
   const [orders, setOrders] = useState(null);
@@ -42,6 +43,12 @@ function OverallOrdersPage({ setCalendarOrders, handleOrderClick }) {
 
   return (
     <div className="ordersList">
+      <img
+        className="extBtn"
+        onClick={() => setAddOrderFormStatus(true)}
+        src={plusIcon}
+      />
+
       <ul>
         {orders?.map((order, index) => (
           <li

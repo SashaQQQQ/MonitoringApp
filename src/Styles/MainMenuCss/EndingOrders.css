@@ -72,5 +72,6 @@
   .orderCard {
     border-radius: 3vw;
     padding-left: 15px;
+    padding-right: 15px;
   }
 }

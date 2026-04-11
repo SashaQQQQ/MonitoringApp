@@ -1,9 +1,10 @@
 .ordersPage {
-  width: 95%;
-  height: 95%;
+  width: 100%;
+  height: 90%;
   overflow: hidden;
+  padding: 15px;
 }
-.ordersPage .extBtn {
+.extBtn {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -41,16 +42,14 @@
   transition: all 0.5s ease;
 }
 .ordersList {
-  padding: 0;
+  padding: 5px;
   width: 100%;
   height: 50%;
   background-color: rgb(237, 237, 237);
   border-radius: 2vw;
   transition: all 0.2s ease;
 }
-.ordersList:hover {
-  transform: translate(0%, 0.5%);
-}
+
 .ordersList ul {
   padding: 0;
   width: 100%;
@@ -67,7 +66,7 @@
   gap: 5px;
 }
 .ordersList ul li {
-  padding: 0;
+  padding: 2px;
   text-transform: capitalize;
   color: rgb(123, 123, 123);
   font-weight: 700;
@@ -119,9 +118,7 @@
   .ordersList {
     height: 98%;
   }
-  .ordersList ul {
-    height: 90%;
-  }
+
   .ordersList ul li {
     height: 50%;
     overflow: hidden;
@@ -132,5 +129,8 @@
   .ordersPage .extBtn {
     width: 30px;
     height: auto;
+    position: absolute;
+    top: 10px;
+    left: 10px;
   }
 }

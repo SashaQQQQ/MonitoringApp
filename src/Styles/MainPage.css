@@ -105,7 +105,8 @@
 }
 @media (max-width: 768px) {
   .mainContent {
-    width: 100%;
+    width: 100vw;
+
     position: relative;
     left: 0;
     background-color: transparent;
@@ -132,6 +133,7 @@
     height: auto;
     border-radius: 2vw;
     box-shadow: 0;
+    border: 1px solid rgb(197, 197, 197);
   }
   .userProfilePreview img {
     width: 30px;
