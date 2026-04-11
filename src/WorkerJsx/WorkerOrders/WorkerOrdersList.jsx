@@ -77,7 +77,7 @@ const WorkerOrdersList = ({ setActivePanel, setSelectedOrder }) => {
               <li
                 onClick={() => {
                   setSelectedOrder(order);
-                  setActivePanel;
+                  setActivePanel("details");
                 }}
                 key={order.id}
               >

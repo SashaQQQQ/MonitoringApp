@@ -3,7 +3,7 @@
   justify-content: space-around;
   align-items: center;
   height: 100%;
-  width: 98%;
+  width: 100%;
   gap: 5px;
 }
 
@@ -17,6 +17,7 @@
 
   height: 100%;
 }
+
 .orderColumn h4 {
   position: relative;
   top: 5px;
@@ -84,6 +85,7 @@
   flex-direction: column;
   align-items: center;
 }
+
 .workerOrderDetails h3 {
   position: relative;
   top: 10px;
@@ -189,13 +191,41 @@
   background-color: rgb(126, 141, 253);
   color: black;
 }
-
+.backBtn {
+  display: none;
+}
 @media (max-width: 768px) {
+  .orderColumn.hidden {
+    display: none;
+  }
+  .orderColumn {
+    width: 100%;
+    background-color: white;
+    padding: 15px;
+    padding-top: 30px;
+    height: 70vh;
+  }
   .orderColumn h1 {
     font-size: 18px;
   }
   .orderColumn h4 {
     font-size: 13px;
     text-align: center;
+  }
+  .backBtn {
+    display: block;
+    border-radius: 1vw;
+    border: none;
+
+    color: white;
+    cursor: pointer;
+    font-weight: 800;
+    padding: 5px;
+
+    background-color: rgb(69, 69, 240);
+    transition: all 0.2s ease;
+  }
+  .backBtn:hover {
+    background-color: rgb(29, 29, 247);
   }
 }

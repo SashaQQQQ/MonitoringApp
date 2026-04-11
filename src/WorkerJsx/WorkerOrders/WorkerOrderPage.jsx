@@ -13,17 +13,13 @@ function WorkerOrdersPage({}) {
         className={`orderColumn ${activePanel === "details" ? "hidden" : ""}`}
       >
         <WorkerOrdersList
-          setActivePanel={() => {
-            setActivePanel("list");
-          }}
+          setActivePanel={setActivePanel}
           setSelectedOrder={setSelectedOrder}
         />
       </div>
       <div className={`orderColumn ${activePanel === "list" ? "hidden" : ""}`}>
         <WorkerOrderDetails
-          setActivePanel={() => {
-            setActivePanel("list");
-          }}
+          setActivePanel={setActivePanel}
           selectedOrder={selectedOrder}
         />
       </div>

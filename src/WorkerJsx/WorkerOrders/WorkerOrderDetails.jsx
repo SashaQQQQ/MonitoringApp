@@ -46,6 +46,14 @@ const WorkerOrderDetails = ({
   return (
     <>
       <h1 className="ordersGreatingText">Order details</h1>
+      <button
+        className="backBtn"
+        onClick={() => {
+          setActivePanel("list");
+        }}
+      >
+        ←
+      </button>
       {selectedOrder?.id ? (
         <div className="workerOrderDetails">
           <h3>
