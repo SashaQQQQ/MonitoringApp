@@ -68,6 +68,9 @@
 }
 .ordersList ul li {
   padding: 0;
+  text-transform: capitalize;
+  color: rgb(123, 123, 123);
+  font-weight: 700;
   cursor: pointer;
   width: 98%;
   height: 15%;

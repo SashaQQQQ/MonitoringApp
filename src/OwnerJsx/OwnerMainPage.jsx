@@ -6,7 +6,6 @@ import OrdersPageOwner from "./OrdersPageOwner.jsx";
 import NavigationBar from "../CommonJsx/NavigationBar.jsx";
 import ProfilePreview from "../CommonJsx/ProfilePreview.jsx";
 import ChatMain from "../CommonJsx/Chat/ChatMain.jsx";
-
 import MainMenuBlock from "../CommonJsx/MainMenu/MainMenuBlocks.jsx";
 import "../Styles/MainPage.css";
 import { refreshOnlineStatus } from "../App.jsx";
@@ -28,10 +27,9 @@ function OwnerMainPage() {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <div>
-      <div className="userWindow">
-        <NavigationBar />
-      </div>
+    <div className="userWindow">
+      <NavigationBar />
+
       <h1 className="greetings">Welcome on board!</h1>
       <div className="mainContent">
         <div className="scrollContainer">

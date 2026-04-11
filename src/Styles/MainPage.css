@@ -116,8 +116,10 @@
     top: 10vh;
     right: 0;
     width: 90vw;
-    height: 75vh;
+    min-height: 75vh;
+    height: auto;
     min-width: 400px;
+    padding-bottom: calc(80px + env(safe-area-inset-bottom));
   }
   .greetings {
     display: none;

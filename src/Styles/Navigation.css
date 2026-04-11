@@ -53,12 +53,14 @@
     z-index: 1;
     padding-bottom: 5px;
     width: 100vw;
+    max-height: 80px;
     position: fixed;
     justify-content: space-evenly;
     left: 0;
-    top: 90vh;
-    height: auto;
-
+    bottom: 0;
+    padding-bottom: calc(5px + env(safe-area-inset-bottom));
+    height: auto !important;
+    background-color: red;
     display: flex;
     flex-direction: row;
   }

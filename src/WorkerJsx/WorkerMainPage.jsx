@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 
 import NavigationBar from "../CommonJsx/NavigationBar.jsx";
 import ProfilePreview from "../CommonJsx/ProfilePreview.jsx";
-import WorkerOrderPage from "./WorkerOrderPage.jsx";
+import WorkerOrderPage from "./WorkerOrders/WorkerOrderPage.jsx";
 import WorkersListPage from "./WorkersListPage.jsx";
 import ChatMain from "../CommonJsx/Chat/ChatMain.jsx";
 import "../Styles/MainPage.css";
@@ -10,8 +10,7 @@ import { DataContext } from "../CommonJsx/DataContext.jsx";
 import MainMenuBlock from "../CommonJsx/MainMenu/MainMenuBlocks.jsx";
 import { refreshOnlineStatus } from "../App.jsx";
 function WorkerMainPage() {
-  const { loading, userProfile, activePage, setActivePage } =
-    useContext(DataContext);
+  const { loading, userProfile, activePage } = useContext(DataContext);
 
   if (loading) return <div>Loading...</div>;
   useEffect(() => {
@@ -30,15 +29,16 @@ function WorkerMainPage() {
   return (
     <div>
       <h1 className="greetings">Welcome on board!</h1>
-      <div className="userWindow">
-        <NavigationBar />
-      </div>
+
+      <NavigationBar />
 
       <div className="mainContent">
-        {activePage === "main" && <MainMenuBlock />}
-        {activePage === "workers" && <WorkersListPage />}
-        {activePage === "orders" && <WorkerOrderPage />}
-        {activePage === "chats" && <ChatMain />}
+        <div className="scrollContainer">
+          {activePage === "main" && <MainMenuBlock />}
+          {activePage === "workers" && <WorkersListPage />}
+          {activePage === "orders" && <WorkerOrderPage />}
+          {activePage === "chats" && <ChatMain />}
+        </div>
       </div>
       {userProfile ? <ProfilePreview userProfile={userProfile} /> : null}
     </div>

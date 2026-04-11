@@ -3,7 +3,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  padding-bottom: calc(80px + env(safe-area-inset-bottom));
   font-family: Arial, Helvetica, sans-serif;
 }
 * {

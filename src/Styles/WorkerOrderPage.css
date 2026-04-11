@@ -4,6 +4,7 @@
   align-items: center;
   height: 100%;
   width: 98%;
+  gap: 5px;
 }
 
 .orderColumn {
@@ -11,7 +12,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
   width: 50%;
+
   height: 100%;
 }
 .orderColumn h4 {
@@ -33,11 +36,13 @@
   height: 100%;
 }
 .orderColumn ul li {
-  width: 60%;
-  height: 10%;
+  width: 90%;
+  gap: 5px;
+  height: auto;
   background-color: rgb(237, 237, 237);
   border-radius: 2vw;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
@@ -45,20 +50,32 @@
   transition: all 0.2s ease;
   overflow-y: auto;
 }
-.orderColumn ul li p {
+.orderColumn ul li > :first-child {
+  width: 90%;
+  font-size: clamp(14px, 1.2vw, 18px);
+  padding-top: 3px;
+  font-weight: 700;
+  color: rgb(43, 43, 43);
+  overflow: hidden;
+  text-overflow: ellipsis;
   text-transform: capitalize;
+}
+.orderColumn ul li > :last-child {
+  width: 100%;
+  text-align: right;
+  color: grey;
+  font-size: 13px;
 }
 .orderColumn ul li:hover {
   background-color: rgb(200, 200, 200);
-  width: 70%;
 }
 .ordersGreatingText {
   color: rgb(58, 58, 58);
   font-size: 24px;
 }
 .workerOrderDetails {
-  width: 100%;
-  height: 100%;
+  width: 98%;
+  height: 96%;
   gap: 10px;
   border: 1px solid rgb(237, 237, 237);
   box-shadow: 2px 2px 5px rgb(156, 160, 183);
@@ -80,7 +97,6 @@
   background-color: rgb(237, 237, 237);
   border-radius: 1vw;
   padding: 10px;
-  margin: 10px 0;
 }
 .workerOrderDetails .description p {
   color: rgb(58, 58, 58);
@@ -102,19 +118,18 @@
   padding: 15px;
 }
 .progresses {
-  top: 15px;
   position: relative;
   display: flex;
 
   width: 80%;
-  height: 20%;
+  height: auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 .progresses .labels {
   display: flex;
-  gap: 20px;
+
   width: 100%;
   justify-content: space-around;
 }
@@ -124,18 +139,16 @@
 }
 .progresses .charts {
   display: flex;
-  gap: 20px;
-  width: 100%;
-  height: auto;
 
-  justify-content: center;
+  width: 100%;
 }
 .form {
-  top: 40px;
   position: relative;
   display: flex;
+  align-items: center;
+  gap: 10px;
 
-  gap: 20px;
+  padding: 10px;
   width: 80%;
   height: auto;
   justify-content: center;
@@ -146,11 +159,14 @@
   width: 70%;
 }
 .inputFields p {
+  font-size: 15px;
+  white-space: nowrap;
   color: rgb(58, 58, 58);
+  padding-left: 5px;
   font-weight: 600;
   display: flex;
   align-items: center;
-  text-align: center;
+  text-align: left;
 }
 .inputFields input {
   width: 60%;
@@ -158,12 +174,8 @@
   border: 1px solid rgb(237, 237, 237);
   border-radius: 1vw;
 }
-.saveDetails {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.saveDetails button {
+
+.form button {
   background-color: rgb(89, 108, 253);
   border: none;
   padding: 10px;
@@ -173,7 +185,17 @@
   transition: all 0.2s ease;
   cursor: pointer;
 }
-.saveDetails button:hover {
+.form button:hover {
   background-color: rgb(126, 141, 253);
-  box-shadow: 2px 5px rgb(185, 185, 185);
+  color: black;
+}
+
+@media (max-width: 768px) {
+  .orderColumn h1 {
+    font-size: 18px;
+  }
+  .orderColumn h4 {
+    font-size: 13px;
+    text-align: center;
+  }
 }
