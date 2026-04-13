@@ -1,8 +1,8 @@
 .orderDescription {
   transition: all 0.2s ease;
   width: 50%;
-  background-color: white;
-  height: 100%;
+
+  height: auto;
   border-radius: 3vw;
   display: flex;
   min-height: 0;
@@ -172,6 +172,10 @@
     word-break: break-all;
     max-width: unset;
     width: 100%;
+  }
+  .workerOrderDetails {
+    height: auto;
+    border: none;
   }
   .selectedOrderInfo {
     width: 100vw;

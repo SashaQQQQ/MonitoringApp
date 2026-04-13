@@ -1,8 +1,12 @@
-import { useState, useEffect, use } from "react";
+import { useState, useEffect, useContext } from "react";
+import bagIcon from "../Icons/workerBag.png";
+import adminIcon from "../Icons/protection.png";
+import { DataContext } from "./DataContext.jsx";
 
 import "../Styles/AddWorker.css";
 import { supabase } from "./SupabaseClient.js";
 function AddWorker() {
+  const { setActivePage } = useContext(DataContext);
   const [name, setName] = useState("");
   const [secondName, setSecondName] = useState("");
 
@@ -65,21 +69,25 @@ function AddWorker() {
     setSecondName(e.target.value);
   }
   function handleRoleChange(e) {
-    setRole(e.target.value);
+    setRole(e);
   }
-
+  useEffect(() => {
+    console.log(role);
+  }, [role]);
   return (
     <div className="AddWorker">
       <div className="formCard">
         <h1>Add new worker</h1>
-        <p className="subtitle">Fill in the information below</p>
+        <p className="subtitle">
+          Fill in the information of employee to add him to the system
+        </p>
 
         <div className="workerForm">
           <div className="inputGroup">
             <label>Name</label>
             <input
               value={name}
-              onChange={(e) => handleNameChange(e)}
+              onInput={(e) => handleNameChange(e)}
               type="text"
               placeholder="Enter name"
             />
@@ -89,46 +97,78 @@ function AddWorker() {
             <label>Second name</label>
             <input
               value={secondName}
-              onChange={(e) => handleSecondNameChange(e)}
+              onInput={(e) => handleSecondNameChange(e)}
               type="text"
               placeholder="Enter second name"
             />
           </div>
 
           <div className="inputGroup">
-            <label>Role</label>
-            <select
-              onChange={(e) => {
-                handleRoleChange(e);
-              }}
-            >
-              <option value="" disabled defaultValue={"Admin"}>
-                Select role
-              </option>
-
-              <option value="Admin">Admin</option>
-              <option value="Worker">Worker</option>
-            </select>
-          </div>
-          <div className="inputGroup">
             <label>His login</label>
             <input
+              placeholder="Enter the email"
               value={workerLogin}
-              onChange={(e) => handleWorkerLoginChange(e)}
+              onInput={(e) => handleWorkerLoginChange(e)}
               type="text"
             />
           </div>
           <div className="inputGroup">
             <label>His password</label>
             <input
+              placeholder="Enter the password"
               workerPassword={workerPassword}
               onChange={(e) => handleWorkerPasswordChange(e)}
               type="text"
             />
           </div>
-          <button onClick={handleAddWorker} className="submitBtn">
-            Add worker
-          </button>
+          <div className="roleChoice">
+            <label className="choiceContainer">
+              <input
+                name="role"
+                type="radio"
+                value="Worker"
+                onInput={(e) => {
+                  handleRoleChange(e.target.value);
+                }}
+              />
+              <span className="customRadio"></span>
+              <img src={bagIcon} alt="Worker" />
+              <div>
+                <h3>Worker</h3>
+                <p>Access to completing orders</p>
+              </div>
+            </label>
+
+            <label className="choiceContainer">
+              <input
+                name="role"
+                type="radio"
+                value="Admin"
+                onInput={(e) => {
+                  handleRoleChange(e.target.value);
+                }}
+              />
+              <span className="customRadio"></span>
+              <img src={adminIcon} alt="Admin" />
+              <div>
+                <h3>Admin</h3>
+                <p>Full access to the management</p>
+              </div>
+            </label>
+          </div>
+          <div className="formBtns">
+            <button
+              onClick={() => {
+                setActivePage("workers");
+              }}
+              className="formBackBtn"
+            >
+              Back
+            </button>
+            <button onClick={handleAddWorker} className="submitBtn">
+              Add worker
+            </button>
+          </div>
         </div>
       </div>
     </div>

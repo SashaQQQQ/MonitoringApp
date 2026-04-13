@@ -198,12 +198,17 @@
   .orderColumn.hidden {
     display: none;
   }
+  .workerOrderDetails {
+    height: 100%;
+    border: unset;
+    box-shadow: unset;
+  }
   .orderColumn {
     width: 100%;
     background-color: white;
     padding: 15px;
     padding-top: 30px;
-    height: 70vh;
+    height: 100%;
   }
   .orderColumn h1 {
     font-size: 18px;

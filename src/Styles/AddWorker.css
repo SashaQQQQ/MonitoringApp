@@ -1,19 +1,18 @@
 .AddWorker {
   width: 100%;
   height: 100%;
-  border-radius: 5vw;
+  border-radius: 1vw;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #f5f7fa, #e4e8ee);
 }
 
 .formCard {
-  background: #fff;
+  background: #f1f9fb;
   padding: 32px;
-  min-width: 420px;
-  width: 80%;
-  height: 80%;
+
+  width: 95%;
+  height: 98%;
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   overflow: auto;
@@ -22,11 +21,15 @@
 .formCard h1 {
   margin: 0;
   font-size: 26px;
-  text-align: center;
+  text-align: left;
+  width: 100%;
+  color: rgb(63, 63, 63);
 }
 
 .subtitle {
-  text-align: center;
+  width: 100%;
+  font-weight: 600;
+  text-align: left;
   color: #777;
   margin: 8px 0 24px;
 }
@@ -45,37 +48,146 @@
 
 .inputGroup label {
   font-size: 14px;
-  color: #555;
+  color: #232323;
+  font-weight: 600;
 }
 
 .inputGroup input {
   padding: 12px 14px;
-  border-radius: 1vw;
+  border-radius: 0.5vw;
   border: 1px solid #ddd;
   font-size: 15px;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
-
+.inputGroup input::placeholder {
+  font-weight: 600;
+}
 .inputGroup input:focus {
   outline: none;
   border-color: #4f46e5;
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
 }
+.roleChoice {
+  display: flex;
+  gap: 10px;
+  height: 120px;
+  width: 100%;
+  justify-content: space-around;
+}
+.roleChoice .choiceContainer {
+  cursor: pointer;
+  width: 50%;
+  padding: 5px;
+  background-color: white;
+  border-radius: 1vw;
+  align-items: center;
+  gap: 5px;
+  display: flex;
+}
+.roleChoice .choiceContainer input {
+  display: none;
+}
+.customRadio {
+  width: 20px;
+  height: 20px;
+  background: rgb(203, 203, 203);
+  position: relative;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
 
-.submitBtn {
-  margin-top: 12px;
+.customRadio::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: white;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.roleChoice .choiceContainer input:checked + .customRadio {
+  background-color: blue;
+}
+.roleChoice .choiceContainer input:checked + .customRadio::after {
+  background-color: white;
+}
+.roleChoice .choiceContainer img {
+  height: 60px;
+  width: 60px;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: rgb(200, 200, 234);
+}
+.roleChoice .choiceContainer div {
+  display: flex;
+  flex-direction: column;
+}
+.formBtns {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  gap: 30px;
+}
+.formBtns .formBackBtn {
   padding: 14px;
-  border-radius: 12px;
+  border-radius: 0.5vw;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #fefeff;
+  color: black;
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+}
+.submitBtn {
+  padding: 14px;
+  border-radius: 0.5vw;
   border: none;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   background: #4f46e5;
   color: white;
-  transition: transform 0.15s, box-shadow 0.15s;
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
 }
 
 .submitBtn:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+}
+.formBackBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+}
+@media (max-width: 786px) {
+  .roleChoice .choiceContainer img {
+    width: 40px;
+    height: 40px;
+    padding: 3px;
+  }
+  .roleChoice .choiceContainer {
+    overflow: hidden;
+    flex-direction: column;
+    height: auto;
+    justify-content: center;
+  }
+  .roleChoice .choiceContainer h3 {
+    font-size: 14px;
+  }
+  .roleChoice .choiceContainer p {
+    font-size: 12px;
+  }
+  .inputGroup input {
+    border-radius: 2vw;
+  }
 }
