@@ -10,9 +10,7 @@
   background-color: rgb(249, 247, 247);
   transition: 0.2s all ease;
 }
-.calendar-wrapper:hover {
-  transform: translate(0%, 0.5%);
-}
+
 .react-calendar {
   height: auto;
   background-color: transparent;

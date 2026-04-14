@@ -22,12 +22,12 @@
 }
 .ChatList ul li {
   position: relative;
-
+gap: 3px;
   height: 10%;
   display: flex;
   justify-content: left;
   background-color: white;
-  gap: 2px;
+ 
   width: 98%;
   border-radius: 1vw;
   border: 1px solid rgb(243, 243, 243);
@@ -40,13 +40,13 @@
   background-color: rgb(243, 243, 243);
 }
 .ChatList ul li img {
-  height: 50px;
+  height: 30px;
   width: auto;
 }
 .ChatList ul li .chatInfo {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+
 
   width: 80%;
   overflow: hidden;
@@ -98,6 +98,7 @@
   .ChatList ul li .chatInfo {
     gap: 0px;
   }
+
   .ChatList ul {
     border-radius: 20px;
     padding: 15px;

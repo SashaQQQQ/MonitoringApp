@@ -62,7 +62,9 @@ function OverallOrdersPage({ setCalendarOrders, handleOrderClick }) {
                 {order.Title.length > 25
                   ? order.Title.slice(0, 25) + ".."
                   : order.Title}{" "}
+                  
               </p>
+              <p>{order.FinalDate}</p>
             </div>
             <button
               onClick={() => {
