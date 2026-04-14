@@ -28,7 +28,7 @@
 .orderCard .orderInfo p {
   color: rgb(41, 41, 41);
   font-weight: 700;
-  font-size: 1.2rem;
+
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -48,8 +48,8 @@
 .orderCard .endingTime {
   border-radius: 1vw;
   padding: 5px;
-  color: rgb(135, 60, 3);
-  background-color: rgb(255, 111, 0);
+  color: #9f7f60;
+  background-color: #f9eadb;
   text-align: left;
 
   font-size: 0.8rem;
@@ -58,8 +58,8 @@
 .endingOrderProgress {
   border-radius: 1vw;
   padding: 5px;
-  background-color: rgb(26, 255, 0);
-  color: rgb(0, 111, 32);
+  background-color: #e1efe7;
+  color: #66a96d;
   text-align: center;
 
   font-size: 0.8rem;
@@ -70,8 +70,9 @@
     font-size: 15px;
   }
   .orderCard {
-    border-radius: 3vw;
+    border-radius: 1vw;
     padding-left: 15px;
     padding-right: 15px;
   }
+
 }

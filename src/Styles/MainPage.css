@@ -44,19 +44,13 @@
   flex-direction: column;
   width: 50%;
   height: 100%;
-  background-color: rgb(241, 241, 241);
-  border-radius: 2vw;
+  background-color: #f9f9fe;
+  border-radius: 0.5vw;
   transition: all 0.3s ease-in-out;
 }
-.bestWorkersPanel:hover,
-.ordersToEndFastPanel:hover {
-  transform: scale(1.01);
-}
 
-.lastChatsPanel:hover,
-.OnlineListContainer:hover {
-  transform: scale(1.01);
-}
+
+
 .panelTitle {
   margin: 10px 0 0 30px;
   font-size: clamp(1rem, 2vw, 1.3rem);
