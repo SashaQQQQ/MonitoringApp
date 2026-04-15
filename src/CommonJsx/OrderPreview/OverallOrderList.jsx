@@ -3,40 +3,10 @@ import { supabase } from "../SupabaseClient.js";
 import "../../Styles/OrdersPage.css";
 import plusIcon from "../../Icons/plus.png";
 
-function OverallOrdersPage({ setCalendarOrders, handleOrderClick }) {
-  const [orders, setOrders] = useState(null);
+function OverallOrdersPage({  handleOrderClick, fetchOrders, orders }) {
 
-  async function fetchOrders() {
-    const { data, error } = await supabase.from("orders").select("*");
 
-    if (error) {
-      console.error("Error fetching orders:", error);
-    }
-
-    if (data) {
-      setOrders(data);
-      setCalendarOrders(data);
-    }
-  }
-  async function deleteOrder(orderId) {
-    const { data, error } = await supabase
-      .from("orders")
-      .delete()
-      .eq("id", orderId);
-
-    if (error) {
-      console.error("Error deleting order:", error);
-    } else {
-      const { data: finalStepData, error: finalStepError } = await supabase
-        .from("order.Workers")
-        .delete()
-        .eq("order_id", orderId);
-      if (finalStepError) {
-        console.error("Error deleting order workers:", finalStepError);
-      }
-      fetchOrders();
-    }
-  }
+  
   useEffect(() => {
     fetchOrders();
   }, []);
@@ -66,13 +36,7 @@ function OverallOrdersPage({ setCalendarOrders, handleOrderClick }) {
               </p>
               <p>{order.FinalDate}</p>
             </div>
-            <button
-              onClick={() => {
-                deleteOrder(order.id);
-              }}
-            >
-              Delete
-            </button>
+          
           </li>
         ))}
       </ul>

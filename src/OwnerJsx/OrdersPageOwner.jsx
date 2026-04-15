@@ -10,10 +10,35 @@ function OrdersPageOwner() {
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [addOrderFormStatus, setAddOrderFormStatus] = useState(false);
   const [orders, setOrders] = useState([]);
-
+const [calendarOrders, setCalendarOrders] = useState([]);
   function handleOrderClick(order) {
     setSelectedOrder(order);
   }
+
+  async function fetchOrders() {
+      const { data, error } = await supabase.from("orders").select("*");
+  
+      if (error) {
+        console.error("Error fetching orders:", error);
+      }
+  
+      if (data) {
+        
+      const now = new Date();
+  
+      const endingSoon = data
+        .filter((order) => new Date(order.FinalDate + "T00:00:00") > now)
+        .sort(
+          (a, b) =>
+            new Date(a.FinalDate + "T00:00:00") -
+            new Date(b.FinalDate + "T00:00:00"),
+        );
+        setOrders(endingSoon);
+       setCalendarOrders(endingSoon);
+      }
+    }
+   
+
   async function fetchProcents() {
     const { data, error } = await supabase
       .from("order.Workers")
@@ -42,14 +67,15 @@ function OrdersPageOwner() {
         <div className="ordersContainer">
           <div className="ordersContent">
             <div className="ordersInfoCont">
-              <MyCalendar orders={orders} />
+              <MyCalendar orders={calendarOrders} />
               <OverallOrdersList
-                setCalendarOrders={setOrders}
+              fetchOrders={fetchOrders}
+             orders={orders}
                 handleOrderClick={handleOrderClick}
               />
             </div>
             {selectedOrder ? (
-              <OverallOrdersDescription selectedOrder={selectedOrder} />
+              <OverallOrdersDescription fetchOrders={fetchOrders} selectedOrder={selectedOrder} />
             ) : null}
           </div>
         </div>

@@ -1,7 +1,8 @@
 .WorkersListPage {
   display: flex;
+  
   width: 100%;
-  height: 50vh;
+  height: 70vh;
   box-sizing: border-box;
   justify-content: space-around;
   overflow: hidden;
@@ -36,20 +37,21 @@
   box-shadow: 1px 1px 5px rgb(156, 160, 183);
   border-radius: 1vw;
 }
-.WorkersListPage ul li:hover {
-  background-color: rgb(220, 224, 250);
-}
+
 .WorkersListPage ul li:hover button {
   display: block;
 }
 .WorkersListPage ul li .buttons {
   display: flex;
-  flex-wrap: wrap;
+  padding: 5px;
+  flex-direction: column;
+  gap: 5px;
+ 
 }
 .WorkersListPage ul li button {
   cursor: pointer;
   padding: 5px;
-  width: 100px;
+  width: 80px;
   border: none;
   border-radius: 1vw;
   margin-left: 5px;
@@ -59,44 +61,60 @@
 .WorkersListPage ul li div {
   display: flex;
 }
-.deleteWorker {
-  background-color: rgb(255, 99, 99);
+.WorkersListPage ul li .buttons .deleteWorker {
+  background-color: #ECD9E2;
+  color: #A84E55;
 }
-.deleteWorker:hover {
-  background-color: rgb(255, 70, 70);
+.WorkersListPage ul li .buttons .deleteWorker:hover {
+
   transform: translate(-3%, 0%);
 }
 .workerImg {
-  width: 40px;
+  width: 35px;
   height: auto;
 }
-.contactWorker {
-  background-color: rgb(100, 100, 255);
+ .WorkersListPage ul li .buttons .contactWorker {
+  background-color: #dfe6fc;
+  color: #5d82e6;
 }
-.contactWorker:hover {
-  background-color: rgb(32, 32, 255);
+.WorkersListPage ul li .buttons .contactWorker:hover {
+
   transform: translate(-3%, 0%);
 }
 
 .workerInfoGroup {
   display: flex;
-  width: 50%;
+  width: 80%;
   gap: 15px;
 
-  flex-wrap: wrap;
+justify-content: space-between;
   align-items: center;
-  flex: 1;
+justify-content: left;
 }
 .workerInfoGroup p {
   text-overflow: ellipsis;
   overflow: hidden;
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 16px;
+  white-space: nowrap;
+  text-transform: capitalize;
+  color: rgb(92, 92, 92);
 }
 .workerInfoGroup a {
-  flex: 1;
   color: black;
-  margin-top: 30px;
+}
+.workerInfoGroup .workerName {
+font-weight: 600;
+
+  width: 180px;
+}.workerInfoGroup .workerEmail {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.workerInfoGroup .workerRole {
+  width: 50px;
+  text-align: right;
+  
 }
 .addWorkerBtn {
   padding: 10px;
@@ -106,7 +124,10 @@
   position: absolute;
   top: 15%;
   right: 5%;
-  background-color: rgb(129, 129, 251);
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+ background-color: rgb(0, 119, 255);
 }
 .WorkerSearch {
   outline: none;
@@ -116,8 +137,11 @@
   width: 90%;
   height: auto;
   border-radius: 2vw;
-  border: 1px solid gray;
+  border: 1px solid rgb(155, 201, 255);
+  color: rgb(0, 119, 255);
   padding: 10px;
+  font-size: 18px;
+  font-weight:  600px;
 }
 .WorkerSearch::placeholder {
   text-align: left;
@@ -126,21 +150,28 @@
 .WorkersGreatingText {
   font-size: clamp(16px, 5vw, 35px);
   position: absolute;
+ background-color: rgb(0, 119, 255);
+ color: white;
+ padding: 5px;
+ border-radius: 2vw;
   top: 5%;
   left: 5%;
 }
 @media (max-width: 768px) {
   .addWorkerBtn {
-    position: absolute;
-    top: 50px;
+    position: fixed;
+    top: 150px;
   }
   .WorkerSearch {
-    top: 4px;
+    position: fixed;
+    top: 100px;
     width: 90%;
   }
   .WorkersListPage {
-    background-color: red;
-    height: auto;
+    position: relative;
+    overflow-y: auto;
+    width: 100%;
+    height: 80vh;
   }
   .WorkersListPage .WorkersGreatingText {
     display: none;
@@ -149,7 +180,7 @@
     display: block;
   }
   .WorkersListPage ul {
-    top: 100px;
+
     height: auto;
   }
 

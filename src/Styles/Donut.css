@@ -15,14 +15,9 @@
   border-radius: 10vw;
   background-color: #0088fe;
 }
-.notReadyDonut {
-  position: relative;
-  margin-right: 7px;
-  width: 10px;
-  height: 50px;
-  border-radius: 10vw;
-  background-color: #ff8042;
-}
+
+
+
 .infoContainer {
   display: flex;
   gap: 10px;
@@ -39,4 +34,9 @@
 }
 .infoContainer div p {
   text-align: left;
+  color: #5d82e6;
+   background-color: #dfe6fc;
+   padding: 5px;
+    border-radius: 1vw;
+    font-weight: 600;
 }

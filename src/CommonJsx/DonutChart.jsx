@@ -29,10 +29,7 @@ export default function DonutChart({ progress }) {
           <div className="readyDonut"></div>
           <p>Ready {data[0].value}%</p>
         </div>
-        <div>
-          <div className="notReadyDonut"></div>
-          <p>Not ready {data[1].value}%</p>
-        </div>
+     
       </div>
     </div>
   );

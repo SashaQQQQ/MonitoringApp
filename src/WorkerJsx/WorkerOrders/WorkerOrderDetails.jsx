@@ -100,14 +100,7 @@ const WorkerOrderDetails = ({
                 value={updatedProgress}
               />
 
-              <p>Leave a comment</p>
-              <input
-                type="text"
-                value={comment}
-                onInput={(e) => {
-                  handleCommentChange(e.target.value);
-                }}
-              />
+              
             </div>
 
             <button onClick={updateChanges}>Save</button>

@@ -5,7 +5,7 @@ import { DataContext } from "../DataContext.jsx";
 import DonutChart from "../DonutChart.jsx";
 import workerIcon from "../../Icons/worker.png";
 
-function OverallOrdersDescription({ selectedOrder }) {
+function OverallOrdersDescription({ selectedOrder, fetchOrders }) {
   const [workers, setWorkers] = useState([]);
   const { whichRole } = useContext(DataContext);
   async function fetchWorkers() {
@@ -46,6 +46,26 @@ function OverallOrdersDescription({ selectedOrder }) {
     }
   }
 
+ async function deleteOrder(orderId) {
+    const { data, error } = await supabase
+      .from("orders")
+      .delete()
+      .eq("id", orderId);
+
+    if (error) {
+      console.error("Error deleting order:", error);
+    } else {
+      const { data: finalStepData, error: finalStepError } = await supabase
+        .from("order.Workers")
+        .delete()
+        .eq("order_id", orderId);
+      if (finalStepError) {
+        console.error("Error deleting order workers:", finalStepError);
+      }
+      fetchOrders();
+    }
+  }
+  
   useEffect(() => {
     console.log(workers);
   }, [workers]);
@@ -58,6 +78,15 @@ function OverallOrdersDescription({ selectedOrder }) {
         <div className="orderDescription">
           <div className="orderOverallInfo">
             <div className="selectedOrderInfo">
+              
+                <button
+              onClick={() => {
+                deleteOrder(selectedOrder?.id);
+              }}
+            >
+              Delete order
+            </button>
+
               <p>Order: {selectedOrder?.Title}</p>
 
               <p>Due to: {selectedOrder?.FinalDate}</p>

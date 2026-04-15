@@ -21,7 +21,7 @@ overflow: auto;
   justify-content: space-between;
   padding-right: 15px;
   padding-left: 15px;
-  padding: 5px;
+  padding: 10px;
 }
 .workerCard .workerInfo {
   display: flex;
@@ -33,6 +33,7 @@ overflow: auto;
 }
 .workerCard .workerInfo p {
   width: 100%;
+  text-transform: capitalize;
   overflow: hidden;
   text-overflow: ellipsis;
 }

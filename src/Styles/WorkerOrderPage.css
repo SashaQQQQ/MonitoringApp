@@ -22,12 +22,15 @@
   position: relative;
   top: 5px;
   font-size: 18px;
-  color: grey;
+ background-color: rgb(0, 119, 255);
+ padding: 5px;
+ border-radius: 1vw;
+ color: white;
 }
 .orderColumn ul {
   padding: 0;
   width: 100%;
-
+margin-top: 5px;
   display: flex;
   justify-content: start;
   padding-top: 5px;
@@ -77,7 +80,7 @@
 .workerOrderDetails {
   width: 98%;
   height: 96%;
-  gap: 10px;
+  gap: 20px;
   border: 1px solid rgb(237, 237, 237);
   box-shadow: 2px 2px 5px rgb(156, 160, 183);
   border-radius: 2vw;
@@ -89,19 +92,20 @@
 .workerOrderDetails h3 {
   position: relative;
   top: 10px;
-  color: rgb(58, 58, 58);
+  color: rgb(0, 119, 255);
   font-size: 24px;
 }
 .workerOrderDetails .description {
   width: 80%;
   height: auto;
   max-height: 300px;
-  background-color: rgb(237, 237, 237);
+  background-color: rgb(224, 247, 255);
   border-radius: 1vw;
   padding: 10px;
 }
 .workerOrderDetails .description p {
-  color: rgb(58, 58, 58);
+  color: rgb(0, 119, 255);
+
   font-weight: 600;
 }
 .orderDates {
@@ -114,34 +118,34 @@
   justify-content: center;
   color: rgb(58, 58, 58);
   align-items: center;
-  border: 1px solid rgb(237, 237, 237);
+  border: 1px solid rgb(155, 201, 255);
   border-radius: 2vw;
   box-shadow: 2px 2px 5px rgb(156, 160, 183);
   padding: 15px;
 }
-.progresses {
+.workerOrderDetails .progresses {
   position: relative;
   display: flex;
-
+gap: 15px;
   width: 80%;
-  height: auto;
+height: auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.progresses .labels {
+.workerOrderDetails .progresses .labels {
   display: flex;
 
   width: 100%;
   justify-content: space-around;
 }
-.progresses .labels p {
+.workerOrderDetails .progresses .labels p {
   color: rgb(58, 58, 58);
   font-weight: 600;
 }
-.progresses .charts {
+.workerOrderDetails   .progresses .charts {
   display: flex;
-
+height: 180px;
   width: 100%;
 }
 .form {
@@ -149,7 +153,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-
+  border: 1px solid rgb(155, 201, 255);
+  border-radius: 1vw;
   padding: 10px;
   width: 80%;
   height: auto;
@@ -163,7 +168,7 @@
 .inputFields p {
   font-size: 15px;
   white-space: nowrap;
-  color: rgb(58, 58, 58);
+  color: rgb(0, 119, 255);
   padding-left: 5px;
   font-weight: 600;
   display: flex;
@@ -172,8 +177,11 @@
 }
 .inputFields input {
   width: 60%;
+  color: rgb(0, 119, 255);
+  font-weight: 600;
+  outline: none;
   padding: 10px;
-  border: 1px solid rgb(237, 237, 237);
+ border: 1px solid rgb(155, 201, 255);
   border-radius: 1vw;
 }
 

@@ -1,9 +1,12 @@
 .greetings {
   margin: 0;
   position: absolute;
-  top: 4.5vh;
+  top: 1.5vh;
+  border-radius: 2vw;
   left: 5.5vw;
-  color: rgb(28, 26, 26);
+ background-color: rgb(0, 119, 255);
+  color: white;
+  padding: 10px;
 }
 
 .mainContent {
@@ -47,15 +50,20 @@
   background-color: #f9f9fe;
   border-radius: 0.5vw;
   transition: all 0.3s ease-in-out;
+  border: 1px solid rgb(155, 201, 255);
 }
 
 
 
 .panelTitle {
-  margin: 10px 0 0 30px;
-  font-size: clamp(1rem, 2vw, 1.3rem);
+border-top-left-radius: 0.5vw;
+border-top-right-radius: 0.5vw;
+  background-color: rgb(0, 119, 255);
+  color: white;
+  font-size: 20px;
   font-weight: 600;
   padding: 10px;
+  width: auto;
 }
 .horizontalPanel {
   display: flex;
@@ -126,8 +134,8 @@
     top: 15px;
     height: auto;
     border-radius: 2vw;
-    box-shadow: 0;
-    border: 1px solid rgb(197, 197, 197);
+
+    
   }
   .userProfilePreview img {
     width: 30px;
