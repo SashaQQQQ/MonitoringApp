@@ -55,6 +55,8 @@ position: absolute;
 }
 .orderDescription .selectedOrderInfo p {
   word-break: break-all;
+  padding-left: 15px;
+  padding-right: 25px;
   text-align: center;
   color: white;
   font-weight: 600;
