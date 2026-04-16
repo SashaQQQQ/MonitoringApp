@@ -89,19 +89,20 @@ border: none;
   gap: 10px;
   height: 120px;
   width: 100%;
-  justify-content: space-around;
-
+  justify-content: space-between;
 }
 .roleChoice .choiceContainer {
-    border: 1px solid rgb(155, 201, 255);
+  border: 1px solid rgb(155, 201, 255);
   cursor: pointer;
   width: 50%;
   padding: 5px;
   background-color: white;
   border-radius: 1vw;
   align-items: center;
+  justify-content: left;
   gap: 5px;
   display: flex;
+  height: 100%;
 }
 .roleChoice .choiceContainer input {
   display: none;
@@ -140,6 +141,10 @@ border: none;
   padding: 10px;
   border-radius: 50%;
   background-color: rgb(200, 200, 234);
+}
+.roleChoice .choiceContainer .iconContainer  img {
+  width: 100%;
+  height: auto;
 }
 .roleChoice .choiceContainer div {
   display: flex;
@@ -193,9 +198,12 @@ border: none;
     padding: 3px;
   }
   .roleChoice .choiceContainer {
-    overflow: hidden;
+    gap: 3px;
+    padding: 15px;
+    width: auto;
+    align-items: center;
     flex-direction: column;
-    height: auto;
+
     justify-content: center;
   }
   .roleChoice .choiceContainer h3 {

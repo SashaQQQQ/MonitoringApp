@@ -1,25 +1,26 @@
 .WorkersListPage {
   display: flex;
-  
+align-items: center;
   width: 100%;
   height: 70vh;
   box-sizing: border-box;
-  justify-content: space-around;
+  justify-content: left;
   overflow: hidden;
   flex-direction: column;
+  gap: 10px;
 }
-
+.WorkersList {
+  width: 100%;
+}
 .WorkersListPage ul {
-  position: absolute;
-  left: 0%;
-  top: 25%;
+  
   align-items: center;
   width: 100%;
   padding: 5px;
 
-  height: 70%;
+  height: 100%;
   overflow-y: auto;
-  overflow-x: hidden;
+
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -121,14 +122,20 @@ font-weight: 600;
 display: flex;
 gap: 10px;
   }
-.addWorkerBtn {
-  padding: 10px;
+
+.searchContainer {
+  width: 80%;
+  padding-left:15px ;
+ 
+  display: flex;
+  border: 1px solid rgb(155, 201, 255);
+  border-radius: 2vw;
+}
+.searchContainer .addWorkerBtn {
+ padding: 10px;
   width: 150px;
   border: none;
-  border-radius: 1vw;
-  position: absolute;
-  top: 15%;
-  right: 5%;
+ border-radius: 2vw;
   cursor: pointer;
   color: white;
   font-weight: 600;
@@ -136,17 +143,13 @@ gap: 10px;
 }
 .WorkerSearch {
   outline: none;
-  position: absolute;
-  top: 20%;
-  right: 5%;
+  border: none;
   width: 90%;
   height: auto;
-  border-radius: 2vw;
-  border: 1px solid rgb(155, 201, 255);
   color: rgb(0, 119, 255);
   padding: 10px;
   font-size: 18px;
-  font-weight:  600px;
+  font-weight:  600;
 }
 .WorkerSearch::placeholder {
   text-align: left;
@@ -154,24 +157,17 @@ gap: 10px;
 }
 .WorkersGreatingText {
   font-size: clamp(16px, 5vw, 35px);
-  position: absolute;
+width: 80%;
+padding-left: 30px;
+text-align: left;
  background-color: rgb(0, 119, 255);
  color: white;
- padding: 5px;
+
  border-radius: 2vw;
-  top: 5%;
-  left: 5%;
+  
 }
 @media (max-width: 768px) {
-  .addWorkerBtn {
-    position: fixed;
-    top: 150px;
-  }
-  .WorkerSearch {
-    position: fixed;
-    top: 100px;
-    width: 90%;
-  }
+
   .WorkersListPage {
     position: relative;
     overflow-y: auto;

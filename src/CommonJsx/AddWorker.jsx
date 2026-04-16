@@ -52,6 +52,7 @@ function AddWorker() {
     setRole("");
     setWorkerLogin("");
     setWorkerPassword("");
+    setActivePage("workers");
   }
 
   function handleWorkerLoginChange(e) {

@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import "../Styles/WorkersListPage.css";
+import { DataContext } from "../CommonJsx/DataContext.jsx";
+import { useContext } from "react";
 import { supabase } from "../CommonJsx/SupabaseClient.js";
 
 function WorkerSearch({ setFoundedWorkers }) {
   const [currentRequest, setCurrentRequest] = useState("");
-
+  const { userProfile, setActivePage } = useContext(DataContext);
   function handleRequestChange(e) {
     setCurrentRequest(e.target.value);
   }
@@ -32,7 +34,9 @@ function WorkerSearch({ setFoundedWorkers }) {
     return () => clearTimeout(timeOut);
   }, [currentRequest]);
   return (
-    <div className="WorkerSearchContainer">
+
+      <div className="searchContainer">
+
       <input
         onChange={(e) => {
           handleRequestChange(e);
@@ -41,7 +45,19 @@ function WorkerSearch({ setFoundedWorkers }) {
         type="text"
         placeholder="Search workers..."
       />
-    </div>
+
+        {userProfile.Role === "Owner" || userProfile.Role === "Admin" ? (
+        <button
+          className="addWorkerBtn"
+          onClick={() => {
+            setActivePage("addWorker");
+          }}
+        >
+          Add Worker
+        </button>
+      ) : null}
+      </div>
+  
   );
 }
 
