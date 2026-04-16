@@ -52,11 +52,7 @@ function LogInPage() {
       if (profileData) {
         setUserProfile(profileData);
         navigate(
-          profileData.Role === "Owner"
-            ? "/adminHome"
-            : profileData.Role === "Admin"
-              ? "/adminHome"
-              : "/workerHome",
+         "/Home"
         );
       }
     }

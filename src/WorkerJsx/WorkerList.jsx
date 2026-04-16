@@ -14,12 +14,15 @@ function WorkersList({ foundedWorkers }) {
       <li key={worker.id}>
         <div className="workerInfoGroup">
           <img className="workerImg" src={workerIcon} alt="" />
+          <div className="personalData">
+
           <p className="workerName">
             {worker.name} {worker.secondName}
           </p>
           <a className="workerEmail" href={`mailto:${worker.email}`}>
             {worker.email}
           </a>
+          </div>
           <p className="workerRole">{worker?.Role}</p>
         </div>
         <div>

@@ -3,8 +3,7 @@ import { DataProvider } from "./CommonJsx/DataContext.jsx";
 import "./Styles/App.css";
 import { supabase } from "./CommonJsx/SupabaseClient.js";
 import LogInPage from "./CommonJsx/LogInPage.jsx";
-import OwnerMainPage from "./OwnerJsx/OwnerMainPage.jsx";
-import WorkerMainPage from "./WorkerJsx/WorkerMainPage.jsx";
+import MainPage from "./CommonJsx/MainMenu/MainPage.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 export async function refreshOnlineStatus(id) {
@@ -22,13 +21,10 @@ function App() {
       errorElement: <div>404</div>,
     },
     {
-      path: "/adminHome",
-      element: <OwnerMainPage />,
+      path: "/Home",
+      element: <MainPage />,
     },
-    {
-      path: "/workerHome",
-      element: <WorkerMainPage />,
-    },
+   
   ]);
 
   return (

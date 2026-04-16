@@ -116,6 +116,11 @@ font-weight: 600;
   text-align: right;
   
 }
+  .WorkersListPage ul li  .workerInfoGroup .personalData {
+    width: 360px;
+display: flex;
+gap: 10px;
+  }
 .addWorkerBtn {
   padding: 10px;
   width: 150px;
@@ -192,9 +197,19 @@ font-weight: 600;
 
     align-items: center;
   }
-
+   
+  .WorkersListPage ul li  .workerInfoGroup .personalData {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    width: 180px;
+  }
   .workerInfoGroup {
     min-width: 200px;
+    transition: all 0.2s ease-in-out;
+  }
+  .workerInfoGroup a {
+    width:180px ;
   }
   .buttons {
     flex-direction: column;
