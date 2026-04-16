@@ -69,6 +69,7 @@ const [calendarOrders, setCalendarOrders] = useState([]);
             <div className="ordersInfoCont">
               <MyCalendar orders={calendarOrders} />
               <OverallOrdersList
+              setAddOrderFormStatus={setAddOrderFormStatus}
               fetchOrders={fetchOrders}
              orders={orders}
                 handleOrderClick={handleOrderClick}

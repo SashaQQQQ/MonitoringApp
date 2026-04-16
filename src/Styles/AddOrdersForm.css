@@ -250,4 +250,31 @@
 }
 
 @media (max-width: 786px) {
+  .addOrderForm {
+    position: relative;
+    flex-direction: column;
+    padding: 10px;
+  }
+  .addOrderForm .inputColumn {
+    width: 100%;
+    height: auto;
+  }
+  .finalDateGroup {
+    position: static;
+    top: 0;
+    flex-direction: row;
+    width: 100%;
+  }
+  .tutorial {
+    border-radius: 2vw;
+  }
+  .workerRoleGroup ul {
+    min-height: 50px;
+  }
+  .addOrderForm .backBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+   background-color: transparent;
+  }
 }

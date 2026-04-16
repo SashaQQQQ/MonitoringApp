@@ -17,11 +17,12 @@ function LogInPage() {
 
   const passwordInputRef = useRef(null);
 
-  async function handleLogIn() {
+  async function handleLogIn(e) {
+    e.preventDefault();
     if (!checkInputedData()) {
       return;
     }
-
+    
     let trimmedLogin = login.trim();
     let trimmedPassword = password.trim();
     const { data, error } = await supabase.auth.signInWithPassword({
@@ -103,7 +104,9 @@ function LogInPage() {
   }
 
   return (
-    <div className="LogInPageContainer">
+ 
+    <form className="LogInPageContainer" onSubmit={(e) => {handleLogIn(e)}}>
+
       <h1>Welcome here!</h1>
       <p>Fill the fields, to log in.</p>
       <div className="inputLine">
@@ -145,7 +148,8 @@ function LogInPage() {
         Contact your leader.
       </p>
       <button onClick={handleLogIn}>Log In</button>
-    </div>
+    </form>
+
   );
 }
 

@@ -8,13 +8,13 @@
 }
 
 .formCard {
-  background: #f1f9fb;
+  background: white;
   padding: 32px;
 
   width: 95%;
   height: 98%;
   border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+
   overflow: auto;
 }
 
@@ -23,7 +23,8 @@
   font-size: 26px;
   text-align: left;
   width: 100%;
-  color: rgb(63, 63, 63);
+  color: rgb(0, 119, 255);
+  font-weight: 600;
 }
 
 .subtitle {
@@ -48,35 +49,51 @@
 
 .inputGroup label {
   font-size: 14px;
-  color: #232323;
+color: rgb(0, 119, 255);
   font-weight: 600;
 }
-
-.inputGroup input {
+.inputGroup div {
+  justify-content: space-between;
+  height: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgb(155, 201, 255);
+    border-radius: 0.5vw;
+}
+.inputGroup div img {
+  width: auto;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgb(200, 200, 234);
+}
+.inputGroup div input {
+  width: 90%;
   padding: 12px 14px;
-  border-radius: 0.5vw;
-  border: 1px solid #ddd;
+outline: none;
+border: none;
   font-size: 15px;
   transition:
     border-color 0.2s,
     box-shadow 0.2s;
+    color: rgb(0, 119, 255);
 }
 .inputGroup input::placeholder {
   font-weight: 600;
 }
-.inputGroup input:focus {
-  outline: none;
-  border-color: #4f46e5;
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
-}
+
 .roleChoice {
   display: flex;
   gap: 10px;
   height: 120px;
   width: 100%;
   justify-content: space-around;
+
 }
 .roleChoice .choiceContainer {
+    border: 1px solid rgb(155, 201, 255);
   cursor: pointer;
   width: 50%;
   padding: 5px;
@@ -117,7 +134,7 @@
 .roleChoice .choiceContainer input:checked + .customRadio::after {
   background-color: white;
 }
-.roleChoice .choiceContainer img {
+.roleChoice .choiceContainer .iconContainer  {
   height: 60px;
   width: 60px;
   padding: 10px;

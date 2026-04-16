@@ -59,7 +59,7 @@ function OverallNewOrderInfo({
                 </button>
               </li>
             ))
-          : null}
+          : <li>No workers added</li>}
       </ul>
     </div>
   );

@@ -3,7 +3,7 @@ import { supabase } from "../SupabaseClient.js";
 import "../../Styles/OrdersPage.css";
 import plusIcon from "../../Icons/plus.png";
 
-function OverallOrdersPage({  handleOrderClick, fetchOrders, orders }) {
+function OverallOrdersPage({ setAddOrderFormStatus, handleOrderClick, fetchOrders, orders }) {
 
 
   

@@ -85,44 +85,60 @@ function AddWorker() {
         <div className="workerForm">
           <div className="inputGroup">
             <label>Name</label>
+            <div>
             <input
               value={name}
               onInput={(e) => handleNameChange(e)}
               type="text"
               placeholder="Enter name"
             />
+            <img src="" alt="Worker" />
+            </div>
           </div>
 
           <div className="inputGroup">
             <label>Second name</label>
+            <div>
+
             <input
               value={secondName}
               onInput={(e) => handleSecondNameChange(e)}
               type="text"
               placeholder="Enter second name"
             />
+                  <img src="" alt="Worker" />
+            </div>
           </div>
 
           <div className="inputGroup">
             <label>His login</label>
+            <div>
             <input
               placeholder="Enter the email"
               value={workerLogin}
               onInput={(e) => handleWorkerLoginChange(e)}
               type="text"
             />
+      <img src="" alt="Worker" />
+            </div>
           </div>
           <div className="inputGroup">
             <label>His password</label>
+            <div>
+
             <input
               placeholder="Enter the password"
               workerPassword={workerPassword}
               onChange={(e) => handleWorkerPasswordChange(e)}
               type="text"
             />
+                  <img src="" alt="Worker" />
+            </div>
           </div>
           <div className="roleChoice">
             <label className="choiceContainer">
+            
+
               <input
                 name="role"
                 type="radio"
@@ -131,8 +147,11 @@ function AddWorker() {
                   handleRoleChange(e.target.value);
                 }}
               />
+           
               <span className="customRadio"></span>
+            <div className="iconContainer" >
               <img src={bagIcon} alt="Worker" />
+              </div>
               <div>
                 <h3>Worker</h3>
                 <p>Access to completing orders</p>
@@ -149,7 +168,10 @@ function AddWorker() {
                 }}
               />
               <span className="customRadio"></span>
+            <div className="iconContainer" >
               <img src={adminIcon} alt="Admin" />
+
+            </div>
               <div>
                 <h3>Admin</h3>
                 <p>Full access to the management</p>
