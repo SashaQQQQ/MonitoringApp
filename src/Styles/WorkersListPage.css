@@ -125,7 +125,7 @@ gap: 10px;
 
 .searchContainer {
   width: 80%;
-
+background-color: white;
  
   display: flex;
   border: 1px solid rgb(155, 201, 255);
