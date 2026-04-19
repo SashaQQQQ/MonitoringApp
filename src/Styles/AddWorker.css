@@ -64,10 +64,11 @@ color: rgb(0, 119, 255);
     border-radius: 0.5vw;
 }
 .inputGroup div img {
-  width: auto;
-  height: 100%;
+  width: 40px;
+  height: auto;
+  padding: 5px;
   border-radius: 50%;
-  background-color: rgb(200, 200, 234);
+
 }
 .inputGroup div input {
   width: 90%;
@@ -110,7 +111,7 @@ border: none;
 .customRadio {
   width: 20px;
   height: 20px;
-  background: rgb(203, 203, 203);
+  background: rgb(203, 203, 203); 
   position: relative;
   border-radius: 50%;
   cursor: pointer;
@@ -198,13 +199,18 @@ border: none;
     padding: 3px;
   }
   .roleChoice .choiceContainer {
-    gap: 3px;
-    padding: 15px;
-    width: auto;
+  position: relative;
+
+    height: auto;
     align-items: center;
     flex-direction: column;
 
     justify-content: center;
+  }
+  .customRadio {
+    position: absolute;
+    left: 10px;
+    top: 20%;
   }
   .roleChoice .choiceContainer h3 {
     font-size: 14px;
@@ -212,7 +218,7 @@ border: none;
   .roleChoice .choiceContainer p {
     font-size: 12px;
   }
-  .inputGroup input {
+  .inputGroup div {
     border-radius: 2vw;
   }
 }

@@ -2,7 +2,8 @@ import { useState, useEffect, useContext } from "react";
 import bagIcon from "../Icons/workerBag.png";
 import adminIcon from "../Icons/protection.png";
 import { DataContext } from "./DataContext.jsx";
-
+import emailIcon from "../Icons/message.png";
+import passwordIcon from "../Icons/padlock.png";
 import "../Styles/AddWorker.css";
 import { supabase } from "./SupabaseClient.js";
 function AddWorker() {
@@ -93,7 +94,7 @@ function AddWorker() {
               type="text"
               placeholder="Enter name"
             />
-            <img src="" alt="Worker" />
+          
             </div>
           </div>
 
@@ -107,7 +108,7 @@ function AddWorker() {
               type="text"
               placeholder="Enter second name"
             />
-                  <img src="" alt="Worker" />
+             
             </div>
           </div>
 
@@ -120,7 +121,7 @@ function AddWorker() {
               onInput={(e) => handleWorkerLoginChange(e)}
               type="text"
             />
-      <img src="" alt="Worker" />
+      <img src={emailIcon} alt="Worker" />
             </div>
           </div>
           <div className="inputGroup">
@@ -129,11 +130,11 @@ function AddWorker() {
 
             <input
               placeholder="Enter the password"
-              workerPassword={workerPassword}
+              value={workerPassword}
               onChange={(e) => handleWorkerPasswordChange(e)}
               type="text"
             />
-                  <img src="" alt="Worker" />
+                  <img src={passwordIcon} alt="Worker" />
             </div>
           </div>
           <div className="roleChoice">
