@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../DataContext.jsx";
 import WorkersListPage from "../../WorkerJsx/WorkersListPage.jsx";
 import AddWorker from "../AddWorker.jsx";
-import OrdersPageOwner from "../AddingOrderComponents/OrdersPageOwner.jsx";
+import OrdersPageOwner from "../OrdersPageOwner.jsx";
 import NavigationBar from "../NavigationBar.jsx";
 import ProfilePreview from "../ProfilePreview.jsx";
 import ChatMain from "../Chat/ChatMain.jsx";

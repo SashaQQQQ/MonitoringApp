@@ -1,14 +1,14 @@
 import { useState, useEffect, useContext } from "react";
-import { DataContext } from "./DataContext.jsx";
-import { supabase } from "./SupabaseClient.js";
-import "../Styles/AddOrdersForm.css";
-import hintIcon from "../Icons/question.png";
-import userIcon from "../Icons/worker.png";
-import OrderCalendar from "./AddingOrderComponents/OrderCalendar.jsx";
-import OverallNewOrderInfo from "./AddingOrderComponents/OverallNewOrderInfo.jsx";
-import WorkersSearch from "./AddingOrderComponents/WorkersSearch.jsx";
-import RolesManager from "./AddingOrderComponents/RolesManager.jsx";
-import backIcon from "../Icons/backArrow.png";
+import { DataContext } from "../DataContext.jsx";
+import { supabase } from "../SupabaseClient.js";
+import "../../Styles/AddOrdersForm.css";
+import hintIcon from "../../Icons/question.png";
+import userIcon from "../../Icons/worker.png";
+import OrderCalendar from "./OrderCalendar.jsx";
+import OverallNewOrderInfo from "./OverallNewOrderInfo.jsx";
+import WorkersSearch from "./WorkersSearch.jsx";
+import RolesManager from "./RolesManager.jsx";
+import backIcon from "../../Icons/backArrow.png";
 
 function AddOrderForm({ setAddOrderFormStatus }) {
   const [newOrderName, setNewOrderName] = useState("");

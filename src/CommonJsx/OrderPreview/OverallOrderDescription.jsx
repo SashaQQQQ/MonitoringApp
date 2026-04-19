@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { supabase } from "../SupabaseClient.js";
 import "../../Styles/SelectedOrderDescription.css";
 import { DataContext } from "../DataContext.jsx";
-import DonutChart from "../DonutChart.jsx";
+import DonutChart from "../SpecialComponents/DonutChart.jsx";
 import workerIcon from "../../Icons/worker.png";
 
 function OverallOrdersDescription({ selectedOrder, fetchOrders }) {

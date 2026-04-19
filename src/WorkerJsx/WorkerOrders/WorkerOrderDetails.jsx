@@ -1,6 +1,6 @@
 import { supabase } from "../../CommonJsx/SupabaseClient.js";
 import { DataContext } from "../../CommonJsx/DataContext.jsx";
-import DonutChart from "../../CommonJsx/DonutChart.jsx";
+import DonutChart from "../../CommonJsx/SpecialComponents/DonutChart.jsx";
 import { useState, useEffect, useContext } from "react";
 
 const WorkerOrderDetails = ({

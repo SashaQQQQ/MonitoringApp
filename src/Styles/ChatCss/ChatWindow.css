@@ -17,16 +17,18 @@
   width: auto;
   border: none;
   font-size: 25px;
-  background-color: transparent;
+
   border-radius: 1vw;
   padding: 5px;
+  transition: all 0.2s ease;
+  cursor: pointer;
 }
 .chatHeader button:hover {
-  background-color: grey;
+  background-color: rgb(238, 238, 238);
 }
 .chatHeader {
   padding: 10px;
-  background-color: rgb(115, 115, 243);
+  background-color:    rgb(0, 119, 255);
   color: white;
   text-transform: capitalize;
   border-top-right-radius: 2vw;
@@ -68,7 +70,7 @@
   display: flex;
   gap: 5px;
   padding: 10px;
-  background-color: rgb(115, 115, 243);
+   background-color:    rgb(0, 119, 255);
   border-bottom-right-radius: 2vw;
 }
 

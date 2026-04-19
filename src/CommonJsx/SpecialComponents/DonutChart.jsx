@@ -1,5 +1,5 @@
 import { PieChart, Pie, Cell } from "recharts";
-import "../Styles/Donut.css";
+import "../../Styles/Donut.css";
 export default function DonutChart({ progress }) {
   const data = [
     { name: "Ready", value: progress },

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import OverallOrdersList from "../OrderPreview/OverallOrderList.jsx";
-import OverallOrdersDescription from "../OrderPreview/OverallOrderDescription.jsx";
-import AddOrderForm from "../AddOrderForm.jsx";
-import MyCalendar from "../Calendar.jsx";
+import OverallOrdersList from "./OrderPreview/OverallOrderList.jsx";
+import OverallOrdersDescription from "./OrderPreview/OverallOrderDescription.jsx";
+import AddOrderForm from "./AddingOrderComponents/AddOrderForm.jsx";
+import MyCalendar from "./SpecialComponents/Calendar.jsx";
 
-import "../../Styles/OrdersPage.css";
-import { supabase } from "../SupabaseClient.js";
+import "../Styles/OrdersPage.css";
+import { supabase } from "./SupabaseClient.js";
 function OrdersPageOwner() {
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [addOrderFormStatus, setAddOrderFormStatus] = useState(false);
