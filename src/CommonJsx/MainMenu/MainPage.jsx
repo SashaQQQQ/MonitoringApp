@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../DataContext.jsx";
 import WorkersListPage from "../../WorkerJsx/WorkersListPage.jsx";
+import EditProfilePanel from "../EditProfilePanel.jsx";
 import AddWorker from "../AddWorker.jsx";
 import OrdersPageOwner from "../OrdersPageOwner.jsx";
 import NavigationBar from "../NavigationBar.jsx";
@@ -35,10 +36,10 @@ function MainPage() {
       <div className="mainContent">
         {activePage === "main" && <MainMenuBlock />}
         {activePage === "workers"  ? <WorkersListPage /> : null}
-   
+        {activePage === "editingProfile"  ? <EditProfilePanel /> : null}
         {activePage === "addWorker" && (userProfile.Role === "Owner" || userProfile.Role === "Admin") ? <AddWorker /> : null}
         {activePage === "orders" && (userProfile.Role === "Owner" || userProfile.Role === "Admin") ? <OrdersPageOwner /> : null}
-            {activePage === "orders" && userProfile.Role === "Worker" ? <WorkerOrdersPage /> : null}
+        {activePage === "orders" && userProfile.Role === "Worker" ? <WorkerOrdersPage /> : null}
         {activePage === "chats" ? (
           <ChatMain
             contactPerson={contactPerson}

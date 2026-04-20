@@ -13,7 +13,7 @@ function WorkersList({ foundedWorkers }) {
     return (
       <li key={worker.id}>
         <div className="workerInfoGroup">
-          <img className="workerImg" src={workerIcon} alt="" />
+          <img className="workerImg" src={worker.avatarUrl || workerIcon} alt="" />
           <div className="personalData">
 
           <p className="workerName">

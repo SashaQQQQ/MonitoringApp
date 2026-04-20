@@ -1,11 +1,12 @@
-import { useState, useEffect, use } from "react";
+import { useState, useEffect, useContext } from "react";
 import userIcon from "../Icons/worker.png";
 import "../Styles/MainPage.css";
-
-function ProfilePreview({ userProfile }) {
+import { DataContext } from "./DataContext.jsx";
+function ProfilePreview({ }) {
+  const { userProfile, setActivePage } = useContext(DataContext);
   return (
-    <div className="userProfilePreview">
-      <img src={userIcon} alt="picture" />
+    <div onClick={() => setActivePage("editingProfile")} className="userProfilePreview">
+      <img src={userProfile.avatarUrl||userIcon} alt="picture" />
       <div>
         <p>
           {userProfile?.name || "N/A"} {userProfile?.secondName}

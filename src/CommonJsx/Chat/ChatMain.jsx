@@ -51,7 +51,7 @@ function Chat() {
 
     const combined = dialogArray.map((d) => {
       const user = finalData.find((u) => u.email === d.email) || [];
-      return { ...d, name: user.name, secondName: user.secondName };
+      return { ...d, name: user.name, secondName: user.secondName, avatarUrl: user.avatarUrl };
     });
 
     setChatList(combined);
