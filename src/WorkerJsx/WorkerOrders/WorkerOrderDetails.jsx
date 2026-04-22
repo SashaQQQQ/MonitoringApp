@@ -2,6 +2,7 @@ import { supabase } from "../../CommonJsx/SupabaseClient.js";
 import { DataContext } from "../../CommonJsx/DataContext.jsx";
 import DonutChart from "../../CommonJsx/SpecialComponents/DonutChart.jsx";
 import { useState, useEffect, useContext } from "react";
+import emptyIcon from "../../Icons/empty.png";
 
 const WorkerOrderDetails = ({
   setActivePanel,
@@ -107,7 +108,11 @@ const WorkerOrderDetails = ({
           </div>
         </div>
       ) : (
-        <h4>Select an order to see details</h4>
+        <div className="noOrderSelected">
+
+          <h4>Select an order to see details</h4>
+         <img src={emptyIcon} alt="No order selected"/>
+         </div>
       )}
     </>
   );
