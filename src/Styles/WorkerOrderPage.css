@@ -211,6 +211,7 @@ height: 180px;
   align-items: center;
   gap: 15px;
   height: 50%;
+  width: 100%;
 }
 .noOrderSelected img {
   width: 200px;

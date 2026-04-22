@@ -3,7 +3,7 @@ import OverallOrdersList from "./OrderPreview/OverallOrderList.jsx";
 import OverallOrdersDescription from "./OrderPreview/OverallOrderDescription.jsx";
 import AddOrderForm from "./AddingOrderComponents/AddOrderForm.jsx";
 import MyCalendar from "./SpecialComponents/Calendar.jsx";
-
+import emptyIcon from "../Icons/empty.png";
 import "../Styles/OrdersPage.css";
 import { supabase } from "./SupabaseClient.js";
 function OrdersPageOwner() {
@@ -77,7 +77,11 @@ const [calendarOrders, setCalendarOrders] = useState([]);
             </div>
             {selectedOrder ? (
               <OverallOrdersDescription fetchOrders={fetchOrders} selectedOrder={selectedOrder} />
-            ) : null}
+            ) : <div className="noOrderSelected">
+            
+                      <h4>Select an order to see details</h4>
+                     <img src={emptyIcon} alt="No order selected"/>
+                     </div>}
           </div>
         </div>
       ) : (

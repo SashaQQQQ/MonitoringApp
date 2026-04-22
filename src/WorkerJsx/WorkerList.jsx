@@ -63,10 +63,14 @@ function WorkersList({ foundedWorkers }) {
   }
 
   async function DeleteWorker(workerId) {
+    console.log(workerId);
     const { data, error } = await supabase
       .from("users")
       .delete()
-      .eq("id", workerId);
+      .eq("id", workerId)
+  
+    
+      
     if (error) {
       console.error("Error deleting worker:", error);
       return;
