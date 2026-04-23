@@ -76,7 +76,7 @@ function OverallNewOrderInfo({ getSearchedWorkers, chosenWorkers }) {
                     </p>
                   </div>
                   <button onClick={() => addWorkerToOrder(worker)}>
-                    Add Worker
+                    Add
                   </button>
                 </li>
               );

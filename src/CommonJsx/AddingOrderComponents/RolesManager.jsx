@@ -36,9 +36,10 @@ function OverallNewOrderInfo({
         {chosenWorkers.length > 0
           ? chosenWorkers.map((worker) => (
               <li key={worker.id}>
-                <p>{worker.name + " " + worker.secondName} </p>
+                <p>{worker.name} </p>
                 <input
                   type="text"
+                  disabled={!!worker.role}
                   placeholder="Role.."
                   onChange={(e) => {
                     setWorkerRoles((prevRoles) => ({
@@ -47,13 +48,14 @@ function OverallNewOrderInfo({
                     }));
                   }}
                 />
-                <button
-                  onClick={() =>
-                    saveWorkerRole(worker.id, workerRoles[worker.id])
-                  }
-                >
+                {!worker.role && (
+                  <button
+                    onClick={() =>
+                      saveWorkerRole(worker.id, workerRoles[worker.id])
+                    }
+                  >
                   Save Role
-                </button>
+                </button>) }
                 <button onClick={() => handleRemoveWorkerFromOrder(worker)}>
                   Delete worker
                 </button>

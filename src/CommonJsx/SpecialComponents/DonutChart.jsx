@@ -14,7 +14,7 @@ export default function DonutChart({ progress }) {
           data={data}
           cx="50%"
           cy="50%"
-          innerRadius={20}
+          innerRadius={40}
           outerRadius={70}
           dataKey="value"
         >

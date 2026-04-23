@@ -20,7 +20,7 @@ function OverallOrdersPage({ setAddOrderFormStatus, handleOrderClick, fetchOrder
       />
 
       <ul>
-        {orders?.map((order, index) => (
+        { orders ? orders?.map((order, index) => (
           <li
             key={order.id}
             onClick={() => {
@@ -38,7 +38,7 @@ function OverallOrdersPage({ setAddOrderFormStatus, handleOrderClick, fetchOrder
             </div>
           
           </li>
-        ))}
+        )) : <li>No orders found</li>}
       </ul>
     </div>
   );

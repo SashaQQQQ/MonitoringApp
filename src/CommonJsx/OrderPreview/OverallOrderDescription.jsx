@@ -58,17 +58,17 @@ function OverallOrdersDescription({ selectedOrder, fetchOrders }) {
       const { data: finalStepData, error: finalStepError } = await supabase
         .from("order.Workers")
         .delete()
-        .eq("order_id", orderId);
+        .eq("order_id", orderId)
+        .select("worker_id");
       if (finalStepError) {
         console.error("Error deleting order workers:", finalStepError);
+      } else {
+        console.log(finalStepData);
+      }
       }
       fetchOrders();
     }
-  }
   
-  useEffect(() => {
-    console.log(workers);
-  }, [workers]);
   useEffect(() => {
     fetchWorkers();
   }, [selectedOrder]);
@@ -113,16 +113,14 @@ function OverallOrdersDescription({ selectedOrder, fetchOrders }) {
                       <p>{worker?.secondName}</p>
                       <h5>{worker?.progress_percent}%</h5>
                     </div>
-                    {whichRole === "Owner" || whichRole === "Admin" ? (
-                      <button>Delete</button>
-                    ) : null}
+                   
                   </li>
                 ))
               )}
             </ul>
           </div>
         </div>
-      ) : null}
+      ) : setActivePage()}
     </>
   );
 }

@@ -22,8 +22,8 @@ function WorkersList({ foundedWorkers }) {
           <a className="workerEmail" href={`mailto:${worker.email}`}>
             {worker.email}
           </a>
-          </div>
           <p className="workerRole">{worker?.Role}</p>
+          </div>
         </div>
         <div>
           <div className="buttons">
