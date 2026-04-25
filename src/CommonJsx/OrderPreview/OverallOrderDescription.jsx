@@ -64,10 +64,11 @@ function OverallOrdersDescription({ setSelectedOrder, selectedOrder, fetchOrders
       if (finalStepError) {
         console.error("Error deleting order workers:", finalStepError);
       } else {
-        console.log(finalStepData)
-        const ids = finalStepData.map((worker) => worker.worker_id);
-        if (ids.length > 0) {
-          await supabase.rpc("increment_finished_orders",{ user_ids: ids});
+        if(selectedOrder?.readyProcent === 100) {
+          const ids = finalStepData.map((worker) => worker.worker_id);
+          if (ids.length > 0) {
+            await supabase.rpc("increment_finished_orders",{ user_ids: ids});
+          }
         }
       }
       setSelectedOrder(null);
