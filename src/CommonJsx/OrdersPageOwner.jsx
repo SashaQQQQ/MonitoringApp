@@ -24,17 +24,11 @@ const [calendarOrders, setCalendarOrders] = useState([]);
   
       if (data) {
         
-      const now = new Date();
   
-      const endingSoon = data
-        .filter((order) => new Date(order.FinalDate + "T00:00:00") > now)
-        .sort(
-          (a, b) =>
-            new Date(a.FinalDate + "T00:00:00") -
-            new Date(b.FinalDate + "T00:00:00"),
-        );
-        setOrders(endingSoon);
-       setCalendarOrders(endingSoon);
+  
+    
+        setOrders(data);
+       setCalendarOrders(data);
       }
     }
    
@@ -76,7 +70,7 @@ const [calendarOrders, setCalendarOrders] = useState([]);
               />
             </div>
             {selectedOrder ? (
-              <OverallOrdersDescription fetchOrders={fetchOrders} selectedOrder={selectedOrder} />
+              <OverallOrdersDescription setSelectedOrder={setSelectedOrder} fetchOrders={fetchOrders} selectedOrder={selectedOrder} />
             ) : <div className="noOrderSelected">
             
                       <h4>Select an order to see details</h4>

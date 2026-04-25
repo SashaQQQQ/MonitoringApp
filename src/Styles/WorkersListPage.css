@@ -181,9 +181,10 @@ text-align: left;
 
   .WorkersListPage {
     position: relative;
-    overflow-y: auto;
+padding-top: calc(15px + env(safe-area-inset-top));
     width: 100%;
     height: 80vh;
+
   }
   .WorkersListPage .WorkersGreatingText {
     display: none;

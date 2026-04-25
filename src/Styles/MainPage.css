@@ -126,12 +126,13 @@ border-top-right-radius: 0.5vw;
     display: none;
   }
   .userProfilePreview {
-    padding-top: calc(15px + env(safe-area-inset-top));
+    padding-top: calc(3px + env(safe-area-inset-top));
+    padding: 3px;
     margin: 0;
     font-size: 12px;
     position: fixed;
     right: 0vw;
-    top: 15px;
+    top: 0;
     height: auto;
     border-radius: 2vw;
 

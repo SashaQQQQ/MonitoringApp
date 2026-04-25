@@ -4,24 +4,39 @@ import "../../Styles/OrdersPage.css";
 import plusIcon from "../../Icons/plus.png";
 
 function OverallOrdersPage({ setAddOrderFormStatus, handleOrderClick, fetchOrders, orders }) {
+  const [filteredOrders, setFilteredOrders] = useState([]);
+  const [filterType, setFilterType] = useState("all");
 
+  function filterOrders(typeOfFilter) {
+    console.log("Filtering orders with filter type:", typeOfFilter);
+    if(typeOfFilter === "all") {
+      setFilteredOrders(orders);
+      return;
+    }
+    const now = new Date();
 
-  
-  useEffect(() => {
-    fetchOrders();
-  }, []);
+    const filtered = orders
+    .filter((order) => {
+      if (typeOfFilter === "upcoming") {
+        return new Date(order.FinalDate + "T00:00:00") > now;
+      } else if (typeOfFilter === "ended") {
+        return new Date(order.FinalDate + "T00:00:00") < now;
+      } 
+    })
+    .sort(
+      (a, b) =>
+       new Date(a.FinalDate + "T00:00:00") -
+       new Date(b.FinalDate + "T00:00:00"),
+   );
+    setFilteredOrders(filtered);
+  }
 
-  return (
-    <div className="ordersList">
-      <img
-        className="extBtn"
-        onClick={() => setAddOrderFormStatus(true)}
-        src={plusIcon}
-      />
+    
 
-      <ul>
-        { orders ? orders?.map((order, index) => (
-          <li
+    function renderItemList(order) {
+      if (!order) return (<p>Invalid order data</p>);
+return (
+        <li
             key={order.id}
             onClick={() => {
               handleOrderClick(order);
@@ -34,11 +49,50 @@ function OverallOrdersPage({ setAddOrderFormStatus, handleOrderClick, fetchOrder
                   : order.Title}{" "}
                   
               </p>
-              <p>{order.FinalDate}</p>
+              <p className="orderDate">{order.FinalDate}</p>
             </div>
           
           </li>
-        )) : <li>No orders found</li>}
+        )
+        };
+      
+  useEffect(() => {
+    fetchOrders();
+  }, []);
+
+  useEffect(() => {  
+    filterOrders(filterType);
+  }, [filterType, orders]);
+
+  return (
+    <div className="ordersList">
+     
+      <nav className="filterNaviagtion">
+        <h4 className={filterType === "all" ? "clicked" : ""} onClick={() => {
+          setFilterType("all");
+        }}>
+          All
+        </h4>
+        <h4 className={filterType === "upcoming" ? "clicked" : ""} onClick={() => {
+          setFilterType("upcoming");
+        }}>
+          Upcoming
+        </h4>
+        <h4 className={filterType === "ended" ? "clicked" : ""} onClick={() => {
+          setFilterType("ended");
+        }}>
+          Ended
+        </h4>
+       <button onClick={() => setAddOrderFormStatus(true)}>Add Order</button>
+      </nav>
+      <ul>
+        
+        {filteredOrders.length > 0 ? (
+          filteredOrders.map((order) => renderItemList(order))
+        ) : (
+          <p>No orders found</p>
+        )}
+         
       </ul>
     </div>
   );

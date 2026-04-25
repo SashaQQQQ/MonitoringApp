@@ -8,7 +8,7 @@ function WorkersList({ foundedWorkers }) {
   const [workers, setWorkers] = useState([]);
   const { userProfile, setActivePage, setOtherUser } = useContext(DataContext);
 
-  function renderWorker(worker) {
+  function renderItemList(worker) {
     if (userProfile?.id === worker.id) return null;
     return (
       <li key={worker.id}>
@@ -86,9 +86,9 @@ function WorkersList({ foundedWorkers }) {
     <div className="WorkersList">
       <ul>
         {foundedWorkers.length > 0 ? (
-          foundedWorkers.map((worker) => renderWorker(worker))
+          foundedWorkers.map((worker) => renderItemList(worker))
         ) : workers.length > 0 ? (
-          workers.map((worker) => renderWorker(worker))
+          workers.map((worker) => renderItemList(worker))
         ) : (
           <p>No workers found</p>
         )}

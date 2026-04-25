@@ -5,7 +5,7 @@ import { DataContext } from "../DataContext.jsx";
 import DonutChart from "../SpecialComponents/DonutChart.jsx";
 import workerIcon from "../../Icons/worker.png";
 
-function OverallOrdersDescription({ selectedOrder, fetchOrders }) {
+function OverallOrdersDescription({ setSelectedOrder, selectedOrder, fetchOrders }) {
   const [workers, setWorkers] = useState([]);
   const { whichRole } = useContext(DataContext);
   async function fetchWorkers() {
@@ -41,6 +41,7 @@ function OverallOrdersDescription({ selectedOrder, fetchOrders }) {
             progress_percent: workerData?.progress_percent || 0,
           };
         });
+   
         setWorkers(combinedData);
       }
     }
@@ -63,11 +64,16 @@ function OverallOrdersDescription({ selectedOrder, fetchOrders }) {
       if (finalStepError) {
         console.error("Error deleting order workers:", finalStepError);
       } else {
-        console.log(finalStepData);
+        console.log(finalStepData)
+        const ids = finalStepData.map((worker) => worker.worker_id);
+        if (ids.length > 0) {
+          await supabase.rpc("increment_finished_orders",{ user_ids: ids});
+        }
       }
-      }
+      setSelectedOrder(null);
       fetchOrders();
-    }
+      
+    }}
   
   useEffect(() => {
     fetchWorkers();
@@ -120,7 +126,7 @@ function OverallOrdersDescription({ selectedOrder, fetchOrders }) {
             </ul>
           </div>
         </div>
-      ) : setActivePage()}
+      ) : <p>No order selected</p>}
     </>
   );
 }

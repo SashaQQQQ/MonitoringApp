@@ -6,13 +6,7 @@ import LogInPage from "./CommonJsx/LogInPage.jsx";
 import MainPage from "./CommonJsx/MainMenu/MainPage.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-export async function refreshOnlineStatus(id) {
-  const date = new Date().toISOString();
-  const { data, error } = await supabase
-    .from("users")
-    .update({ lastSeen: date })
-    .eq("id", id);
-}
+
 function App() {
   const Router = createBrowserRouter([
     {

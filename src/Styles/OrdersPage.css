@@ -4,17 +4,7 @@
   overflow: hidden;
   padding: 15px;
 }
-.extBtn {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  width: 50px;
-  height: auto;
-  border-radius: 50%;
-  padding: 1px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
+
 .ordersPage .extBtn:hover {
   background-color: rgb(242, 242, 242);
   padding: 5px;
@@ -45,11 +35,41 @@
   padding: 5px;
   width: 100%;
   height: 50%;
- background-color: #e3e4f6;
+ background-color: rgb(243, 243, 243);
   border-radius: 2vw;
   transition: all 0.2s ease;
 }
+.filterNaviagtion {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+.filterNaviagtion h4 {
+    padding: 5px;
+  border-radius: 2vw;
+  color: grey;
+  cursor: pointer;
+}
+.filterNaviagtion h4.clicked {
+  background-color: #dfe6fc;
 
+  color: #5d82e6;
+}
+.filterNaviagtion button {
+  padding: 5px;
+  border-radius: 1vw;
+  transition: all 0.2s ease;
+ background-color: #8ea4eb;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+.filterNaviagtion button:hover {
+  transform: translate(-3%, 0%);
+}
 .ordersList ul {
   padding: 0;
   width: 100%;
@@ -69,7 +89,7 @@
   padding:15px;
   text-transform: capitalize;
   color: rgb(82, 82, 82);
-  background-color: rgb(249, 246, 246);
+  background-color: rgb(255, 255, 255);
   font-weight: 700;
   cursor: pointer;
   width: 98%;
@@ -103,9 +123,17 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-
+align-items: center;
   padding-right:15px ;
   gap: 5px;
+}
+.orderInfo .orderDate {
+ color: #9f7f60;
+ padding: 5px;
+ border-radius: 2vw;
+  background-color: #f9eadb;
+  font-weight: 700;
+  text-transform: capitalize;
 }
 @media (max-width: 768px) {
   .ordersContent {
@@ -120,7 +148,10 @@
   }
 
   .ordersList {
+    display: flex;
+    flex-direction: column;
     height: 98%;
+    gap: 5px;
   }
 
   .ordersList ul li {
@@ -130,11 +161,6 @@
   .ordersList ul li button {
     height: 100%;
   }
-  .ordersPage .extBtn {
-    width: 30px;
-    height: auto;
-    position: absolute;
-    top: 10px;
-    left: 10px;
+  
+
   }
-}

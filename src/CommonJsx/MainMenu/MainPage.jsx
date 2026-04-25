@@ -9,7 +9,7 @@ import ProfilePreview from "../ProfilePreview.jsx";
 import ChatMain from "../Chat/ChatMain.jsx";
 import MainMenuBlock from "./MainMenuBlocks.jsx";
 import "../../Styles/MainPage.css";
-import { refreshOnlineStatus } from "../../App.jsx";
+import { refreshOnlineStatus } from "../UsefulFunctions.jsx";
 import WorkerOrdersPage from "../../WorkerJsx/WorkerOrders/WorkerOrderPage.jsx";
 function MainPage() {
   const [contactPerson, setContactPerson] = useState(null);
