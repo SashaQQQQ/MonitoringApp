@@ -5,7 +5,11 @@ import { DataContext } from "../DataContext.jsx";
 import DonutChart from "../SpecialComponents/DonutChart.jsx";
 import workerIcon from "../../Icons/worker.png";
 
-function OverallOrdersDescription({ setSelectedOrder, selectedOrder, fetchOrders }) {
+function OverallOrdersDescription({
+  setSelectedOrder,
+  selectedOrder,
+  fetchOrders,
+}) {
   const [workers, setWorkers] = useState([]);
   const { whichRole } = useContext(DataContext);
   async function fetchWorkers() {
@@ -41,13 +45,13 @@ function OverallOrdersDescription({ setSelectedOrder, selectedOrder, fetchOrders
             progress_percent: workerData?.progress_percent || 0,
           };
         });
-   
+
         setWorkers(combinedData);
       }
     }
   }
 
- async function deleteOrder(orderId) {
+  async function deleteOrder(orderId) {
     const { data, error } = await supabase
       .from("orders")
       .delete()
@@ -64,18 +68,18 @@ function OverallOrdersDescription({ setSelectedOrder, selectedOrder, fetchOrders
       if (finalStepError) {
         console.error("Error deleting order workers:", finalStepError);
       } else {
-        if(selectedOrder?.readyProcent === 100) {
+        if (selectedOrder?.readyProcent === 100) {
           const ids = finalStepData.map((worker) => worker.worker_id);
           if (ids.length > 0) {
-            await supabase.rpc("increment_finished_orders",{ user_ids: ids});
+            await supabase.rpc("increment_finished_orders", { user_ids: ids });
           }
         }
       }
       setSelectedOrder(null);
       fetchOrders();
-      
-    }}
-  
+    }
+  }
+
   useEffect(() => {
     fetchWorkers();
   }, [selectedOrder]);
@@ -85,20 +89,19 @@ function OverallOrdersDescription({ setSelectedOrder, selectedOrder, fetchOrders
         <div className="orderDescription">
           <div className="orderOverallInfo">
             <div className="selectedOrderInfo">
-              
-                <button
-              onClick={() => {
-                deleteOrder(selectedOrder?.id);
-              }}
-            >
-              Delete order
-            </button>
+              <button
+                onClick={() => {
+                  deleteOrder(selectedOrder?.id);
+                }}
+              >
+                Delete order
+              </button>
 
               <p>Order: {selectedOrder?.Title}</p>
 
               <p>Due to: {selectedOrder?.FinalDate}</p>
             </div>
-            <DonutChart progress={selectedOrder?.readyProcent} />
+            <DonutChart progress={selectedOrder?.progress_percent} />
           </div>
 
           <div className="selectedOrderDescription">
@@ -120,14 +123,15 @@ function OverallOrdersDescription({ setSelectedOrder, selectedOrder, fetchOrders
                       <p>{worker?.secondName}</p>
                       <h5>{worker?.progress_percent}%</h5>
                     </div>
-                   
                   </li>
                 ))
               )}
             </ul>
           </div>
         </div>
-      ) : <p>No order selected</p>}
+      ) : (
+        <p>No order selected</p>
+      )}
     </>
   );
 }

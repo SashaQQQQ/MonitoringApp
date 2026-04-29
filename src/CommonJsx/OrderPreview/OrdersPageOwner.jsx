@@ -16,42 +16,42 @@ function OrdersPageOwner() {
   }
 
   async function fetchOrders() {
-      const { data, error } = await supabase.from("orders").select("*");
-  
-      if (error) {
-        console.error("Error fetching orders:", error);
-      }
-  
-      if (data) {
-        console.log("Fetched orders:", data);
-        setOrders(data);
-        setCalendarOrders(data);
-      }
-    }
-   
+    const { data, error } = await supabase.from("orders").select("*");
 
-  async function fetchProcents() {
+    if (error) {
+      console.error("Error fetching orders:", error);
+    }
+
+    if (data) {
+      console.log("Fetched orders:", data);
+      const ordersWithProcent = await Promise.all(
+        data.map(async (order) => {
+          const procent = await fetchProcents(order.id);
+          return { ...order, progress_percent: procent };
+        }),
+      );
+      setOrders(ordersWithProcent);
+      setCalendarOrders(ordersWithProcent);
+    }
+  }
+
+  async function fetchProcents(orderId) {
     const { data, error } = await supabase
       .from("order.Workers")
       .select("progress_percent")
-      .eq("order_id", selectedOrder?.id);
+      .eq("order_id", orderId);
 
+    if (error) {
+      return 0;
+    }
     const totalProgress = data.reduce(
       (sum, worker) => sum + worker.progress_percent,
       0,
     );
 
-    const averageProcent =
-      data && data.length > 0 ? totalProgress / data.length : 0;
-
-    setSelectedOrder((prev) =>
-      prev ? { ...prev, readyProcent: averageProcent } : prev,
-    );
+    return data.length > 0 ? totalProgress / data.length : 0;
   }
-  useEffect(() => {
-    if (!selectedOrder?.id) return;
-    fetchProcents();
-  }, [selectedOrder?.id]);
+
   return (
     <div className="ordersPage">
       {!addOrderFormStatus ? (
@@ -60,19 +60,24 @@ function OrdersPageOwner() {
             <div className="ordersInfoCont">
               <MyCalendar orders={calendarOrders} />
               <OverallOrdersList
-              setAddOrderFormStatus={setAddOrderFormStatus}
-              fetchOrders={fetchOrders}
-              orders={orders}
+                setAddOrderFormStatus={setAddOrderFormStatus}
+                fetchOrders={fetchOrders}
+                orders={orders}
                 handleOrderClick={handleOrderClick}
               />
             </div>
             {selectedOrder ? (
-              <OverallOrdersDescription setSelectedOrder={setSelectedOrder} fetchOrders={fetchOrders} selectedOrder={selectedOrder} />
-            ) : <div className="noOrderSelected">
-            
-                      <h4>Select an order to see details</h4>
-                     <img src={emptyIcon} alt="No order selected"/>
-                     </div>}
+              <OverallOrdersDescription
+                setSelectedOrder={setSelectedOrder}
+                fetchOrders={fetchOrders}
+                selectedOrder={selectedOrder}
+              />
+            ) : (
+              <div className="noOrderSelected">
+                <h4>Select an order to see details</h4>
+                <img src={emptyIcon} alt="No order selected" />
+              </div>
+            )}
           </div>
         </div>
       ) : (

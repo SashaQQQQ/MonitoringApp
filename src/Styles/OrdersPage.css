@@ -129,7 +129,19 @@
   padding-right: 15px;
   gap: 5px;
 }
-
+.orderStatus {
+  width: 10px;
+  height: 100%;
+}
+.orderStatus.notStarted {
+  background-color: #f44336;
+}
+.orderStatus.inProgress {
+  background-color: #ff9800;
+}
+.orderStatus.completed {
+  background-color: #4caf50;
+}
 .orderInfo .orderDate {
   color: #9f7f60;
   width: auto;
