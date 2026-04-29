@@ -72,7 +72,9 @@ margin-top: 5px;
   font-size: 13px;
 }
 .orderColumn ul li:hover {
-  background-color: rgb(200, 200, 200);
+  background-color: rgb(230, 233, 244);
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .ordersGreatingText {
   color: rgb(58, 58, 58);

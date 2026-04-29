@@ -15,7 +15,7 @@ function NavigationBar() {
     <div className="navigationMenu">
       <div onClick={() => setActivePage("main")}>
         <img src={homeIcon} alt="Home" />
-        <p>Main Page</p>
+        <p>Home</p>
       </div>
       <div
         onClick={() => {

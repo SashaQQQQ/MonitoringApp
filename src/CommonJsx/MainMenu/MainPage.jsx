@@ -3,7 +3,7 @@ import { DataContext } from "../DataContext.jsx";
 import WorkersListPage from "../../WorkerJsx/WorkersListPage.jsx";
 import EditProfilePanel from "../EditProfilePanel.jsx";
 import AddWorker from "../AddWorker.jsx";
-import OrdersPageOwner from "../OrdersPageOwner.jsx";
+import OrdersPageOwner from "../OrderPreview/OrdersPageOwner.jsx";
 import NavigationBar from "../NavigationBar.jsx";
 import ProfilePreview from "../ProfilePreview.jsx";
 import ChatMain from "../Chat/ChatMain.jsx";

@@ -24,7 +24,9 @@
   border-radius: 0.5vw;
 }
 .orderCard .orderInfo {
-  width: 40%;
+  width: auto;
+  max-width: 70%;
+
 }
 .orderCard .orderInfo p {
   color: rgb(41, 41, 41);
@@ -42,7 +44,7 @@ text-transform: capitalize;
   justify-content: space-between;
   align-items: center;
   width: auto;
-  height: 100%;
+  height: auto;
   gap: 5px;
   font-weight: 600;
 }
@@ -51,9 +53,9 @@ text-transform: capitalize;
   padding: 5px;
   color: #9f7f60;
   background-color: #f9eadb;
-  text-align: left;
-
-  font-size: 0.8rem;
+  text-align: center;
+padding: 15px;
+  font-size: 1rem;
   font-weight: 600;
 }
 .endingOrderProgress {
@@ -62,8 +64,8 @@ text-transform: capitalize;
   background-color: #e1efe7;
   color: #66a96d;
   text-align: center;
-
-  font-size: 0.8rem;
+padding: 15px;
+  font-size: 1rem;
 }
 
 @media (max-width: 768px) {
@@ -75,5 +77,7 @@ text-transform: capitalize;
     padding-left: 15px;
     padding-right: 15px;
   }
-
+.orderCard .endingTime, .endingOrderProgress {
+  padding: 5px;
+  font-size: 0.9rem;
 }

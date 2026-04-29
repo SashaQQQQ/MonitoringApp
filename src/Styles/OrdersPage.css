@@ -93,7 +93,7 @@
   font-weight: 700;
   cursor: pointer;
   width: 98%;
-  height: 15%;
+  height: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -118,6 +118,9 @@
 }
 .ordersList ul li p {
   margin-left: 15px;
+  width: auto;
+  max-width: 70%;
+
 }
 .orderInfo {
   display: flex;
@@ -129,8 +132,12 @@ align-items: center;
 }
 .orderInfo .orderDate {
  color: #9f7f60;
- padding: 5px;
+width: auto;
+max-width: 120px;
+  font-size: 13px;
+ padding: 7px;
  border-radius: 2vw;
+ text-align: center;
   background-color: #f9eadb;
   font-weight: 700;
   text-transform: capitalize;
@@ -155,7 +162,7 @@ align-items: center;
   }
 
   .ordersList ul li {
-    height: 50%;
+    height: auto;
     overflow: hidden;
   }
   .ordersList ul li button {

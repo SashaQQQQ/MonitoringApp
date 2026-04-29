@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import OverallOrdersList from "./OrderPreview/OverallOrderList.jsx";
-import OverallOrdersDescription from "./OrderPreview/OverallOrderDescription.jsx";
-import AddOrderForm from "./AddingOrderComponents/AddOrderForm.jsx";
-import MyCalendar from "./SpecialComponents/Calendar.jsx";
-import emptyIcon from "../Icons/empty.png";
-import "../Styles/OrdersPage.css";
-import { supabase } from "./SupabaseClient.js";
+import OverallOrdersList from "./OverallOrderList.jsx";
+import OverallOrdersDescription from "./OverallOrderDescription.jsx";
+import AddOrderForm from "../AddingOrderComponents/AddOrderForm.jsx";
+import MyCalendar from "../SpecialComponents/Calendar.jsx";
+import emptyIcon from "../../Icons/empty.png";
+import "../../Styles/OrdersPage.css";
+import { supabase } from "../SupabaseClient.js";
 function OrdersPageOwner() {
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [addOrderFormStatus, setAddOrderFormStatus] = useState(false);
   const [orders, setOrders] = useState([]);
-const [calendarOrders, setCalendarOrders] = useState([]);
+  const [calendarOrders, setCalendarOrders] = useState([]);
   function handleOrderClick(order) {
     setSelectedOrder(order);
   }
@@ -23,12 +23,9 @@ const [calendarOrders, setCalendarOrders] = useState([]);
       }
   
       if (data) {
-        
-  
-  
-    
+        console.log("Fetched orders:", data);
         setOrders(data);
-       setCalendarOrders(data);
+        setCalendarOrders(data);
       }
     }
    
@@ -65,7 +62,7 @@ const [calendarOrders, setCalendarOrders] = useState([]);
               <OverallOrdersList
               setAddOrderFormStatus={setAddOrderFormStatus}
               fetchOrders={fetchOrders}
-             orders={orders}
+              orders={orders}
                 handleOrderClick={handleOrderClick}
               />
             </div>

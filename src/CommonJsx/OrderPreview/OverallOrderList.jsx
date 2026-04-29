@@ -44,9 +44,7 @@ return (
           >
             <div className="orderInfo">
               <p>
-                {order.Title.length > 25
-                  ? order.Title.slice(0, 25) + ".."
-                  : order.Title}{" "}
+                 {order.Title}
                   
               </p>
               <p className="orderDate">{order.FinalDate}</p>

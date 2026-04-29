@@ -84,14 +84,11 @@ const EditProfilePanel = () => {
     <div className="EditProfilePanel">
       <div className="inputColumnImg">
          <div className="avatarInput">
-
            <label>
-
              <img src={avatarPreview } alt="picture" />
              <input onChange={(e) => {handleFileChange(e)}} type="file" style={{"display" : "none"}} accept="image/*"/>
-          
             </label>
-           
+    
             <p>{avatarText}</p>
         </div>
 
@@ -120,19 +117,14 @@ const EditProfilePanel = () => {
         />
         </div>
           <div className="inputGroup">
-         <p>Email And Password</p>
+         <p>Email</p>
           <input
            type="email"
           placeholder={userProfile?.email || "Email"}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <input
-          type="password"
-          placeholder="New Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+    
                    </div>
         
 

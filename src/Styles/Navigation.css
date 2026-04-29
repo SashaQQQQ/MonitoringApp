@@ -22,6 +22,7 @@
   align-items: center;
   background-color: white;
   width: 96%;
+ 
   min-width: 50px;
   text-align: center;
   border-radius: 1vw;
@@ -29,12 +30,12 @@
   color: gray;
   height: auto;
   cursor: pointer;
-  padding: 5px;
+  padding: 15px;
 }
 .navigationMenu div:hover {
  background-color: rgb(0, 119, 255);
   color: white;
-  gap: 5%;
+  gap: 7%;
 }
 .navigationMenu div img {
   width: auto;

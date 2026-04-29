@@ -41,8 +41,8 @@
   gap: 20px;
 }
 .bestWorkersPanel,
-.OnlineListContainer,
-.ordersToEndFastPanel {
+.OnlineListContainer
+ {
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -52,7 +52,16 @@
   transition: all 0.3s ease-in-out;
   border: 1px solid rgb(155, 201, 255);
 }
-
+.ordersToEndFastPanel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: #f9f9fe;
+  border-radius: 0.5vw;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid rgb(155, 201, 255);
+}
 
 
 .panelTitle {
@@ -107,27 +116,36 @@ border-top-right-radius: 0.5vw;
 }
 @media (max-width: 768px) {
   .mainContent {
-    width: 100vw;
-
     position: relative;
+    width: 100vw;
+    height: calc(100vh - 80px);
     left: 0;
-    background-color: transparent;
     top: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    gap: unset;
+
+  
     padding-top: calc(80px + env(safe-area-inset-top));
     padding-bottom: 10px;
-    height: auto;
   }
   .main {
-    padding: 0;
+    display: flex;
+    justify-content: center;
     width: 98vw;
     height: 100%;
+    padding: 50px 20px 20px 20px;
+    border-radius: 2vw;
+    background-color: white;
   }
   .greetings {
     display: none;
   }
   .userProfilePreview {
     padding-top: calc(3px + env(safe-area-inset-top));
-    padding: 3px;
+    padding: 15px;
     margin: 0;
     font-size: 12px;
     position: fixed;
@@ -135,7 +153,7 @@ border-top-right-radius: 0.5vw;
     top: 0;
     height: auto;
     border-radius: 2vw;
-
+    background-color: rgb(218, 250, 255);
     
   }
   .userProfilePreview img {

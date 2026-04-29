@@ -6,7 +6,6 @@ import "../../Styles/MyCalendar.css";
 function MyCalendar({ orders }) {
   const [value, setValue] = useState(new Date());
 
-  // просто список дат
   const getDatesSet = () => {
     const set = new Set();
 

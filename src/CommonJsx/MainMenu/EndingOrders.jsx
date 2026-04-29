@@ -64,9 +64,7 @@ function EndingOrders() {
           <div key={order.id} className="orderCard">
             <div className="orderInfo">
               <p>
-                {order.Title.length > 25
-                  ? order.Title.slice(0, 25) + ".. "
-                  : order.Title}
+                { order.Title}
               </p>
             </div>
             <div className="orderStats">
