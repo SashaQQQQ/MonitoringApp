@@ -6,14 +6,16 @@
   width: 100%;
   gap: 5px;
 }
-
+.workerOrdersPage > :first-child {
+  width: 30%;
+}
 .orderColumn {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
- background-color: #e3e4f6;
-  width: 48%;
+  background-color: #f3f3fa;
+  width: 65%;
   border-radius: 2vw;
   height: 98%;
   padding-top: 15px;
@@ -23,15 +25,15 @@
   position: relative;
   top: 5px;
   font-size: 18px;
- background-color: #e3e4f6;
- padding: 5px;
- border-radius: 1vw;
- color: rgb(39, 37, 37);
+  background-color: #e3e4f6;
+  padding: 5px;
+  border-radius: 1vw;
+  color: rgb(39, 37, 37);
 }
 .orderColumn ul {
   padding: 0;
   width: 100%;
-margin-top: 5px;
+  margin-top: 5px;
   display: flex;
   justify-content: start;
   padding-top: 5px;
@@ -44,13 +46,13 @@ margin-top: 5px;
   width: 90%;
   gap: 5px;
   height: auto;
-  background-color: rgb(237, 237, 237);
+  background-color: white;
   border-radius: 2vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 10px 22px;
   cursor: pointer;
   transition: all 0.2s ease;
   overflow-y: auto;
@@ -67,9 +69,12 @@ margin-top: 5px;
 }
 .orderColumn ul li > :last-child {
   width: 100%;
+  color: #9f7f60;
+  background-color: #f9eadb;
+  border-radius: 2vw;
+  padding-right: 10px;
   text-align: right;
-  color: grey;
-  font-size: 13px;
+  font-size: 14px;
 }
 .orderColumn ul li:hover {
   background-color: rgb(230, 233, 244);
@@ -84,7 +89,6 @@ margin-top: 5px;
   width: 98%;
   height: 96%;
   gap: 20px;
-
 
   border-radius: 2vw;
   display: flex;
@@ -111,6 +115,7 @@ margin-top: 5px;
 
   font-weight: 600;
 }
+
 .orderDates {
   text-align: center;
   display: flex;
@@ -121,7 +126,7 @@ margin-top: 5px;
   justify-content: center;
   color: rgb(58, 58, 58);
   align-items: center;
-background-color: white;
+  background-color: white;
   border-radius: 2vw;
   box-shadow: 2px 2px 5px rgb(156, 160, 183);
   padding: 15px;
@@ -129,9 +134,9 @@ background-color: white;
 .workerOrderDetails .progresses {
   position: relative;
   display: flex;
-gap: 15px;
+  gap: 15px;
   width: 80%;
-height: auto;
+  height: auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -146,9 +151,9 @@ height: auto;
   color: rgb(58, 58, 58);
   font-weight: 600;
 }
-.workerOrderDetails   .progresses .charts {
+.workerOrderDetails .progresses .charts {
   display: flex;
-height: 180px;
+  height: 180px;
   width: 100%;
 }
 .form {
@@ -185,7 +190,7 @@ height: 180px;
   font-weight: 600;
   outline: none;
   padding: 10px;
- border: 1px solid rgb(155, 201, 255);
+  border: 1px solid rgb(155, 201, 255);
   border-radius: 1vw;
 }
 

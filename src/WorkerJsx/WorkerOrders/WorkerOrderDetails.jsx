@@ -57,12 +57,7 @@ const WorkerOrderDetails = ({
       </button>
       {selectedOrder?.id ? (
         <div className="workerOrderDetails">
-          <h3>
-            Title:{" "}
-            {selectedOrder?.Title && selectedOrder?.Title.length > 20
-              ? selectedOrder?.Title.slice(0, 20)
-              : selectedOrder?.Title}
-          </h3>
+          <h3>Title: {selectedOrder?.Title}</h3>
           <h4>My role: {selectedOrder?.myRole || "Not known"}</h4>
           <div className="description">
             <p>Description: {selectedOrder?.Description || "Not available"}</p>
@@ -100,8 +95,6 @@ const WorkerOrderDetails = ({
                 max="100"
                 value={updatedProgress}
               />
-
-              
             </div>
 
             <button onClick={updateChanges}>Save</button>
@@ -109,10 +102,9 @@ const WorkerOrderDetails = ({
         </div>
       ) : (
         <div className="noOrderSelected">
-
           <h4>Select an order to see details</h4>
-         <img src={emptyIcon} alt="No order selected"/>
-         </div>
+          <img src={emptyIcon} alt="No order selected" />
+        </div>
       )}
     </>
   );

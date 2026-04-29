@@ -6,6 +6,15 @@ import { supabase } from "../SupabaseClient.js";
 function EndingOrders() {
   const [endingOrders, setEndingOrders] = useState([]);
 
+  useEffect(() => {
+    fetchEndingOrders();
+    const interval = setInterval(() => {
+      fetchEndingOrders();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   async function fetchEndingOrders() {
     const { data, error } = await supabase.from("orders").select("*");
 
@@ -63,9 +72,7 @@ function EndingOrders() {
         endingOrders.map((order) => (
           <div key={order.id} className="orderCard">
             <div className="orderInfo">
-              <p>
-                { order.Title}
-              </p>
+              <p>{order.Title}</p>
             </div>
             <div className="orderStats">
               <p className="endingOrderProgress">Done: {order.progress}%</p>

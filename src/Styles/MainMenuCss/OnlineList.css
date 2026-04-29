@@ -2,7 +2,6 @@
   height: 98%;
   width: 98%;
   padding: 5px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,6 +10,9 @@
   height: 95%;
   width: 98%;
   padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   overflow-y: auto;
 }
 .OnlineList ul li {
@@ -20,14 +22,18 @@
   display: flex;
   background-color: white;
   align-items: center;
-  gap: 15px;
-  flex: 1;
-  justify-content: left;
-  border-radius: 2vw;
+
+  justify-content: space-between;
+  border-radius: 1vw;
   padding-left: 15px;
   padding-right: 15px;
-  padding: 5px;
+  padding: 10px;
   box-shadow: 1px 1px 5px rgb(156, 160, 183);
+}
+.OnlineList ul li img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 .OnlineList ul li p {
   text-align: center;

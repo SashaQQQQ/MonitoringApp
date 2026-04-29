@@ -20,7 +20,7 @@ function MainPage() {
     refreshOnlineStatus(userProfile.id);
     const myInterval = setInterval(() => {
       refreshOnlineStatus(userProfile.id);
-    }, 30000);
+    }, 15000);
 
     return () => {
       clearInterval(myInterval);
@@ -35,11 +35,19 @@ function MainPage() {
       <h1 className="greetings">Welcome on board!</h1>
       <div className="mainContent">
         {activePage === "main" && <MainMenuBlock />}
-        {activePage === "workers"  ? <WorkersListPage /> : null}
-        {activePage === "editingProfile"  ? <EditProfilePanel /> : null}
-        {activePage === "addWorker" && (userProfile.Role === "Owner" || userProfile.Role === "Admin") ? <AddWorker /> : null}
-        {activePage === "orders" && (userProfile.Role === "Owner" || userProfile.Role === "Admin") ? <OrdersPageOwner /> : null}
-        {activePage === "orders" && userProfile.Role === "Worker" ? <WorkerOrdersPage /> : null}
+        {activePage === "workers" ? <WorkersListPage /> : null}
+        {activePage === "editingProfile" ? <EditProfilePanel /> : null}
+        {activePage === "addWorker" &&
+        (userProfile.Role === "Owner" || userProfile.Role === "Admin") ? (
+          <AddWorker />
+        ) : null}
+        {activePage === "orders" &&
+        (userProfile.Role === "Owner" || userProfile.Role === "Admin") ? (
+          <OrdersPageOwner />
+        ) : null}
+        {activePage === "orders" && userProfile.Role === "Worker" ? (
+          <WorkerOrdersPage />
+        ) : null}
         {activePage === "chats" ? (
           <ChatMain
             contactPerson={contactPerson}

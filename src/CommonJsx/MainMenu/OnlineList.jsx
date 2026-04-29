@@ -2,6 +2,7 @@ import { supabase } from "../SupabaseClient";
 import { useState, useEffect, useContext } from "react";
 import "../../Styles/MainMenuCss/OnlineList.css";
 import { DataContext } from "../DataContext";
+import userIcon from "../../Icons/worker.png";
 const OnlineList = () => {
   const { userProfile } = useContext(DataContext);
   const [onlineUsers, setOnlineUsers] = useState([]);
@@ -19,6 +20,7 @@ const OnlineList = () => {
   }
 
   useEffect(() => {
+    fetchOnlineUsers();
     const myInterval = setInterval(() => {
       fetchOnlineUsers();
     }, 10000);
@@ -36,6 +38,7 @@ const OnlineList = () => {
 
               return (
                 <li key={user.id}>
+                  <img src={user.avatarUrl || userIcon} alt="f" />
                   <p>
                     {user.name} {user.secondName}
                   </p>
