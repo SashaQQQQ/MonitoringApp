@@ -12,43 +12,24 @@ function OverallOrdersDescription({
 }) {
   const [workers, setWorkers] = useState([]);
   const { whichRole } = useContext(DataContext);
+  const [activeWorkerCommentId, setActiveWorkerCommentId] = useState(null);
+
   async function fetchWorkers() {
     if (!selectedOrder?.id) return;
 
     const { data, error } = await supabase
       .from("order.Workers")
-      .select("worker_id, progress_percent")
+      .select("progress_percent, comment, users(id,name, secondName)")
       .eq("order_id", selectedOrder?.id);
 
-    if (error) {
-      console.log("error while fetching workers of the order");
-    } else {
-      const ids = data.map((worker) => worker.worker_id);
-      if (ids.length === 0) {
-        setWorkers([]);
-        return;
-      }
-      const { data: dataWorker, error: errorWorker } = await supabase
-        .from("users")
-        .select("*")
-        .in("id", ids);
-
-      if (errorWorker) {
-        console.log("error while getting names of workers");
-      } else {
-        const combinedData = dataWorker.map((user) => {
-          const workerData = data.find((w) => {
-            return w.worker_id === user.id;
-          });
-          return {
-            ...user,
-            progress_percent: workerData?.progress_percent || 0,
-          };
-        });
-
-        setWorkers(combinedData);
-      }
-    }
+    const combinedData = data.map((user) => {
+      return {
+        ...user.users,
+        progress_percent: user.progress_percent || 0,
+        comment: user.comment,
+      };
+    });
+    setWorkers(combinedData);
   }
 
   async function deleteOrder(orderId) {
@@ -57,32 +38,24 @@ function OverallOrdersDescription({
       .delete()
       .eq("id", orderId);
 
-    if (error) {
-      console.error("Error deleting order:", error);
-    } else {
-      const { data: finalStepData, error: finalStepError } = await supabase
-        .from("order.Workers")
-        .delete()
-        .eq("order_id", orderId)
-        .select("worker_id");
-      if (finalStepError) {
-        console.error("Error deleting order workers:", finalStepError);
-      } else {
-        if (selectedOrder?.readyProcent === 100) {
-          const ids = finalStepData.map((worker) => worker.worker_id);
-          if (ids.length > 0) {
-            await supabase.rpc("increment_finished_orders", { user_ids: ids });
-          }
-        }
+    if (error) return;
+    if (selectedOrder?.readyProcent >= 100) {
+      console.log(workers);
+      const ids = workers.map((worker) => worker.id);
+      if (ids.length > 0) {
+        await supabase.rpc("increment_finished_orders", { user_ids: ids });
+        console.log("works");
       }
-      setSelectedOrder(null);
-      fetchOrders();
     }
+    setSelectedOrder(null);
+    fetchOrders();
   }
 
   useEffect(() => {
+    setActiveWorkerCommentId(null);
     fetchWorkers();
   }, [selectedOrder]);
+
   return (
     <>
       {selectedOrder ? (
@@ -118,11 +91,23 @@ function OverallOrdersDescription({
                 <li>No workers found</li>
               ) : (
                 workers?.map((worker) => (
-                  <li key={worker?.id}>
+                  <li
+                    key={worker.id}
+                    onClick={() => {
+                      setActiveWorkerCommentId(worker.id);
+                    }}
+                  >
                     <div className="orderWorkersDetails">
-                      <p>{worker?.secondName}</p>
-                      <h5>{worker?.progress_percent}%</h5>
+                      <p>{worker.secondName}</p>
+                      <h5>{worker.progress_percent}%</h5>
                     </div>
+
+                    {activeWorkerCommentId === worker.id ? (
+                      <div className="commentContainer">
+                        <h3>{worker.name} says:</h3>
+                        <p className="comment">{worker.comment}</p>
+                      </div>
+                    ) : null}
                   </li>
                 ))
               )}

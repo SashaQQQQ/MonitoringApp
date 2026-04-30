@@ -23,7 +23,6 @@ function OrdersPageOwner() {
     }
 
     if (data) {
-      console.log("Fetched orders:", data);
       const ordersWithProcent = await Promise.all(
         data.map(async (order) => {
           const procent = await fetchProcents(order.id);

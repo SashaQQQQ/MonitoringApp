@@ -2,7 +2,7 @@
   transition: all 0.2s ease;
   width: 50%;
   justify-content: space-around;
-  gap: 3px;
+  overflow-y: scroll;
   height: auto;
   border-radius: 3vw;
   display: flex;
@@ -150,19 +150,21 @@
   align-items: center;
   flex-direction: column;
   gap: 5px;
-  overflow-y: scroll;
+  transition: all 0.5s ease;
 }
 .selectedOrderWorkerss li {
-  position: relative;
   list-style: none;
   width: 94%;
+  gap: 3px;
   padding: 5px;
   height: auto;
   display: flex;
+  flex-direction: column;
   border: 1px solid rgb(0, 119, 255);
   align-items: center;
   justify-content: space-around;
   background-color: rgb(243, 243, 243);
+  transition: all 1s ease;
   border-radius: 1vw;
 }
 .orderWorkersDetails {
@@ -198,7 +200,32 @@
   cursor: pointer;
   transition: all 0.2s ease;
 }
-
+.commentContainer {
+  opacity: 0;
+  animation: appearance1 1s forwards ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  height: auto;
+  width: 100%;
+  background-color: white;
+  border-radius: 2vw;
+  padding: 10px;
+}
+.commentContainer h3 {
+  white-space: nowrap;
+  width: 95%;
+  color: #5d82e6;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: capitalize;
+}
+.commentContainer p {
+  width: 100%;
+  height: auto;
+  padding: 5px;
+}
 @media (max-width: 768px) {
   .orderDescription .selectedOrderInfo p {
     word-break: break-all;
