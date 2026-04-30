@@ -20,8 +20,8 @@ export default function ChatList({
 
     if (item.id === userProfile.id) return;
     return (
-      <li key={item.id} onClick={() => getOtherUser(item)}>
-        <img src={item?.avatarUrl||personIcon} alt="" />
+      <li key={item?.id} onClick={() => getOtherUser(item)}>
+        <img src={item?.avatarUrl || personIcon} alt="" />
         <div className="chatInfo">
           <p className="nameOfChat">
             {item?.name + " "}

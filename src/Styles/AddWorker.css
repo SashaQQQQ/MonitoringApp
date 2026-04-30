@@ -45,41 +45,42 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+  width: 100%;
 }
 
 .inputGroup label {
   font-size: 14px;
-color: rgb(0, 119, 255);
+  color: rgb(0, 119, 255);
   font-weight: 600;
 }
 .inputGroup div {
   justify-content: space-between;
   height: 100%;
+  width: 100%;
   padding-left: 15px;
   padding-right: 15px;
   display: flex;
   align-items: center;
   gap: 10px;
   border: 1px solid rgb(155, 201, 255);
-    border-radius: 0.5vw;
+  border-radius: 0.5vw;
 }
 .inputGroup div img {
   width: 40px;
   height: auto;
   padding: 5px;
   border-radius: 50%;
-
 }
 .inputGroup div input {
   width: 90%;
   padding: 12px 14px;
-outline: none;
-border: none;
+  outline: none;
+  border: none;
   font-size: 15px;
   transition:
     border-color 0.2s,
     box-shadow 0.2s;
-    color: rgb(0, 119, 255);
+  color: rgb(0, 119, 255);
 }
 .inputGroup input::placeholder {
   font-weight: 600;
@@ -111,7 +112,7 @@ border: none;
 .customRadio {
   width: 20px;
   height: 20px;
-  background: rgb(203, 203, 203); 
+  background: rgb(203, 203, 203);
   position: relative;
   border-radius: 50%;
   cursor: pointer;
@@ -136,14 +137,14 @@ border: none;
 .roleChoice .choiceContainer input:checked + .customRadio::after {
   background-color: white;
 }
-.roleChoice .choiceContainer .iconContainer  {
+.roleChoice .choiceContainer .iconContainer {
   height: 60px;
   width: 60px;
   padding: 10px;
   border-radius: 50%;
   background-color: rgb(200, 200, 234);
 }
-.roleChoice .choiceContainer .iconContainer  img {
+.roleChoice .choiceContainer .iconContainer img {
   width: 100%;
   height: auto;
 }
@@ -199,7 +200,7 @@ border: none;
     padding: 3px;
   }
   .roleChoice .choiceContainer {
-  position: relative;
+    position: relative;
 
     height: auto;
     align-items: center;
