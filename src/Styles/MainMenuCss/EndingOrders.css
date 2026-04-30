@@ -85,6 +85,5 @@
   .orderCard .orderStats {
     justify-content: right;
     gap: 3px;
-    background-color: red;
   }
 }
