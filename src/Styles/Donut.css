@@ -4,8 +4,7 @@
   align-items: center;
 
   width: 100%;
-  height: 80%;
-  overflow: hidden;
+  height: auto;
 }
 .readyDonut {
   position: relative;
@@ -15,8 +14,6 @@
   border-radius: 10vw;
   background-color: #0088fe;
 }
-
-
 
 .infoContainer {
   display: flex;
@@ -35,8 +32,15 @@
 .infoContainer div p {
   text-align: left;
   color: #5d82e6;
-   background-color: #dfe6fc;
-   padding: 5px;
-    border-radius: 1vw;
-    font-weight: 600;
+  background-color: #dfe6fc;
+  padding: 5px;
+  border-radius: 1vw;
+  font-weight: 600;
+}
+@media (max-width: 768px) {
+  .donutContainer {
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
 }

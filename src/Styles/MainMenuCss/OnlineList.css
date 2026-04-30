@@ -10,6 +10,7 @@
   height: 95%;
   width: 98%;
   padding-top: 10px;
+  padding-bottom: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;

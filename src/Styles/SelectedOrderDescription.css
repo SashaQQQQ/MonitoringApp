@@ -1,7 +1,7 @@
 .orderDescription {
   transition: all 0.2s ease;
   width: 50%;
-
+  justify-content: space-around;
   height: auto;
   border-radius: 3vw;
   display: flex;
@@ -67,14 +67,13 @@
 }
 .orderDescription .selectedOrderInfo > :last-child {
   position: relative;
-  top: 5px;
+  height: auto;
+
   font-size: 18px;
   background-color: unset;
   color: grey;
 }
 .selectedOrderDescription {
-  top: 15px;
-  position: relative;
   width: 90%;
   background-color: rgb(210, 228, 248);
   padding: 15px;
@@ -85,7 +84,7 @@
   align-items: center;
   flex-direction: column;
   height: auto;
-  max-height: 300px;
+
   text-overflow: clip;
 }
 .selectedOrderDescription h2 {

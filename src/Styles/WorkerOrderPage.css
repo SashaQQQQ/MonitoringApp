@@ -31,16 +31,16 @@
   color: rgb(39, 37, 37);
 }
 .orderColumn ul {
-  padding: 0;
+  padding-top: 15px;
+  padding-bottom: 15px;
   width: 100%;
   margin-top: 5px;
   display: flex;
   justify-content: start;
-  padding-top: 5px;
   align-items: center;
   flex-direction: column;
   gap: 15px;
-  height: 100%;
+  flex: 1;
 }
 .orderColumn ul li {
   width: 90%;
@@ -55,7 +55,6 @@
   padding: 10px 22px;
   cursor: pointer;
   transition: all 0.2s ease;
-  overflow-y: auto;
 }
 .orderColumn ul li > :first-child {
   width: 90%;
@@ -153,7 +152,7 @@
 }
 .workerOrderDetails .progresses .charts {
   display: flex;
-  height: 180px;
+  height: auto;
   width: 100%;
 }
 .form {
@@ -225,21 +224,34 @@
   height: auto;
 }
 @media (max-width: 768px) {
+  .workerOrdersPage {
+    align-items: stretch;
+    display: flex;
+    justify-content: center;
+    background-color: red;
+    height: 100vh;
+  }
   .orderColumn.hidden {
     display: none;
   }
   .workerOrderDetails {
     height: 100%;
+    width: 100%;
     border: unset;
     box-shadow: unset;
   }
-  .orderColumn {
-    width: 100%;
-    background-color: white;
-    padding: 15px;
-    padding-top: 30px;
-    height: 100%;
+  .workerOrdersPage > :first-child {
+    width: unset;
   }
+  .orderColumn {
+    padding: 0;
+    margin: 0;
+    min-width: 100%;
+    width: auto;
+    height: 100%;
+    overflow-y: auto;
+  }
+
   .orderColumn h1 {
     font-size: 18px;
   }
