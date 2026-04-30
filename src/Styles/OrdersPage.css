@@ -132,6 +132,8 @@
 .orderStatus {
   width: 10px;
   height: 100%;
+  max-height: 30px;
+  min-height: 10px;
 }
 .orderStatus.notStarted {
   background-color: #f44336;

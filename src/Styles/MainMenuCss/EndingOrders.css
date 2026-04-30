@@ -43,6 +43,7 @@
   justify-content: space-between;
   align-items: center;
   width: auto;
+
   height: auto;
   gap: 5px;
   font-weight: 600;
@@ -80,5 +81,10 @@
   .endingOrderProgress {
     padding: 5px;
     font-size: 0.9rem;
+  }
+  .orderCard .orderStats {
+    justify-content: right;
+    gap: 3px;
+    background-color: red;
   }
 }
