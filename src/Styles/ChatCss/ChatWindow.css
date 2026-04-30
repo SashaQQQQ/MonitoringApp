@@ -12,6 +12,11 @@
   width: 100%;
   gap: 15px;
 }
+.chatHeader img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
 .chatHeader button {
   display: none;
   width: auto;
@@ -70,7 +75,7 @@
   display: flex;
   gap: 5px;
   padding: 10px;
- background-color: #e3e4f6;
+  background-color: #e3e4f6;
   border-bottom-right-radius: 2vw;
 }
 

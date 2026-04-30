@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { supabase } from "../SupabaseClient.js";
 import { DataContext } from "../DataContext.jsx";
+import userIcon from "../../Icons/worker.png";
 import "../../Styles/ChatCss/ChatWindow.css";
 
 export default function ChatWindow({
@@ -86,6 +87,7 @@ export default function ChatWindow({
     <div className={`chatWindow ${activeView === "list" ? "hidden" : ""}`}>
       <div className="chatHeader">
         <button onClick={goBack}>←</button>
+        <img src={otherUser?.avatarUrl || userIcon} alt="" />
         <p>{otherUser?.name + " " + otherUser?.secondName}</p>
       </div>
 
