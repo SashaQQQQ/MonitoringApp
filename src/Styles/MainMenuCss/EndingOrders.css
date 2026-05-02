@@ -8,6 +8,7 @@
   gap: 10px;
   justify-content: left;
   align-items: center;
+  overflow-y: auto;
 }
 .orderCard {
   padding-left: 15px;
