@@ -1,4 +1,4 @@
-import { supabase } from "./SupabaseClient.js";
+import { supabase } from "../SupabaseClient.js";
 
 export async function refreshOnlineStatus(id) {
   const date = new Date().toISOString();

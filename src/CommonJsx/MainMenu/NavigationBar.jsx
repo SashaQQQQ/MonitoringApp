@@ -1,12 +1,12 @@
 import { useState, useEffect, useContext } from "react";
-import { DataContext } from "../CommonJsx/DataContext.jsx";
-import homeIcon from "../Icons/home.png";
-import chatIcon from "../Icons/chat.png";
-import workerIcon from "../Icons/worker.png";
-import addWorkerIcon from "../Icons/addWorker.png";
-import ordersIcon from "../Icons/order.png";
-import logOutIcon from "../Icons/exit.png";
-import "../Styles/Navigation.css";
+import { DataContext } from "../DataContext.jsx";
+import homeIcon from "../../Icons/home.png";
+import chatIcon from "../../Icons/chat.png";
+import workerIcon from "../../Icons/worker.png";
+import addWorkerIcon from "../../Icons/addWorker.png";
+import ordersIcon from "../../Icons/order.png";
+import logOutIcon from "../../Icons/exit.png";
+import "../..//Styles/Navigation.css";
 import { Link } from "react-router-dom";
 
 function NavigationBar() {

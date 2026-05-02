@@ -2,15 +2,16 @@ import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../DataContext.jsx";
 import WorkersListPage from "../../WorkerJsx/WorkersListPage.jsx";
 import EditProfilePanel from "../EditProfilePanel.jsx";
-import AddWorker from "../AddWorker.jsx";
+import AddWorker from "../AddingWorkerComponents/AddWorkerMain.jsx";
 import OrdersPageOwner from "../OrderPreview/OrdersPageOwner.jsx";
-import NavigationBar from "../NavigationBar.jsx";
+import NavigationBar from "./NavigationBar.jsx";
 import ProfilePreview from "../ProfilePreview.jsx";
 import ChatMain from "../Chat/ChatMain.jsx";
 import MainMenuBlock from "./MainMenuBlocks.jsx";
 import "../../Styles/MainPage.css";
-import { refreshOnlineStatus } from "../UsefulFunctions.jsx";
+import { refreshOnlineStatus } from "../SpecialComponents/UsefulFunctions.jsx";
 import WorkerOrdersPage from "../../WorkerJsx/WorkerOrders/WorkerOrderPage.jsx";
+
 function MainPage() {
   const [contactPerson, setContactPerson] = useState(null);
   const { userProfile, activePage, loading } = useContext(DataContext);

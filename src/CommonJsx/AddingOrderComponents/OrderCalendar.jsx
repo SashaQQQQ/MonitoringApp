@@ -19,7 +19,6 @@ function OrderCalendar({ getFinalDate }) {
 
   return (
     <div className="orderCalendar-wrapper">
-      <h3>Select final date</h3>
       <Calendar minDate={new Date()} value={value} onChange={handleChange} />
 
       <h3>Chosen date: {isoDate}</h3>

@@ -19,12 +19,13 @@ function LogInPage() {
 
   async function handleLogIn(e) {
     e.preventDefault();
-    if (!checkInputedData()) {
+    let trimmedLogin = login.trim();
+    let trimmedPassword = password.trim();
+    
+    if (!checkInputedData(trimmedLogin, trimmedPassword)) {
       return;
     }
     
-    let trimmedLogin = login.trim();
-    let trimmedPassword = password.trim();
     const { data, error } = await supabase.auth.signInWithPassword({
       email: trimmedLogin,
       password: trimmedPassword,
@@ -59,44 +60,45 @@ function LogInPage() {
   }
   function seeThePassword() {
     const passwordInput = passwordInputRef.current;
-    if (passwordInput.type === "password") {
-      passwordInput.type = "text";
-    } else {
-      passwordInput.type = "password";
-    }
+    password.type =  passwordInput.type === "password" ? passwordInput.type = "text" : passwordInput.type = "password";
+   
   }
   function handleLoginChange(e) {
     setLogin(e);
-    isValidLogin(e);
   }
   function handlePasswordChange(e) {
-    const newPassword = e;
-    setPassword(newPassword);
-
-    setPasswordWarning(
-      newPassword.length >= 8
-        ? ""
-        : "Password must be at least 8 characters long",
-    );
+    setPassword(e);
   }
 
-  function checkInputedData() {
-    if (isValidLogin(login)) {
-      if (password.length >= 8) {
-        return true;
-      } else {
-        setPasswordWarning("Password must be at least 8 characters long");
-      }
+  function checkInputedData(trimmedLogin,trimmedPassword) {
+
+    const isLogin = isValidLogin(trimmedLogin);
+    const isPassword = trimmedPassword.length >= 8;
+    
+    if (!isPassword) {
+      setPasswordWarning("Password must be at least 8 characters long");
     }
+
+    return isLogin && isPassword;
   }
   function isValidLogin(login) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (re.test(login)) {
-      setLoginWarning("");
-      return true;
+    const value = login.trim();
+
+    if(value === "" ) {
+      setLoginWarning("Email is requered!");
+      return false;
     }
-    setLoginWarning("Enter a valid email");
-    return false;
+
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+      if (!re.test(login) ) {
+        setLoginWarning("Email is invalid!");
+        return false;
+      }
+
+    
+    setLoginWarning("");
+    return true;
   }
 
   return (
@@ -143,7 +145,7 @@ function LogInPage() {
         <br />
         Contact your leader.
       </p>
-      <button onClick={handleLogIn}>Log In</button>
+      <button type="submit">Log In</button>
     </form>
 
   );

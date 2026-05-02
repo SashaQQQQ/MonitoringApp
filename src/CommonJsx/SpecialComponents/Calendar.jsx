@@ -34,7 +34,7 @@ function MyCalendar({ orders }) {
       <Calendar
         onChange={setValue}
         value={value}
-        height={"300px"}
+        minDate={new Date()}
         tileContent={({ date }) => {
           const key =
             date.getFullYear() +

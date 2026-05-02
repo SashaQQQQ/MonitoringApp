@@ -1,11 +1,14 @@
 import { useState, useEffect, useContext } from "react";
-import bagIcon from "../Icons/workerBag.png";
-import adminIcon from "../Icons/protection.png";
-import { DataContext } from "./DataContext.jsx";
-import emailIcon from "../Icons/message.png";
-import passwordIcon from "../Icons/padlock.png";
-import "../Styles/AddWorker.css";
-import { supabase } from "./SupabaseClient.js";
+import bagIcon from "../../Icons/workerBag.png";
+import adminIcon from "../../Icons/protection.png";
+import emailIcon from "../../Icons/message.png";
+import passwordIcon from "../../Icons/padlock.png";
+import "../../Styles/AddWorker.css";
+import { DataContext } from "../DataContext.jsx";
+import { supabase } from "../SupabaseClient.js";
+
+import AddWorkerInputs from "./AddWorkerInputs.jsx";
+
 function AddWorker() {
   const { setActivePage } = useContext(DataContext);
   const [name, setName] = useState("");
@@ -56,23 +59,10 @@ function AddWorker() {
     setActivePage("workers");
   }
 
-  function handleWorkerLoginChange(e) {
-    setWorkerLogin(e.target.value);
-  }
-
-  function handleWorkerPasswordChange(e) {
-    setWorkerPassword(e.target.value);
-  }
-
-  function handleNameChange(e) {
-    setName(e.target.value);
-  }
-  function handleSecondNameChange(e) {
-    setSecondName(e.target.value);
-  }
   function handleRoleChange(e) {
     setRole(e);
   }
+
   useEffect(() => {
     console.log(role);
   }, [role]);
@@ -85,58 +75,8 @@ function AddWorker() {
         </p>
 
         <div className="workerForm">
-          <div className="inputGroup">
-            <label>Name</label>
-            <div>
-            <input
-              value={name}
-              onInput={(e) => handleNameChange(e)}
-              type="text"
-              placeholder="Enter name"
-            />
-          
-            </div>
-          </div>
 
-          <div className="inputGroup">
-            <label>Second name</label>
-            <div>
-
-            <input
-              value={secondName}
-              onInput={(e) => handleSecondNameChange(e)}
-              type="text"
-              placeholder="Enter second name"
-            />
-             
-            </div>
-          </div>
-
-          <div className="inputGroup">
-            <label>His login</label>
-            <div>
-            <input
-              placeholder="Enter the email"
-              value={workerLogin}
-              onInput={(e) => handleWorkerLoginChange(e)}
-              type="text"
-            />
-      <img src={emailIcon} alt="Worker" />
-            </div>
-          </div>
-          <div className="inputGroup">
-            <label>His password</label>
-            <div>
-
-            <input
-              placeholder="Enter the password"
-              value={workerPassword}
-              onChange={(e) => handleWorkerPasswordChange(e)}
-              type="text"
-            />
-                  <img src={passwordIcon} alt="Worker" />
-            </div>
-          </div>
+        <AddWorkerInputs setName={setName} setSecondName={setSecondName} setWorkerEmail={setWorkerLogin} setPassword={setWorkerPassword}/>
           <div className="roleChoice">
             <label className="choiceContainer">
             
