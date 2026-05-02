@@ -228,7 +228,6 @@
     align-items: stretch;
     display: flex;
     justify-content: center;
-    background-color: red;
     height: 100vh;
   }
   .orderColumn.hidden {
