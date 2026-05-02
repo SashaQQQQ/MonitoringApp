@@ -83,15 +83,16 @@
   align-items: center;
   flex-direction: column;
   gap: 3px;
-  overflow-y: auto;
+  overflow-y: auto;   
 }
 .workersGroup ul li {
   display: flex;
+  padding: 10px;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+
   width: 98%;
-  height: 20%;
+  height: auto;
   border: 1px solid #eee;
   border-radius: 0.5vw;
   gap: 2px;
@@ -103,8 +104,8 @@
   gap: 10px;
 }
 .workersGroup ul li img {
-  width: 30px;
-  height: auto;
+  width: auto;
+  height: 30px;
   border-radius: 50%;
   margin-right: 10px;
 }
@@ -167,7 +168,7 @@
   overflow-y: auto;
   justify-content: center;
   align-items: center;
-  position: relative;
+  position: relative; 
 }
 .workerRoleGroup h3 {
   color: rgb(58, 58, 58);
@@ -175,6 +176,8 @@
 .workerRoleGroup ul {
   padding-top: 5px;
   padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   width: 98%;
   height: 80%;
   border: 1px solid #ddd;
@@ -185,7 +188,7 @@
   flex-direction: column;
   gap: 3px;
   overflow-y: auto;
-  overflow-x: hidden;
+  
 }
 .workerRoleGroup ul li {
   display: flex;
@@ -193,17 +196,17 @@
   align-items: center;
   padding: 10px;
   width: 100%;
-  box-sizing: border-box;
-  overflow: hidden;
 
+  flex-direction: column;
   height: auto;
   border: 1px solid #eee;
   border-radius: 0.5vw;
 }
 .workerRoleGroup ul li p {
   white-space: nowrap;
+  text-transform: capitalize;
 
-  width: 250px;
+  width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -216,6 +219,12 @@
   font-size: 15px;
   outline: 2px solid blue;
 }
+ .workerRoleGroup ul li div {
+   display: flex;
+   justify-content: space-around;
+   width: 100%;
+ }
+
 .workerRoleGroup button {
   padding: 4px 10px;
   border: none;

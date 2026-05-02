@@ -70,7 +70,7 @@ function OverallNewOrderInfo({ getSearchedWorkers, chosenWorkers }) {
               return (
                 <li key={worker.id}>
                   <div>
-                    <img src={userIcon} alt="" />
+                    <img src={worker.avatarUrl || userIcon} alt="" />
                     <p>
                       {worker.name} {worker.lastName}
                     </p>

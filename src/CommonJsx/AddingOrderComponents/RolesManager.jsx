@@ -36,7 +36,9 @@ function OverallNewOrderInfo({
         {chosenWorkers.length > 0
           ? chosenWorkers.map((worker) => (
               <li key={worker.id}>
-                <p>{worker.name} </p>
+                <p>{worker.name} {worker.secondName}</p>
+                <div>
+
                 <input
                   type="text"
                   disabled={!!worker.role}
@@ -59,6 +61,7 @@ function OverallNewOrderInfo({
                 <button onClick={() => handleRemoveWorkerFromOrder(worker)}>
                   Delete worker
                 </button>
+                </div>
               </li>
             ))
           : <li>No workers added</li>}

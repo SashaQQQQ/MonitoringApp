@@ -1,8 +1,8 @@
 .ordersPage {
   width: 100%;
-  height: 90%;
+  height: 100%;
   overflow: hidden;
-  padding: 15px;
+  padding: 5px;
 }
 
 .ordersPage .extBtn:hover {
@@ -26,9 +26,11 @@
 .ordersContent .ordersInfoCont {
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+padding: 10px;
   width: 50%;
   height: 100%;
-  gap: 5px;
+  gap: 30px;
   transition: all 0.5s ease;
 }
 .ordersList {
@@ -38,6 +40,7 @@
   background-color: rgb(243, 243, 243);
   border-radius: 2vw;
   transition: all 0.2s ease;
+  overflow-y: hidden;
 }
 .filterNaviagtion {
   display: flex;
@@ -47,6 +50,7 @@
   height: auto;
 }
 .filterNaviagtion h4 {
+  margin-top: 15px;
   padding: 5px;
   border-radius: 2vw;
   color: grey;
@@ -82,7 +86,7 @@
   justify-content: left;
   align-items: center;
   flex-direction: column;
-
+  padding-bottom: 15px;
   gap: 5px;
 }
 .ordersList ul li {
