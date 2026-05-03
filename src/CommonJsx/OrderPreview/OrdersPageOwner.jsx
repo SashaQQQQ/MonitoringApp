@@ -57,7 +57,9 @@ function OrdersPageOwner() {
         <div className="ordersContainer">
           <div className="ordersContent">
             <div className="ordersInfoCont">
-              <MyCalendar orders={calendarOrders} />
+              <div className="calendarContainer">
+                <MyCalendar orders={calendarOrders} />
+              </div>
               <OverallOrdersList
                 setAddOrderFormStatus={setAddOrderFormStatus}
                 fetchOrders={fetchOrders}

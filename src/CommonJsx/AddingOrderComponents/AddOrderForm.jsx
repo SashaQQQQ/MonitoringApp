@@ -94,9 +94,7 @@ function AddOrderForm({ setAddOrderFormStatus }) {
           setWorkerRoles={setWorkerRoles}
           workerRoles={workerRoles}
         />
-        <div className="finalDateGroup">
-          <OrderCalendar getFinalDate={setFinalDate} />
-        </div>
+        <OrderCalendar getFinalDate={setFinalDate} />
       </div>
       <button
         className="saveBtn"

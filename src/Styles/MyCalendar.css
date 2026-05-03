@@ -1,63 +1,98 @@
 .calendar-wrapper {
   display: flex;
-
-
   justify-content: center;
-  align-items: center;
-  border-radius: 2vw;
+  padding: 20px;
   width: 100%;
-  height: 50%;
-  transition: 0.2s all ease;
-padding: 10px;
+  flex-direction: column;
 }
 
-.react-calendar {
-  height: auto;
-  background-color: transparent;
+.calendar-wrapper .react-calendar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  background: #1e1e2f;
+  color: white;
   border: none;
-  height: 100%;
-  width: 98%;
-
+  border-radius: 16px;
+  padding: 15px;
+  font-family: sans-serif;
 }
-.red {
-  background: red;
+.calendar-wrapper .react-calendar__navigation {
+  display: flex;
+  gap: 10px;
+}
+.calendar-wrapper .react-calendar__navigation button {
+  color: white;
+  background: black;
+  text-align: center;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 5px;
+}
+.calendar-wrapper .react-calendar__navigation button:hover {
+  background-color: black !important;
+  color: rgb(235, 233, 233) !important;
+}
+.calendar-wrapper .react-calendar__month-view__weekdays {
+  color: #aaa;
+  font-size: 12px;
+}
+
+.calendar-wrapper .react-calendar__tile {
+  border-radius: 10px;
+  padding: 10px 0;
+  position: relative;
+}
+
+.calendar-wrapper .react-calendar__tile:hover {
+  background: #2a2a40;
+}
+
+.calendar-wrapper .react-calendar__tile--now {
+  background: #3a3a60;
+}
+
+.calendar-wrapper .react-calendar__tile--active {
+  background: #ff4d4f;
+  color: white;
+}
+
+.calendar-wrapper .react-calendar__tile.has-order {
+  background: rgba(255, 77, 79, 0.2);
+}
+.calendar-wrapper .react-calendar {
+  background: #1e1e2f;
+  color: white;
+}
+
+.calendar-wrapper .react-calendar__tile {
+  background: transparent;
+  color: white;
+  border-radius: 10px;
+}
+
+.calendar-wrapper .react-calendar__tile:hover {
+  background: #2a2a40 !important;
+}
+
+.calendar-wrapper .react-calendar__tile--now {
+  background: #3a3a60 !important;
+}
+
+.calendar-wrapper .react-calendar__tile--active {
+  background: #ff4d4f !important;
 }
 
 .dot {
-  margin: 2px auto;
   width: 6px;
   height: 6px;
+  background: red;
   border-radius: 50%;
-}
-
-.legend div {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 4px 0;
-  font-size: 14px;
-}
-.orderCalendar-wrapper {
-  border-radius: 2vw;
-gap: 5px;
-  width: 100%;
-  height: 90%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-}
-.orderCalendar-wrapper button {
-  padding: 5px 10px;
-  height: auto;
-border-radius: 0px;
-  border: none;
-background-color: transparent;
-  color: rgb(56, 53, 53);
-  cursor: pointer;
-  transition: all ease 0.2s;
-}
-.orderCalendar-wrapper button:hover {
-  color: black;
-  background-color: transparent;
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
 }

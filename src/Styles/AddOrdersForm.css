@@ -83,7 +83,7 @@
   align-items: center;
   flex-direction: column;
   gap: 3px;
-  overflow-y: auto;   
+  overflow-y: auto;
 }
 .workersGroup ul li {
   display: flex;
@@ -168,7 +168,7 @@
   overflow-y: auto;
   justify-content: center;
   align-items: center;
-  position: relative; 
+  position: relative;
 }
 .workerRoleGroup h3 {
   color: rgb(58, 58, 58);
@@ -188,7 +188,6 @@
   flex-direction: column;
   gap: 3px;
   overflow-y: auto;
-  
 }
 .workerRoleGroup ul li {
   display: flex;
@@ -219,11 +218,11 @@
   font-size: 15px;
   outline: 2px solid blue;
 }
- .workerRoleGroup ul li div {
-   display: flex;
-   justify-content: space-around;
-   width: 100%;
- }
+.workerRoleGroup ul li div {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
 
 .workerRoleGroup button {
   padding: 4px 10px;
@@ -238,22 +237,7 @@
 .workerRoleGroup button:hover {
   background-color: rgb(0, 100, 210);
 }
-.finalDateGroup {
-  height: auto;
-  position: relative;
 
-  width: 100%;
-  gap: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-.finalDateGroup button {
-  background-color: rgb(220, 240, 244);
-  color: black;
-  border-radius: 1vw;
-}
 .saveBtn {
   padding: 10px 10px;
   border-radius: 0.5vw;

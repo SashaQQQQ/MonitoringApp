@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "../../Styles/MyCalendar.css";
@@ -6,7 +6,7 @@ import "../../Styles/MyCalendar.css";
 function MyCalendar({ orders }) {
   const [value, setValue] = useState(new Date());
 
-  const getDatesSet = () => {
+  const datesSet = useMemo(() => {
     const set = new Set();
 
     orders.forEach((order) => {
@@ -15,19 +15,14 @@ function MyCalendar({ orders }) {
       const d = new Date(order.FinalDate);
       if (isNaN(d)) return;
 
-      const key =
-        d.getFullYear() +
-        "-" +
-        String(d.getMonth() + 1).padStart(2, "0") +
-        "-" +
-        String(d.getDate()).padStart(2, "0");
+      const key = d.toISOString().split("T")[0];
       set.add(key);
     });
 
     return set;
-  };
+  }, [orders]);
 
-  const datesSet = getDatesSet();
+  const getKey = (date) => date.toISOString().split("T")[0];
 
   return (
     <div className="calendar-wrapper">
@@ -35,17 +30,14 @@ function MyCalendar({ orders }) {
         onChange={setValue}
         value={value}
         minDate={new Date()}
+        // 🔥 добавляем класс для дней с заказами
+        tileClassName={({ date }) => {
+          return datesSet.has(getKey(date)) ? "has-order" : null;
+        }}
+        // 🔴 точка
         tileContent={({ date }) => {
-          const key =
-            date.getFullYear() +
-            "-" +
-            String(date.getMonth() + 1).padStart(2, "0") +
-            "-" +
-            String(date.getDate()).padStart(2, "0");
-
-          if (!datesSet.has(key)) return null;
-
-          return <div className="dot red"></div>;
+          if (!datesSet.has(getKey(date))) return null;
+          return <div className="dot" />;
         }}
       />
     </div>
