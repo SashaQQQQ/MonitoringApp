@@ -1,98 +1,155 @@
 .calendar-wrapper {
   display: flex;
   justify-content: center;
-  padding: 20px;
+  padding: 16px;
   width: 100%;
+  box-sizing: border-box;
   flex-direction: column;
+  align-items: center;
 }
 
+/* Calendar container */
 .calendar-wrapper .react-calendar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
   width: 100%;
-  background: #1e1e2f;
+  background-color: rgb(243, 243, 243);
   color: white;
   border: none;
   border-radius: 16px;
-  padding: 15px;
+  padding: 12px;
   font-family: sans-serif;
+  box-sizing: border-box;
 }
-.calendar-wrapper .react-calendar__navigation {
+
+/* Navigation */
+.react-calendar__navigation {
   display: flex;
-  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
 }
-.calendar-wrapper .react-calendar__navigation button {
+
+.react-calendar__navigation button {
   color: white;
-  background: black;
-  text-align: center;
+  background: #111 !important;
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
-  padding: 5px;
-}
-.calendar-wrapper .react-calendar__navigation button:hover {
-  background-color: black !important;
-  color: rgb(235, 233, 233) !important;
-}
-.calendar-wrapper .react-calendar__month-view__weekdays {
-  color: #aaa;
-  font-size: 12px;
+  padding: 6px 10px;
+  min-width: 36px;
 }
 
-.calendar-wrapper .react-calendar__tile {
+.react-calendar__navigation button:hover {
+  background-color: #2a2a40 !important;
+}
+
+/* Weekdays */
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  color: #aaa;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+/* Grid layout */
+.react-calendar__month-view__days {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+/* Day tile */
+.react-calendar__tile {
+  background: white !important;
+  color: black !important;
   border-radius: 10px;
   padding: 10px 0;
   position: relative;
+  font-size: 14px;
+  transition: all 0.2s ease;
 }
 
-.calendar-wrapper .react-calendar__tile:hover {
-  background: #2a2a40;
+/* Hover */
+.react-calendar__tile:hover {
+  background: #2a2a40 !important;
+  color: white !important;
 }
 
-.calendar-wrapper .react-calendar__tile--now {
-  background: #3a3a60;
+/* Today */
+.react-calendar__tile--now {
+  background: #3a3a60 !important;
 }
 
-.calendar-wrapper .react-calendar__tile--active {
+/* Selected */
+.react-calendar__tile--active {
   background: #ff4d4f;
   color: white;
 }
 
-.calendar-wrapper .react-calendar__tile.has-order {
+/* Orders highlight */
+.react-calendar__tile.has-order {
   background: rgba(255, 77, 79, 0.2);
 }
-.calendar-wrapper .react-calendar {
-  background: #1e1e2f;
-  color: white;
-}
 
-.calendar-wrapper .react-calendar__tile {
-  background: transparent;
-  color: white;
-  border-radius: 10px;
-}
-
-.calendar-wrapper .react-calendar__tile:hover {
-  background: #2a2a40 !important;
-}
-
-.calendar-wrapper .react-calendar__tile--now {
-  background: #3a3a60 !important;
-}
-
-.calendar-wrapper .react-calendar__tile--active {
-  background: #ff4d4f !important;
-}
-
+/* Dot */
 .dot {
   width: 6px;
   height: 6px;
-  background: red;
+  background: #ff4d4f;
   border-radius: 50%;
   position: absolute;
   bottom: 4px;
   left: 50%;
   transform: translateX(-50%);
+}
+
+/* ------------------ */
+/* 📱 TABLET */
+@media (max-width: 768px) {
+  .calendar-wrapper .react-calendar {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .react-calendar__tile {
+    padding: 8px 0;
+    font-size: 13px;
+  }
+
+  .react-calendar__navigation button {
+    padding: 5px 8px;
+  }
+}
+
+/* 📱 MOBILE */
+@media (max-width: 480px) {
+  .calendar-wrapper {
+    padding: 10px;
+  }
+
+  .react-calendar__tile {
+    padding: 6px 0;
+    font-size: 12px;
+  }
+
+  .react-calendar__navigation button {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
+
+  .dot {
+    width: 5px;
+    height: 5px;
+  }
+}
+
+/* 📱 VERY SMALL DEVICES */
+@media (max-width: 360px) {
+  .react-calendar__tile {
+    font-size: 11px;
+    padding: 5px 0;
+  }
+
+  .react-calendar__navigation button {
+    min-width: 28px;
+  }
 }

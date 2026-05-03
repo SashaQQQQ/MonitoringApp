@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import OverallOrdersList from "./OverallOrderList.jsx";
 import OverallOrdersDescription from "./OverallOrderDescription.jsx";
 import AddOrderForm from "../AddingOrderComponents/AddOrderForm.jsx";
-import MyCalendar from "../SpecialComponents/Calendar.jsx";
 import emptyIcon from "../../Icons/empty.png";
 import "../../Styles/OrdersPage.css";
 import { supabase } from "../SupabaseClient.js";
+import UniversalCalendar from "../SpecialComponents/UniversalCalendar.jsx";
 function OrdersPageOwner() {
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [addOrderFormStatus, setAddOrderFormStatus] = useState(false);
@@ -58,7 +58,7 @@ function OrdersPageOwner() {
           <div className="ordersContent">
             <div className="ordersInfoCont">
               <div className="calendarContainer">
-                <MyCalendar orders={calendarOrders} />
+                <UniversalCalendar mode="orders" orders={orders} />
               </div>
               <OverallOrdersList
                 setAddOrderFormStatus={setAddOrderFormStatus}

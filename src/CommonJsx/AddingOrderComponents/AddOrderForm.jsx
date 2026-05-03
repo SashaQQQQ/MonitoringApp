@@ -4,7 +4,7 @@ import { supabase } from "../SupabaseClient.js";
 import "../../Styles/AddOrdersForm.css";
 import hintIcon from "../../Icons/question.png";
 import userIcon from "../../Icons/worker.png";
-import OrderCalendar from "./OrderCalendar.jsx";
+import UniversalCalendar from "../SpecialComponents/UniversalCalendar.jsx";
 import OverallNewOrderInfo from "./OverallNewOrderInfo.jsx";
 import WorkersSearch from "./WorkersSearch.jsx";
 import RolesManager from "./RolesManager.jsx";
@@ -94,7 +94,7 @@ function AddOrderForm({ setAddOrderFormStatus }) {
           setWorkerRoles={setWorkerRoles}
           workerRoles={workerRoles}
         />
-        <OrderCalendar getFinalDate={setFinalDate} />
+        <UniversalCalendar mode="select" getDate={setFinalDate} />
       </div>
       <button
         className="saveBtn"
