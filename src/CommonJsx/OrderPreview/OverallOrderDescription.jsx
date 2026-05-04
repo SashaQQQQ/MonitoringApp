@@ -92,13 +92,16 @@ function OverallOrdersDescription({
               ) : (
                 workers?.map((worker) => (
                   <li
+                    title="Click to see the comment"
                     key={worker.id}
                     onClick={() => {
                       setActiveWorkerCommentId(worker.id);
                     }}
                   >
                     <div className="orderWorkersDetails">
-                      <p>{worker.secondName}</p>
+                      <p>
+                        {worker.name} {worker.secondName}
+                      </p>
                       <h5>{worker.progress_percent}%</h5>
                     </div>
 

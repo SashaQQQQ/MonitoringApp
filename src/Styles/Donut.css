@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  flex-direction: column;
   width: 100%;
   height: auto;
 }
@@ -39,7 +39,6 @@
 }
 @media (max-width: 768px) {
   .donutContainer {
-    flex-direction: column;
     height: auto;
     overflow: visible;
   }
