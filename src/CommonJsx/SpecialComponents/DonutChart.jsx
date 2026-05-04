@@ -2,8 +2,8 @@ import { PieChart, Pie, Cell } from "recharts";
 import "../../Styles/Donut.css";
 export default function DonutChart({ progress }) {
   const data = [
-    { name: "Ready", value: progress },
-    { name: "Not ready", value: 100 - progress },
+    { name: "Ready", value: progress.toFixed(2) },
+    { name: "Not ready", value: 100 - progress.toFixed(2) },
   ];
 
   const COLORS = ["#0088FE", "#FF8042"];
@@ -29,7 +29,6 @@ export default function DonutChart({ progress }) {
           <div className="readyDonut"></div>
           <p>Ready {data[0].value}%</p>
         </div>
-     
       </div>
     </div>
   );
