@@ -36,7 +36,8 @@ export default function ChatWindow({
     setMessages(data || []);
   }
 
-  async function sendMessage() {
+  async function sendMessage(e) {
+    e.preventDefault();
     if (!text.trim() || !otherUser) return;
     console.log({
       sender: userProfile.email,
@@ -114,14 +115,19 @@ export default function ChatWindow({
       </div>
 
       {otherUser?.email !== "" ? (
-        <div className="chatInput">
+        <form
+          onSubmit={(e) => {
+            sendMessage(e);
+          }}
+          className="chatInput"
+        >
           <input
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Write a message..."
           />
-          <button onClick={sendMessage}>Send</button>
-        </div>
+          <button type="submit">Send</button>
+        </form>
       ) : null}
     </div>
   );
