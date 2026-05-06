@@ -13,7 +13,6 @@ function OverallOrdersPage({
   const [filterType, setFilterType] = useState("all");
 
   function filterOrders(typeOfFilter) {
-    console.log("Filtering orders with filter type:", typeOfFilter);
     if (typeOfFilter === "all") {
       setFilteredOrders(orders);
       return;

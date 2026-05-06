@@ -51,6 +51,16 @@ function OrdersPageOwner() {
     return data.length > 0 ? totalProgress / data.length : 0;
   }
 
+  useEffect(() => {
+    if (!selectedOrder) return;
+
+    const updatedOrder = orders.find((order) => {
+      return order.id === selectedOrder.id;
+    });
+
+    setSelectedOrder(updatedOrder);
+  }, [orders]);
+
   return (
     <div className="ordersPage">
       {!addOrderFormStatus ? (

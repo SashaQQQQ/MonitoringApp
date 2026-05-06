@@ -11,7 +11,7 @@ function BestWorkers() {
       .from("users")
       .select("*")
       .order("finishedOrders", { ascending: false })
-      .limit(3);
+      .limit(5);
 
     if (error) {
       console.error("Error fetching best workers:", error);

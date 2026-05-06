@@ -8,6 +8,7 @@ const WorkerOrderDetails = ({
   setActivePanel,
   selectedOrder,
   setSelectedOrder,
+  fetchOrders,
 }) => {
   const { userProfile } = useContext(DataContext);
   const [updatedProgress, setUpdatedProgress] = useState(0);
@@ -37,7 +38,7 @@ const WorkerOrderDetails = ({
     if (error) {
       console.error("Error updating progress:", error);
     } else {
-      console.log("Progress updated successfully:", data);
+      fetchOrders();
     }
   }
   useEffect(() => {

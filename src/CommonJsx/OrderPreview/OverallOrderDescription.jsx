@@ -14,6 +14,12 @@ function OverallOrdersDescription({
   const { whichRole } = useContext(DataContext);
   const [activeWorkerCommentId, setActiveWorkerCommentId] = useState(null);
 
+  //___________EDITING_____________________________________
+  const [editingStatus, setEditingStatus] = useState(false);
+  const [newTitle, setNewTitle] = useState(null);
+  const [newDate, setNewDate] = useState(null);
+  const [newDescription, setNewDescription] = useState(null);
+
   async function fetchWorkers() {
     if (!selectedOrder?.id) return;
 
@@ -32,11 +38,63 @@ function OverallOrdersDescription({
     setWorkers(combinedData);
   }
 
-  async function deleteOrder(orderId) {
+  function handleEditingStatusSwitch() {
+    setNewDate(selectedOrder?.FinalDate);
+    setNewDescription(selectedOrder?.Description);
+    setNewTitle(selectedOrder?.Title);
+
+    setEditingStatus((prev) => {
+      return !prev;
+    });
+  }
+
+  function handleTitleChange(e) {
+    setNewTitle(e.target.value);
+  }
+  function handleDateChange(e) {
+    const date = new Date(e.target.value);
+
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+
+    setNewDate(`${year}-${month}-${day}`);
+  }
+  function handleDescriptionChange(e) {
+    setNewDescription(e.target.value);
+  }
+
+  async function saveChanges() {
+    const updates = {
+      Title: newTitle?.trim() || selectedOrder?.Title,
+      FinalDate: newDate?.trim() || selectedOrder?.FinalDate,
+      Description: newDescription?.trim() || selectedOrder?.Description,
+    };
+    console.log(updates.FinalDate);
+    const { data, error } = await supabase
+      .from("orders")
+      .update(updates)
+      .eq("id", selectedOrder?.id);
+
+    if (error) {
+      console.log(error);
+    }
+
+    if (data) {
+      console.log(data);
+    }
+    setEditingStatus(false);
+    setNewDate("");
+    setNewDescription("");
+    setNewTitle("");
+    fetchOrders();
+  }
+
+  async function deleteOrder() {
     const { data, error } = await supabase
       .from("orders")
       .delete()
-      .eq("id", orderId);
+      .eq("id", selectedOrder?.id);
 
     if (error) return;
     if (selectedOrder?.readyProcent >= 100) {
@@ -52,6 +110,10 @@ function OverallOrdersDescription({
   }
 
   useEffect(() => {
+    setEditingStatus(false);
+    setNewDate(null);
+    setNewDescription(null);
+    setNewTitle(null);
     setActiveWorkerCommentId(null);
     fetchWorkers();
   }, [selectedOrder]);
@@ -60,26 +122,102 @@ function OverallOrdersDescription({
     <>
       {selectedOrder ? (
         <div className="orderDescription">
-          <div className="orderOverallInfo">
-            <div className="selectedOrderInfo">
+          <div className="managementButtons">
+            {editingStatus ? (
               <button
                 onClick={() => {
-                  deleteOrder(selectedOrder?.id);
+                  saveChanges();
                 }}
+                className="saveChangesBtn"
               >
-                Delete order
+                Save
               </button>
+            ) : null}
 
-              <p>Order: {selectedOrder?.Title}</p>
-
-              <p>Due to: {selectedOrder?.FinalDate}</p>
-            </div>
-            <DonutChart progress={selectedOrder?.progress_percent} />
+            <button
+              onClick={() => {
+                handleEditingStatusSwitch();
+              }}
+              className="editBtn"
+            >
+              Edit
+            </button>
+            <button
+              className="deleteBtn"
+              onClick={() => {
+                deleteOrder(selectedOrder?.id);
+              }}
+            >
+              Delete order
+            </button>
           </div>
+          <div className="selectedOrderInfo">
+            <p>
+              Order:{" "}
+              {editingStatus ? (
+                <input
+                  type="text"
+                  onInput={(e) => {
+                    handleTitleChange(e);
+                  }}
+                  value={newTitle}
+                  placeholder={selectedOrder?.Title}
+                />
+              ) : (
+                selectedOrder?.Title
+              )}{" "}
+            </p>
+
+            <p>
+              Due to:{" "}
+              {editingStatus ? (
+                <input
+                  onInput={(e) => {
+                    handleDateChange(e);
+                  }}
+                  value={newDate}
+                  placeholder={selectedOrder?.FinalDate}
+                  type="date"
+                />
+              ) : (
+                selectedOrder?.FinalDate
+              )}
+            </p>
+          </div>
+          <div className="orderDates">
+            <p>
+              Time left: <br />
+              {Math.ceil(
+                (new Date(selectedOrder.FinalDate) - new Date()) /
+                  (1000 * 60 * 60 * 24),
+              )}{" "}
+              days
+            </p>
+            <p>
+              Deadline: <br />
+              {selectedOrder?.FinalDate || "N/A"}
+            </p>
+            <p>
+              Today: <br /> {new Date().toISOString().split("T")[0]}
+            </p>
+          </div>
+          <DonutChart progress={selectedOrder?.progress_percent} />
 
           <div className="selectedOrderDescription">
             <h2>Description</h2>
-            <p>{selectedOrder?.Description}</p>
+            <p>
+              {editingStatus ? (
+                <textarea
+                  value={newDescription}
+                  onInput={(e) => {
+                    handleDescriptionChange(e);
+                  }}
+                  placeholder={selectedOrder?.Description}
+                />
+              ) : (
+                selectedOrder?.Description
+              )}
+            </p>
           </div>
           <div className="selectedOrderWorkerss">
             <p className="workersAmount">

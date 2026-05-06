@@ -20,7 +20,6 @@ function NavigationBar() {
       <div
         onClick={() => {
           setActivePage("workers");
-          console.log("Workers");
         }}
       >
         <img src={workerIcon} alt="Workers" />
