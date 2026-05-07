@@ -38,6 +38,8 @@ const WorkerOrderDetails = ({
     if (error) {
       console.error("Error updating progress:", error);
     } else {
+      setUpdatedProgress(0);
+      setComment("");
       fetchOrders();
     }
   }

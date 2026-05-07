@@ -25,7 +25,9 @@ function OverallOrdersDescription({
 
     const { data, error } = await supabase
       .from("order.Workers")
-      .select("progress_percent, comment, users(id,name, secondName)")
+      .select(
+        "progress_percent,Role, comment, users(id,name,avatarUrl, secondName)",
+      )
       .eq("order_id", selectedOrder?.id);
 
     const combinedData = data.map((user) => {
@@ -33,6 +35,7 @@ function OverallOrdersDescription({
         ...user.users,
         progress_percent: user.progress_percent || 0,
         comment: user.comment,
+        Role: user.Role,
       };
     });
     setWorkers(combinedData);
@@ -237,8 +240,10 @@ function OverallOrdersDescription({
                     }}
                   >
                     <div className="orderWorkersDetails">
+                      <img src={worker.avatarUrl || workerIcon} alt="" />
                       <p>
-                        {worker.name} {worker.secondName}
+                        {worker.name} {worker.secondName} <br /> Role:{" "}
+                        {worker.Role}
                       </p>
                       <h5>{worker.progress_percent}%</h5>
                     </div>

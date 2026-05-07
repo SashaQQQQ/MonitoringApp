@@ -202,15 +202,22 @@
   flex-direction: column;
   border: 1px solid rgb(0, 119, 255);
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
   background-color: rgb(243, 243, 243);
   transition: all 1s ease;
 }
 .orderWorkersDetails {
-  width: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: left;
+}
+.selectedOrderWorkerss li .orderWorkersDetails img {
+  height: auto;
+  width: 35px;
+  border-radius: 50%;
 }
 .selectedOrderWorkerss li .orderWorkersDetails p {
-  width: 50%;
+  width: 70%;
   min-width: 60px;
   font-weight: 600;
   color: rgb(56, 56, 56);
